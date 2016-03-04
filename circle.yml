@@ -1,0 +1,10 @@
+machine:
+  node:
+    version: 5.0.0
+  ruby:
+    version: 2.2.3
+test:
+  pre:
+    - bundle exec rake bower:install
+  override:
+    - bundle exec rspec spec/

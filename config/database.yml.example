@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 20
+  timeout: 5000
+  username: postgres
+  host: postgres
+
+development:
+  <<: *default
+  database: <%= %Q|#{Rails.root.to_s.split("/").last}_development| %>
+
+test:
+  <<: *default
+  database: <%= %Q|#{Rails.root.to_s.split("/").last}_test| %>
+
+
+#production:
+#  <<: *default
+#  database: <%= %Q|#{Rails.root.to_s.split("/").last}_production| %>
+#  username:
+#  password: <%= ENV["pgm-contrato_DATABASE_PASSWORD"] %>
+#  host: localhost

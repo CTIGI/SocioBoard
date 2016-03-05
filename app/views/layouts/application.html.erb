@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>JuvOffendersDashboard</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
+<head dir="ltr" lang="<%= I18n.locale %>">
+ <%= favicon_link_tag "favicon.ico" %>
+ <title>.:: <%= t("app.appname") %> ::.</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <%= stylesheet_link_tag 'application', media: 'all' %>
+ <%= csrf_meta_tags %>
+</head>
+ <body>
+   <%= render partial: "layouts/header" %>
+   <%= render partial: "layouts/main_menu" %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+   <section id="content">
+     <div class="container">
+       <%#= render_flash_message %>
+       <%= yield %>
+     </div>
+   </section>
+   <%= render partial: "layouts/javascripts" %>
+ </body>
 </html>

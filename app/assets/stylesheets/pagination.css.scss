@@ -1,0 +1,16 @@
+.pagination > li > a {
+  border: 1px solid #C1BFBF !important;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #009688 !important;
+  cursor: default;
+}
+
+.pagination > li:not(.active) > a:hover {
+  color: #ffffff;
+  background-color: rgba(0, 150, 136, 0.6) !important;
+  transition: all 0.3s ease-out;
+}

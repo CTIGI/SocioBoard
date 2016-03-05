@@ -1,0 +1,5 @@
+<li class="last">
+  <%= link_to url, :remote => remote do %>
+    <%= fa_icon("angle-double-right") %>
+  <% end unless current_page.last? %>
+</li>

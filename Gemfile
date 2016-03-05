@@ -16,6 +16,10 @@ gem 'figaro'
 gem 'bower-rails'
 gem 'kaminari', git: "git://github.com/amatsuda/kaminari.git", branch: 'master'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem "font-awesome-rails"
+gem "paloma"
+gem "gon"
+gem "i18n-js", ">= 3.0.0.rc11"
 
 group :development, :test do
   gem 'pry-byebug'

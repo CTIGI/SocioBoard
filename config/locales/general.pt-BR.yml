@@ -1,0 +1,8 @@
+# encoding: UTF-8
+pt-BR:
+  app:
+    appname: "socioboard"
+    no_record: "Não Inform."
+  main_menu:
+    home: "Página Inicial"
+    search: "Pesquisa"

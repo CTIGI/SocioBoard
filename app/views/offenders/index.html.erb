@@ -1,0 +1,84 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <%= sort_link(@q, :unit) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :name) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :age) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :recurrent) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :origin_county) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :article) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :measure_type) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :measure_deadline) %>
+      </th>
+
+      <th>
+        <%= sort_link(@q, :start_date_measure) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :end_date_measure) %>
+      </th>
+      <th>
+        <%= sort_link(@q, :measure_situation) %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offenders.each do |offender| %>
+      <tr>
+        <td>
+          <%= truncate_words(offender.unit) %>
+        </td>
+        <td>
+          <%= truncate(offender.name) %>
+        </td>
+        <td>
+          <%= show_field(offender.age) %>
+        </td>
+        <td>
+          <%= show_field(offender.recurrent) %>
+        </td>
+        <td>
+          <%= show_field(offender.origin_county) %>
+        </td>
+        <td>
+          <%= show_field(offender.article) %>
+        </td>
+        <td>
+          <%= show_field(offender.measure_type) %>
+        </td>
+        <td>
+          <%= show_field(offender.measure_deadline) %>
+        </td>
+
+        <td>
+          <%= show_field(l(offender.start_date_measure)) %>
+        </td>
+        <td>
+          <%= show_field(l(offender.end_date_measure)) %>
+        </td>
+        <td>
+          <%= show_field(offender.measure_situation) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <%= paginate @offenders %>
+</div>

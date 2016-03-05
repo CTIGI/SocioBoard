@@ -1,0 +1,18 @@
+pt-BR:
+  activerecord:
+    models:
+      offender: "Socio-educandos"
+    attributes:
+      offender:
+        unit: "Unidade"
+        name: "Nome"
+        age: "Idade"
+        recurrent: "Reincidente?"
+        origin_county: "Comarca Origem"
+        article: "Art. Infração"
+        measure_type: "Medida"
+        measure_deadline: "Prazo Medida"
+        start_date_measure: "Data Início Medida"
+        end_date_measure: "Data Fim Medida"
+        measure_situation: "Situação Medida"
+        ammount_end_days: "Qtde dias término medida"

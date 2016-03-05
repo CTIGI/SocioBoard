@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.3"
 
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'sqlite3'
@@ -19,6 +20,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 group :development, :test do
   gem 'pry-byebug'
   gem 'faker'
+  gem "fuubar"
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'

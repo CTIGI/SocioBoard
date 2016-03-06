@@ -1,0 +1,5 @@
+pt-BR:
+  views:
+    offenders:
+      filter_panel:
+        total: "TOTAL SOCIOED."

@@ -14,4 +14,8 @@ module ApplicationHelper
   def show_field(field)
     field.blank? ? t("app.no_record") : field
   end
+
+  def date_input(date)
+    date.blank? ? "" : localize(date)
+  end
 end

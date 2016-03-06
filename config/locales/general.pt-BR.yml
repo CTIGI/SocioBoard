@@ -3,6 +3,8 @@ pt-BR:
   app:
     appname: "socioboard"
     no_record: "Não Inform."
+    filter: "Pesquisar"
+    remove_filter: "Remover pesquisa"
   main_menu:
     home: "Página Inicial"
     search: "Pesquisa"

@@ -1,0 +1,287 @@
+.help-field {
+  color: #009688 !important;
+  text-decoration: none;
+}
+
+.btn-success {
+  background-color: #009688 !important;
+}
+
+.sort_link  {
+  color: #009688 !important;
+  text-decoration: none;
+}
+
+#sidebar {
+  background-color: #4eb3af !important;
+  background: linear-gradient(#05894B, #08A95E);
+}
+
+#time {
+  background-color: #19794C !important;
+}
+
+.logo {
+  background-color: #ffffff !important;
+}
+
+.ctigi-logo {
+  width: 300px;
+}
+
+.img-logo {
+  background: url(image-path('socioboard-logo.png')) no-repeat;
+  margin: 6px 0 0 45px;
+  background-size: 130px;
+}
+
+.side-menu > li.active > a {
+  background-color: #02632d !important;
+}
+
+.side-menu > li > a {
+  color: white;
+  font-weight: bold;
+}
+
+#header {
+  background: linear-gradient(#05894B, #08A95E);
+}
+
+.sm-sub > ul {
+  background-color: #02632d !important;
+}
+
+.top-search {
+  background-color: #09B062 !important;
+}
+
+::-webkit-input-placeholder {
+   color: white;
+}
+
+.header-inner > li > a {
+  color: white !important;
+}
+
+.top-search:not(.toggled) {
+  width: 110px !important;
+}
+
+.top-search:not(.toggled):before {
+  font-family: 'FontAwesome' !important;
+  content: "\f002" !important;
+  font-size: 14px !important;
+  padding-top: 5px;
+  color: white !important;
+}
+
+.hidden-xs.dropdown.pull-right.open {
+  background-color: #02632d;
+}
+
+a.btn-icon > i {
+  padding-top: 12px;
+}
+
+.form-actions > div {
+  padding: 10px;
+}
+
+.btn-submit {
+  margin-right: 10px;
+}
+
+.sm-sub > ul > li > a { color: white !important; }
+.sm-sub > ul > li > a:hover { font-weight: bold; }
+.side-menu > li > a > .zmdi { background-color: #02632d !important; }
+
+.form-control:focus {
+  border-color: #09b062 !important;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(9, 176, 98, 0.6) !important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(9, 176, 98, 0.6) !important;
+}
+
+.tile {
+  box-shadow: 0px 16px 14px #D2D2D2 !important;
+}
+
+.fw-nav > li.active {
+  background-color: rgba(9, 176, 98, 0.1);
+  transition: background-color 500ms ease-out 0.5s;
+}
+
+.tab-nav:not([data-tab-color])>li>a:after {
+  background: #09B062 !important;
+}
+
+.badge-wizard {
+  margin-right: 10px;
+  border-radius: 10px;
+  margin-top: -3px;
+  border-radius: 10px !important;
+}
+
+.icon-head {
+  font-size: 22px !important;
+  margin-top: 22px;
+}
+
+.img-profile {
+  width: 40px;
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.login-btn {
+  margin-top: 15px;
+}
+
+.icon-sidebar {
+  font-size: 14px !important;
+  margin-right: 10px;
+  background-color: #19794C;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+.link-sidebar:hover {
+  .icon-sidebar {
+    background-color: #08A75D;
+    transition: all 0.3s ease-out;
+  }
+}
+
+.btn-icon > i {
+  padding-top: 15px !important;
+}
+.btn-back > i {
+  padding-top: 15px !important;
+}
+
+#add-action {
+  margin-bottom: 15px;
+}
+
+.panel-collapse .panel-heading:before {
+  font-family: 'FontAwesome' !important;
+  font-size: 17px;
+  position: absolute;
+  left: 0;
+  top: 4px;
+  content: "\f067" !important;
+}
+
+.progress {
+  height: 15px !important;
+}
+
+.dropdown-menu > li > a > i {
+  padding-right: 5px;
+}
+
+.alert-icon {
+  padding-right: 8px;
+}
+
+.alert {
+  font-weight: bold;
+}
+
+.alert-warning {
+  color: #5D5D5D !important;
+}
+
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
+  background-color: transparent !important;
+}
+
+.bootstrap-datetimepicker-widget table td:hover, .bootstrap-datetimepicker-widget table td:hover {
+  background-color: transparent !important;
+}
+
+.datepicker table thead tr:nth-child(2) th {
+  background-color: #02632d;
+}
+
+.bootstrap-datetimepicker-widget table td.today {
+  color: white !important;
+}
+
+.bootstrap-datetimepicker-widget table td.today:before {
+  content: '';
+  background-color: #C7C7C7 !important;
+  display: inline-block;
+  border: none !important;
+  border-width: 0 0 7px 7px;
+  position: static !important;
+  bottom: 4px;
+  right: 4px;
+}
+
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
+  color: white !important;
+  text-shadow: none !important;
+}
+
+.table > tbody > tr > td {
+  border-top: 1px solid #B5B5B5 !important;
+}
+
+.badge-list {
+  border-radius: 10px !important;
+}
+
+.hvr-bounce-to-right:before {
+  background-color: #19794C !important;
+}
+
+.bg-teal {
+  background-color: #068E4E !important;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin: -8px 0px 0 -20px !important;
+  width: 15px !important;
+}
+
+.beta-tag:hover {
+  cursor: pointer;
+}
+
+.beta-tag > img {
+  width: 40px;
+}
+
+.badge-tile {
+  background-color: white !important;
+  color: #068E4E  !important;
+  border-radius: 50px !important;
+}
+
+.tile-text {
+  position: relative;
+  top: 2px;
+}
+
+.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+  z-index: 2;
+  margin-left: 0px;
+  padding: 8px 10px;
+  margin-top: 0px;
+}
+
+.download-link {
+  color: #009688 !important;
+  i {
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.container {
+  overflow: auto;
+}

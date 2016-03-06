@@ -1,0 +1,5 @@
+<li class="pull-right" data-toggle="tooltip" data-placement="left" title="" data-original-title="<%= t('app.sign_in')%>">
+  <%= link_to user_omniauth_authorize_path(provider: "ctigi_auth"), class: "btn" do %>
+    <%= fa_icon("sign-in", class: "icon-head login-btn") %>
+  <% end %>
+</li>

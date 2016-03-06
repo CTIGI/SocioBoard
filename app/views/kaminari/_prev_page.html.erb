@@ -1,0 +1,5 @@
+<li class="prev">
+  <%= link_to url, :rel => 'prev', :remote => remote do %>
+    <%= fa_icon("angle-left") %>
+  <% end unless current_page.first? %>
+</li>

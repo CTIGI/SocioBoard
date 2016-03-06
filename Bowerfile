@@ -1,6 +1,19 @@
-# A sample Bowerfile
-# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
-
-# asset 'bootstrap'
-asset "jasmine-fixture"
-asset "jasmine-jquery"
+asset "animate.css"
+asset "fullcalendar"
+asset "malihu-custom-scrollbar-plugin"
+asset "bootstrap", github: "twbs/bootstrap"
+asset "flot"
+asset "flot-orderBars", github: "emmerich/flot-orderBars"
+asset "flot.curvedlines"
+asset "flot-charts"
+asset "sparklines"
+asset "moment"
+asset "select2", github: "select2/select2"
+asset "sweetalert"
+asset "jquery.maskedinput"
+asset "jquery-maskmoney"
+asset "jquery-animateNumber"
+asset "highcharts-release"
+asset "highstock-release"
+asset "eonasdan-bootstrap-datetimepicker"
+asset "hover"

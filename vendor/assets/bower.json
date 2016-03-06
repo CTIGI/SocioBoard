@@ -1,7 +1,24 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "jasmine-fixture": "latest",
-    "jasmine-jquery": "latest"
+    "animate.css": "latest",
+    "fullcalendar": "latest",
+    "malihu-custom-scrollbar-plugin": "latest",
+    "bootstrap": "git://github.com/twbs/bootstrap",
+    "flot": "latest",
+    "flot-orderBars": "git://github.com/emmerich/flot-orderBars",
+    "flot.curvedlines": "latest",
+    "flot-charts": "latest",
+    "sparklines": "latest",
+    "moment": "latest",
+    "select2": "git://github.com/select2/select2",
+    "sweetalert": "latest",
+    "jquery.maskedinput": "latest",
+    "jquery-maskmoney": "latest",
+    "jquery-animateNumber": "latest",
+    "highcharts-release": "latest",
+    "highstock-release": "latest",
+    "eonasdan-bootstrap-datetimepicker": "latest",
+    "hover": "latest"
   }
 }

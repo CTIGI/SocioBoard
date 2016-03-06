@@ -1,0 +1,15 @@
+<li class="sm-sub sms-profile">
+  <a class="clearfix" href="">
+    <%= image_tag "user.ico" %>
+    <span class="f-11">
+      <span class="d-block"><%= current_user.email %></span>
+      <small class="text-lowercase"><%= t("app.appname") %></small>
+    </span>
+  </a>
+
+  <ul>
+    <li><a data-toggle="fullscreen" href=""><%= t("app.fullscreen_mode")%></a></li>
+    <li><a href=""><%= t("app.account_settings")%></a></li>
+    <li><%= link_to t("app.sign_out"), destroy_user_session_path%></li>
+  </ul>
+</li>

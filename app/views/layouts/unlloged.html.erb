@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head dir="ltr" lang="<%= I18n.locale %>">
+    <title>.:: <%= t("app.appname") %> ::.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="login-content-cp animated">
+
+    <ul id="scene">
+      <li class="layer layer1" data-depth="0.90"><%= image_tag "pinlayer1.png" %></li>
+      <li class="layer layer2" data-depth="0.90"><%= image_tag "pinlayer2.png" %></li>
+      <li class="layer layer3" data-depth="0.50"><%= image_tag "pinlayer3.png" %></li>
+      <li class="layer layer4" data-depth="0.60"><%= image_tag "pinlayer4.png" %></li>
+    </ul>
+
+    <div class="container">
+      <div class="row vertical-offset-100">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="image-logo">
+            <%= image_tag("logo-cp.png") %>
+            </div>
+            <div class="panel-body">
+              <fieldset>
+                <%= link_to user_omniauth_authorize_path(provider: "ctigi_auth"), class: "btn btn-block btn-primary bg-teal btn-lg btn-float m-t-23", id: "submit-login" do %>
+                  <%= fa_icon("sign-in") %> Login
+                <% end %>
+              </fieldset>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>

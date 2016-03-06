@@ -17,6 +17,7 @@ capybara-*.html
 /spec/tmp
 /public/assets/
 .byebug_history
+.DS_Store
 **.orig
 
 config/initializers/secret_token.rb

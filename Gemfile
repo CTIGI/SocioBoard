@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby "2.2.3"
 
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
-gem 'sqlite3'
 gem 'puma'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -20,6 +19,7 @@ gem "font-awesome-rails"
 gem "paloma"
 gem "gon"
 gem "i18n-js", ">= 3.0.0.rc11"
+gem "sidekiq", "~> 4.1.0"
 
 group :development, :test do
   gem 'pry-byebug'
@@ -49,6 +49,9 @@ end
 group :development do
   gem 'web-console', '~> 3.0'
   gem 'spring'
+  gem "mina", "~> 0.3"
+  gem "mina-multistage", "~> 1.0", require: false
+  gem "mina-sidekiq"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

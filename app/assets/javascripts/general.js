@@ -129,7 +129,6 @@ var General = {
 var Mask = {
   datePicker: function() {
     $(".date-time-picker").each(function() {
-      $(this).mask("99/99/9999");
       $(this).datetimepicker({
         format: 'DD/MM/YYYY',
         locale: moment.locale('pt-br'),
@@ -163,11 +162,8 @@ var Mask = {
 }
 
 $(document).ready(function() {
-  $('.alert').delay(7000).slideUp();
   General.loadLastStateMenu();
-  General.submit();
   enableSelect2();
-  General.easterEgg();
   General.toggleMenu();
-  $('#scene').parallax();
+  Mask.datePicker();
 });

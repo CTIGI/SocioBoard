@@ -1,0 +1,94 @@
+<div class="tile">
+ <div class="t-header th-alt bg-teal">
+  <div class="th-title">
+    <%= fa_icon("filter") %>
+    <%= t("app.filter") %>
+  </div>
+ </div>
+ <div class="t-body tb-padding">
+  <%= search_form_for @q do |f| %>
+    <div class="row-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :unit_in, t('activerecord.attributes.offender.unit') %>
+            <%= f.collection_select(:unit_in, @units, :unit, :unit, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :name_cont, t('activerecord.attributes.offender.name') %>
+            <%= f.search_field :name_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :age_in, t('activerecord.attributes.offender.age') %>
+            <%= f.collection_select(:age_in, @ages, :age, :age, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :recurrent_in, t('activerecord.attributes.offender.recurrent') %>
+            <%= f.collection_select(:recurrent_in, @recurrents, :recurrent, :recurrent, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :origin_county_in, t('activerecord.attributes.offender.origin_county') %>
+            <%= f.collection_select(:origin_county_in, @origin_counties, :origin_county, :origin_county, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :article_in, t('activerecord.attributes.offender.article') %>
+            <%= f.collection_select(:article_in, @articles, :article, :article, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label :measure_type_in, t('activerecord.attributes.offender.measure_type') %>
+            <%= f.collection_select(:measure_type_in, @measure_types, :measure_type, :measure_type, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :measure_deadline_in, t('activerecord.attributes.offender.measure_deadline') %>
+            <%= f.collection_select(:measure_deadline_in, @measure_deadlines, :measure_deadline, :measure_deadline, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :start_date_measure_gteq, t('activerecord.attributes.offender.start_date_measure') %>
+            <%= f.search_field :start_date_measure_gteq, class: "form-control date-time-picker", value: date_input(f.object.start_date_measure_gteq) %>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :end_date_measure_lteq, t('activerecord.attributes.offender.end_date_measure') %>
+            <%= f.search_field :end_date_measure_lteq, class: "form-control date-time-picker", value: date_input(f.object.end_date_measure_lteq) %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :measure_situation_in, t('activerecord.attributes.offender.measure_situation') %>
+            <%= f.collection_select(:measure_situation_in, @measure_situations, :measure_situation, :measure_situation, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit class: "btn btn-success" %>
+    <%= link_to offenders_path, class: "btn btn-danger" do %>
+      <%= t("app.remove_filter")%>
+    <% end %>
+  <% end %>
+ </div>
+</div>

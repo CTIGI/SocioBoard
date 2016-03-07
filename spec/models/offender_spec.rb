@@ -21,4 +21,12 @@ describe Offender, :type => :model do
   context "Associations" do
     it { should have_many(:measures) }
   end
+
+  context "scopes" do
+    it "should return all flagged as duplicated" do
+      total_duplicated = rand(1..10)
+      duplicated = create_list(:offender, total_duplicated, duplicated: true)
+      expect(Offender.duplicated.count).to eq(total_duplicated)
+    end
+  end
 end

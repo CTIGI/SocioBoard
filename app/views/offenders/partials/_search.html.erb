@@ -44,14 +44,14 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <%= f.label :article_in, t('activerecord.attributes.offender.article') %>
-            <%= f.collection_select(:article_in, @articles, :article, :article, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+            <%= f.label :crimes_name, t('activerecord.attributes.offender.crimes_name') %>
+            <%= f.collection_select(:crimes_name_in, @crimes, :name, :name, { include_blank: true }, { class: "select2 form-control", multiple: "multiple" }) %>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <%= f.label :measure_type_in, t('activerecord.attributes.offender.measure_type') %>
-            <%= f.collection_select(:measure_type_in, @measure_types, :measure_type, :measure_type, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+            <%= f.label :measures_measure_type_in, t('activerecord.attributes.offender.measures_measure_type') %>
+            <%= f.select(:measures_measure_type_in, @measure_types, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
           </div>
         </div>
       </div>
@@ -59,27 +59,26 @@
       <div class="row">
         <div class="col-md-2">
           <div class="form-group">
-            <%= f.label :measure_deadline_in, t('activerecord.attributes.offender.measure_deadline') %>
-            <%= f.collection_select(:measure_deadline_in, @measure_deadlines, :measure_deadline, :measure_deadline, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+            <%= f.label :measures_measure_deadline_in, t('activerecord.attributes.offender.measures_measure_deadline') %>
+            <%= f.select(:measures_measure_deadline_in, @measure_deadlines, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
-            <%= f.label :start_date_measure_gteq, t('activerecord.attributes.offender.start_date_measure') %>
-            <%= f.search_field :start_date_measure_gteq, class: "form-control date-time-picker", value: date_input(f.object.start_date_measure_gteq) %>
+            <%= f.label :measures_start_date_measure_gteq, t('activerecord.attributes.offender.measures_start_date_measure') %>
+            <%= f.search_field :measures_start_date_measure_gteq, class: "form-control date-time-picker", value: date_input(f.object.measures_start_date_measure_gteq) %>
           </div>
         </div>
-
         <div class="col-md-2">
           <div class="form-group">
-            <%= f.label :end_date_measure_lteq, t('activerecord.attributes.offender.end_date_measure') %>
-            <%= f.search_field :end_date_measure_lteq, class: "form-control date-time-picker", value: date_input(f.object.end_date_measure_lteq) %>
+            <%= f.label :measures_end_date_measure_lteq, t('activerecord.attributes.offender.measures_end_date_measure') %>
+            <%= f.search_field :measures_end_date_measure_lteq, class: "form-control date-time-picker", value: date_input(f.object.measures_end_date_measure_lteq) %>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :measure_situation_in, t('activerecord.attributes.offender.measure_situation') %>
-            <%= f.collection_select(:measure_situation_in, @measure_situations, :measure_situation, :measure_situation, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+            <%= f.label :measures_measure_situation_in, t('activerecord.attributes.offender.measures_measure_situation') %>
+            <%= f.select(:measures_measure_situation_in, @measure_situations, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
           </div>
         </div>
       </div>

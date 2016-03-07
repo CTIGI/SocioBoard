@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305114727) do
+ActiveRecord::Schema.define(version: 20160307191133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "measures", force: :cascade do |t|
+    t.date     "start_date_measure"
+    t.date     "end_date_measure"
+    t.string   "measure_type"
+    t.integer  "measure_deadline"
+    t.string   "measure_situation"
+    t.string   "ammount_end_days"
+    t.integer  "offender_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "measures", ["offender_id"], name: "index_measures_on_offender_id", using: :btree
 
   create_table "offenders", force: :cascade do |t|
     t.string   "id_citizen"
@@ -24,15 +38,11 @@ ActiveRecord::Schema.define(version: 20160305114727) do
     t.integer  "age"
     t.string   "recurrent"
     t.string   "origin_county"
-    t.string   "article"
-    t.string   "measure_type"
-    t.integer  "measure_deadline"
-    t.date     "start_date_measure"
-    t.date     "end_date_measure"
-    t.string   "measure_situation"
-    t.string   "ammount_end_days"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "crime_id"
+    t.string   "crimes",        default: [],              array: true
   end
 
+  add_foreign_key "measures", "offenders"
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Offender, :type => :model do
-  
+
   it "should have a factory" do
     expect(FactoryGirl.build(:offender)).to be_valid
   end
@@ -14,12 +14,11 @@ describe Offender, :type => :model do
     it { should respond_to(:age) }
     it { should respond_to(:recurrent) }
     it { should respond_to(:origin_county) }
-    it { should respond_to(:article) }
-    it { should respond_to(:measure_type) }
-    it { should respond_to(:measure_deadline) }
-    it { should respond_to(:start_date_measure) }
-    it { should respond_to(:end_date_measure) }
-    it { should respond_to(:measure_situation) }
-    it { should respond_to(:ammount_end_days) }
+    it { should respond_to(:crimes) }
+    it { should respond_to(:crime_id) }
+  end
+
+  context "Associations" do
+    it { should have_many(:measures) }
   end
 end

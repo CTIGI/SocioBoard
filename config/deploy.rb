@@ -5,6 +5,7 @@ require 'mina/multistage'
 require 'mina/rvm'
 require 'mina/npm'
 require 'mina_sidekiq/tasks'
+require 'mina/whenever'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -70,6 +71,7 @@ task deploy: :environment do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'sidekiq:quiet'
+    invoke :'whenever:clear'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
@@ -81,6 +83,7 @@ task deploy: :environment do
 
     to :launch do
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+      invoke :'whenever:update'
       invoke :'sidekiq:restart'
     end
   end

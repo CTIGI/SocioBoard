@@ -1,12 +1,13 @@
 var DashboardController = Paloma.controller('Dashboard');
 
 DashboardController.prototype.index = function() {
-  setBarChart($('#crime-by-unit'), gon.crimes_by_unit_categories, gon.crimes_by_unit , "Unidade x Tipo de Ato")
+  setBarChart($('#crime-by-unit'), gon.crimes_by_unit_categories, gon.crimes_by_units , "Unidade x Tipo de Ato")
+  setBarChart($('#measure-by-unit'), gon.measure_by_units_categories, gon.measures_by_units , "Unidade x Medidas")
 }
 
 var bulbaColors = [
    '#399494',
-   '#209483',
+   '#83e6d5',
    '#5acbdb',
    '#317b52',
    '#104a39',
@@ -34,13 +35,14 @@ var bulbaColors = [
    '#de4141',
    '#83de7b',
    '#833100',
-   '#83e6d5'
+   '#209483'
   ]
 
 function setBarChart(chartDiv, categories, chartData, title) {
   chartDiv.highcharts({
     chart: {
-      type: 'bar'
+      type: 'bar',
+      height: 1200
     },
     title: {
       text: title
@@ -51,11 +53,20 @@ function setBarChart(chartDiv, categories, chartData, title) {
     yAxis: {
       min: 0
     },
+    legend: {
+      align: 'right',
+      verticalAlign: 'top',
+      layout: 'vertical',
+      labelFormatter: function () {
+        return this.name.substring(0, 15);
+      }
+    },
     plotOptions: {
       series: {
         stacking: 'normal'
       }
     },
+
     colors: bulbaColors,
     series: chartData
     });

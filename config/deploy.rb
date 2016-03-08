@@ -75,6 +75,7 @@ task deploy: :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    # invoke :'whenever:clear'
     invoke :'npm:install'
     queue! "bundle exec rake bower:install"
     invoke :'rails:db_migrate:force'
@@ -83,7 +84,7 @@ task deploy: :environment do
 
     to :launch do
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
-      invoke :'whenever:update'
+      # invoke :'whenever:update'
       invoke :'sidekiq:restart'
     end
   end

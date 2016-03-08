@@ -5,43 +5,43 @@
   <thead>
     <tr>
       <th>
-        <%= sort_link(@q, :unit) %>
+        <%= t('activerecord.attributes.offender.unit') %>
       </th>
       <th>
-        <%= sort_link(@q, :name) %>
+        <%= t('activerecord.attributes.offender.name') %>
       </th>
       <th>
-        <%= sort_link(@q, :age) %>
+        <%= t('activerecord.attributes.offender.age') %>
       </th>
       <th>
-        <%= sort_link(@q, :recurrent) %>
+        <%= t('activerecord.attributes.offender.recurrent') %>
       </th>
       <th>
-        <%= sort_link(@q, :origin_county) %>
+        <%= t('activerecord.attributes.offender.origin_county') %>
       </th>
       <th>
-        <%= sort_link(@q, :article) %>
+        <%= t('activerecord.attributes.offender.article') %>
       </th>
       <th>
-        <%= sort_link(@q, :measure_type, t('activerecord.attributes.offender.measures_measure_type')) %>
+        <%= t('activerecord.attributes.offender.measures_measure_type') %>
       </th>
       <th>
-        <%= sort_link(@q, :measure_deadline, t('activerecord.attributes.offender.measures_measure_deadline')) %>
+        <%= t('activerecord.attributes.offender.measures_measure_deadline') %>
       </th>
       <th>
-        <%= sort_link(@q, :start_date_measure, t('activerecord.attributes.offender.measures_start_date_measure')) %>
+        <%= t('activerecord.attributes.offender.measures_start_date_measure') %>
       </th>
       <th>
-        <%= sort_link(@q, :end_date_measure, t('activerecord.attributes.offender.measures_end_date_measure')) %>
+        <%= t('activerecord.attributes.offender.measures_end_date_measure') %>
       </th>
       <th>
-        <%= sort_link(@q, :measure_situation, t('activerecord.attributes.offender.measures_measure_situation')) %>
+        <%= t('activerecord.attributes.offender.measures_measure_situation') %>
       </th>
     </tr>
   </thead>
   <tbody>
     <% @offenders.each do |offender| %>
-      <tr>
+      <tr class="<%= near_due_date(measure_data(offender, :end_date_measure)) %>">
         <td>
           <%= truncate_words(offender.unit) %>
         </td>

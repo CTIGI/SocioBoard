@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :crime do
     name "MyString"
-    offender nil
+    offender
   end
 end

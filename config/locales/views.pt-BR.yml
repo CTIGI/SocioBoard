@@ -2,4 +2,5 @@ pt-BR:
   views:
     offenders:
       filter_panel:
-        total: "TOTAL SOCIOED."
+        total: "Total Socioed."
+        duplicated: "Dados Repetidos"

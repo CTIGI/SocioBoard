@@ -41,6 +41,7 @@ group :test do
   gem 'vcr'
   gem 'timecop'
   gem 'email_spec'
+  gem "fuubar"
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers'

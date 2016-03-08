@@ -35,21 +35,19 @@ module OffendersHelper
     result.size > 1 ? result.join(", ") : result[0]
   end
 
-  def generate_preview_numbers(counters, total, is_show = false)
+  def generate_preview_numbers(counters)
     unless counters.blank?
       result = ""
       counters.each do |c|
-        percentage = (c.values[0].to_f * 100 / total[0].values[0].to_f).round(2)
-        value = is_show ? "#{c.values[0]} (#{percentage}%)" : c.values[0]
         result << (
-          content_tag(:div, class: "col-sm-2 col-xs-6") do
+          content_tag(:div, class: "col-sm-1 col-xs-6") do
             concat(
               content_tag(:div, class: "cb-item") do
                 concat(
                   content_tag(:small, c.keys[0])
                 )
                 concat(
-                  content_tag(:h3, value)
+                  content_tag(:h3, c.values[0])
                 )
               end
             )

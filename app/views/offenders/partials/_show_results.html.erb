@@ -1,9 +1,9 @@
  <div class="tile">
    <div class="bg-teal count-box">
      <div class="row">
-       <%= generate_preview_numbers(@total) %>
-       <%= generate_preview_numbers(@duplicated) %>
-       <%= generate_preview_numbers(@counters) %>
+       <%= generate_preview_numbers(@duplicated, @total, false) %>
+       <%= generate_preview_numbers(@total, @total, false) %>
+       <%= generate_preview_numbers(@counters, @total, true) %>
      </div>
    </div>
  </div>

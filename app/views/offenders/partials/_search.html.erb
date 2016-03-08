@@ -39,7 +39,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <%= f.label :origin_county_in, t('activerecord.attributes.offender.origin_county') %>
-            <%= f.collection_select(:origin_county_in, @origin_counties, :origin_county, :origin_county, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+            <%= f.select(:origin_county_in, @origin_counties, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
           </div>
         </div>
         <div class="col-md-4">

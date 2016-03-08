@@ -12,9 +12,9 @@ class PopulateOffendersJob < ApplicationJob
         offender.unit          = r["unidade"]
         offender.name          = r["nomeJovem"]
         offender.birth_date    = r["dataNascimento"]
-        offender.age           = r["idade"].blank? ? "" : r["idade"].split(" ")[0]
-        offender.recurrent     = r["reincidente"]
-        offender.origin_county = r["comarcaOrigem"]
+        offender.age           = r["idade"].blank? ? I18n.t("app.no_record") : r["idade"].split(" ")[0]
+        offender.recurrent     = r["reincidente"].blank? ? I18n.t("app.no_record") : r["reincidente"]
+        offender.origin_county = r["comarcaOrigem"].blank? ? I18n.t("app.no_record") : r["comarcaOrigem"]
         offender.crime_id      = r["idApreensao"]
         r["infracoes"].each do |crime|
           crime = Crime.where(name: crime).first_or_create

@@ -33,7 +33,7 @@ class OffendersController < ApplicationController
     @units              = Offender.order(:unit).select("distinct(unit)")
     @ages               = Offender.order(:age).select("distinct(age)")
     @recurrents         = Offender.order(:recurrent).select("distinct(recurrent)")
-    @origin_counties    = Offender.order(:origin_county).select("distinct(origin_county)")
+    @origin_counties    = Offender.render_data_list(:origin_county)
     @crimes             = Crime.order(:name).select("distinct(name)")
     @measure_types      = Measure.render_data_list(:measure_type)
     @measure_deadlines  = Measure.render_data_list(:measure_deadline)

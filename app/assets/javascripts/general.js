@@ -1,3 +1,6 @@
+I18n.defaultLocale = 'pt-BR';
+I18n.locale = 'pt-BR';
+
 function replaceAll(term, search, replace) {
   if (replace === undefined) {
     return toString(term);

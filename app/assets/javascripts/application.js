@@ -1,6 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
+//= require paloma
+//= require i18n
+//= require i18n/translations
 //= require_tree .
 //= require bootstrap/dist/js/bootstrap.min
 //= require flot/jquery.flot

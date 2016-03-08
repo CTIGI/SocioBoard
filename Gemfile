@@ -20,6 +20,7 @@ gem "paloma"
 gem "gon"
 gem "i18n-js", ">= 3.0.0.rc11"
 gem "sidekiq", "~> 4.1.0"
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'pry-byebug'

@@ -8,6 +8,5 @@ FactoryGirl.define do
     recurrent { ["SIM", "NAO", ""].sample }
     origin_county { Faker::Address.city }
     crime_id { Faker::Number.number(10) }
-    crimes { Faker::Name.name }
   end
 end

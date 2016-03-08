@@ -16,22 +16,30 @@ class PopulateOffendersJob < ApplicationJob
         offender.recurrent     = r["reincidente"]
         offender.origin_county = r["comarcaOrigem"]
         offender.crime_id      = r["idApreensao"]
-        offender.crimes        = r["infracoes"]
+        r["infracoes"].each do |crime|
+          crime = Crime.where(name: crime).first_or_create
+          offender.crimes << crime
+        end
         offender.duplicated    = ids.include? r["idCidadao"]
         ids << r["idCidadao"]
         offender.save
 
-        r["medidas"].each do |measure|
-          measure = Measure.where(measure_id: measure["idMedida"]).first_or_initialize
-          measure.start_date_measure = measure["dataInicioMedida"]
-          measure.end_date_measure   = measure["tipoMedida"]
-          measure.measure_type       = measure["qtdDiasTerminoMedida"]
-          measure.measure_deadline   = measure["prazoMedida"]
-          measure.measure_situation  = measure["dataFimPrevMedida"]
-          measure.ammount_end_days   = measure["situacaoMedida"]
+        r["medidas"].each do |m|
+          measure = Measure.where(measure_id: m["idMedida"]).first_or_initialize
+          measure.start_date_measure = m["dataInicioMedida"]
+          measure.end_date_measure   = m["dataFimPrevMedida"]
+          measure.measure_type       = m["tipoMedida"]
+          measure.measure_deadline   = m["prazoMedida"]
+          measure.measure_situation  = m["situacaoMedida"]
+          measure.ammount_end_days   = m["qtdDiasTerminoMedida"]
           measure.offender_id        = offender.id
           measure.save
         end
+      end
+      system_ids = Offender.all.map{ |o| o.id_citizen.to_i }
+      ids_to_delete = system_ids - ids | ids - system_ids
+      ids_to_delete.each do |id_citizen_to_delete|
+        Offender.where(id_citizen: id_citizen_to_delete).first.destroy
       end
     end
   end

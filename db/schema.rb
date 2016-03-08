@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308123827) do
+ActiveRecord::Schema.define(version: 20160308145023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crimes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "crimes_offenders", force: :cascade do |t|
+    t.integer  "crime_id"
+    t.integer  "offender_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "crimes_offenders", ["crime_id"], name: "index_crimes_offenders_on_crime_id", using: :btree
+  add_index "crimes_offenders", ["offender_id"], name: "index_crimes_offenders_on_offender_id", using: :btree
 
   create_table "measures", force: :cascade do |t|
     t.date     "start_date_measure"
@@ -42,7 +58,6 @@ ActiveRecord::Schema.define(version: 20160308123827) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "crime_id"
-    t.string   "crimes",        default: [],                 array: true
     t.boolean  "duplicated",    default: false
   end
 

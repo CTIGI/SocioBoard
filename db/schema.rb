@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307191133) do
+ActiveRecord::Schema.define(version: 20160308123827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160307191133) do
     t.integer  "offender_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "measure_id"
   end
 
   add_index "measures", ["offender_id"], name: "index_measures_on_offender_id", using: :btree
@@ -38,10 +39,11 @@ ActiveRecord::Schema.define(version: 20160307191133) do
     t.integer  "age"
     t.string   "recurrent"
     t.string   "origin_county"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "crime_id"
-    t.string   "crimes",        default: [],              array: true
+    t.string   "crimes",        default: [],                 array: true
+    t.boolean  "duplicated",    default: false
   end
 
   add_foreign_key "measures", "offenders"

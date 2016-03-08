@@ -1,35 +1,36 @@
 class PopulateOffendersJob < ApplicationJob
   queue_as :default
+  require 'open-uri'
 
   def perform
-    require 'open-uri'
     body = open("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}").read
     result = JSON.parse(body)
     unless result.blank?
-      Offender.destroy_all
+      ids = []
       result.each do |r|
-        offender = Offender.create!(
-          id_citizen:    r["idCidadao"],
-          unit:          r["unidade"],
-          name:          r["nomeJovem"],
-          birth_date:    r["dataNascimento"],
-          age:           r["idade"].blank? ? "" : r["idade"].split(" ")[0],
-          recurrent:     r["reincidente"],
-          origin_county: r["comarcaOrigem"],
-          crime_id:      r["idApreensao"],
-          crimes:        r["infracoes"]
-        )
+        offender = Offender.where(id_citizen: r["idCidadao"]).first_or_initialize
+        offender.unit          = r["unidade"]
+        offender.name          = r["nomeJovem"]
+        offender.birth_date    = r["dataNascimento"]
+        offender.age           = r["idade"].blank? ? "" : r["idade"].split(" ")[0]
+        offender.recurrent     = r["reincidente"]
+        offender.origin_county = r["comarcaOrigem"]
+        offender.crime_id      = r["idApreensao"]
+        offender.crimes        = r["infracoes"]
+        offender.duplicated    = ids.include? r["idCidadao"]
+        ids << r["idCidadao"]
+        offender.save
 
         r["medidas"].each do |measure|
-          Measure.create!(
-            start_date_measure: measure["dataInicioMedida"],
-            end_date_measure:   measure["tipoMedida"],
-            measure_type:       measure["qtdDiasTerminoMedida"],
-            measure_deadline:   measure["prazoMedida"],
-            measure_situation:  measure["dataFimPrevMedida"],
-            ammount_end_days:   measure["situacaoMedida"],
-            offender_id:        offender.id
-          )
+          measure = Measure.where(measure_id: measure["idMedida"]).first_or_initialize
+          measure.start_date_measure = measure["dataInicioMedida"]
+          measure.end_date_measure   = measure["tipoMedida"]
+          measure.measure_type       = measure["qtdDiasTerminoMedida"]
+          measure.measure_deadline   = measure["prazoMedida"]
+          measure.measure_situation  = measure["dataFimPrevMedida"]
+          measure.ammount_end_days   = measure["situacaoMedida"]
+          measure.offender_id        = offender.id
+          measure.save
         end
       end
     end

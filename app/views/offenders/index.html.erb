@@ -1,6 +1,13 @@
 <%= render partial: "offenders/partials/search" %>
 <%= render partial: "offenders/partials/show_results" %>
 
+<div class="row">
+  <div class="col-md-3 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="<%= I18n.t('views.offenders.subtitle.text', date: l(Date.today + 10))%>" title="<%= I18n.t('views.offenders.subtitle.title') %>" data-original-title="Péssimo">
+    <span class="subtitle bad bad-subtitle">&nbsp;</span>
+    <b><%= I18n.t('views.offenders.subtitle.title') %></b>
+  </div>
+</div>
+
 <table class="table">
   <thead>
     <tr>

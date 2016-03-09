@@ -16,9 +16,10 @@ class PopulateOffendersJob < ApplicationJob
         offender.recurrent     = r["reincidente"].blank? ? I18n.t("app.no_record") : r["reincidente"]
         offender.origin_county = r["comarcaOrigem"].blank? ? I18n.t("app.no_record") : r["comarcaOrigem"]
         offender.crime_id      = r["idApreensao"]
+        offender.crimes = []
         r["infracoes"].each do |crime|
           crime = Crime.where(name: crime).first_or_create
-          offender.crimes << crime
+          offender.crimes << crime if !offender.crimes.include? crime
         end
         offender.duplicated    = ids.include? r["idCidadao"]
         ids << r["idCidadao"]

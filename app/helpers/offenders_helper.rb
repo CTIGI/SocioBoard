@@ -39,15 +39,16 @@ module OffendersHelper
     unless counters.blank?
       result = ""
       counters.each do |c|
+        value = c.has_key?(:percentage) ? "#{c.values[0]} (#{c[:percentage]})" : c.values[0]
         result << (
-          content_tag(:div, class: "col-sm-1 col-xs-6") do
+          content_tag(:div, class: "col-sm-2 col-xs-6") do
             concat(
               content_tag(:div, class: "cb-item") do
                 concat(
                   content_tag(:small, c.keys[0])
                 )
                 concat(
-                  content_tag(:h3, c.values[0])
+                  content_tag(:h3, value)
                 )
               end
             )

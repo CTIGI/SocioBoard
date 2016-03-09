@@ -8,7 +8,7 @@ RSpec.describe OffendersHelper, :type => :helper do
       value = Faker::Number.number(2)
       obj = [{ label => value }]
       expect(helper.generate_preview_numbers(obj)).to eq(
-        "<div class=\"col-sm-1 col-xs-6\"><div class=\"cb-item\"><small>#{label}</small><h3>#{value}</h3></div></div>"
+        "<div class=\"col-sm-2 col-xs-6\"><div class=\"cb-item\"><small>#{label}</small><h3>#{value}</h3></div></div>"
       )
     end
   end

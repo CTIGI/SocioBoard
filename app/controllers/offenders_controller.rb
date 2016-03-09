@@ -9,8 +9,11 @@ class OffendersController < ApplicationController
 
   private
   def set_counters
+    @total       = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
+    @duplicated  = [{ I18n.t("views.offenders.filter_panel.duplicated") => Offender.duplicated.count }]
     search_terms = []
-    @counters = []
+    @counters    = []
+
     if params[:q].present?
       params[:q].each do |key, value|
         search_terms << ({ key => value }) unless ( value.class == Array ? value.reject(&:blank?).blank? : value.blank? )
@@ -21,15 +24,20 @@ class OffendersController < ApplicationController
         field_name.pop
         field_name = field_name.join("_")
         terms.merge!(search_term)
-        @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") =>  Offender.ransack(terms).result.count }
+        current_value = Offender.ransack(terms).result.count
+        percentage = @counters.blank? ? calculate_percentage(@total[0].values[0], current_value) : calculate_percentage(@counters.last.values[0], current_value)
+        @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") => current_value, percentage: percentage }
+
       end
-      @counters
     end
   end
 
+  def calculate_percentage(total, current)
+    percentage = (current.to_f * 100.0) / total.to_f
+    "#{percentage.round(2)}%"
+  end
+
   def set_dependencies
-    @total              = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
-    @duplicated         = [{ I18n.t("views.offenders.filter_panel.duplicated") => Offender.duplicated.count }]
     @units              = Offender.order(:unit).select("distinct(unit)")
     @ages               = Offender.order(:age).select("distinct(age)")
     @recurrents         = Offender.order(:recurrent).select("distinct(recurrent)")

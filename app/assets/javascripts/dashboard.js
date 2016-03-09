@@ -4,7 +4,7 @@ DashboardController.prototype.index = function() {
   setBarChart($('#crime-by-unit'), gon.crimes_by_unit_categories, gon.crimes_by_units , "Unidades x Tipos de Ato")
   setBarChart($('#measure-by-unit'), gon.measure_by_units_categories, gon.measures_by_units , "Unidades x Medidas")
   setBarChart($('#unit-by-measure'), gon.units_by_measures_categories, gon.units_by_measures , "Medidas x Unidades")
-  setBarChart($('#unit-by-crimes'), gon.units_by_crimes_categories, gon.units_by_crimes , "Medidas x Unidades")
+  setBarChart($('#unit-by-crimes'), gon.units_by_crimes_categories, gon.units_by_crimes , "Tipos de Ato x Unidades")
 }
 
 var bulbaColors = [
@@ -44,7 +44,8 @@ function setBarChart(chartDiv, categories, chartData, title) {
   chartDiv.highcharts({
     chart: {
       type: 'bar',
-      height: 800
+      height: 800,
+      width: 1200
     },
     title: {
       text: title

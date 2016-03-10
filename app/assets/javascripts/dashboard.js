@@ -5,6 +5,7 @@ DashboardController.prototype.index = function() {
   setBarChart($('#measure-by-unit'), gon.measure_by_units_categories, gon.measures_by_units , "Unidades x Medidas")
   setBarChart($('#unit-by-measure'), gon.units_by_measures_categories, gon.units_by_measures , "Medidas x Unidades")
   setBarChart($('#unit-by-crimes'), gon.units_by_crimes_categories, gon.units_by_crimes , "Tipos de Ato x Unidades")
+  setWebChart($('#units-capacity'), gon.units_capacity_categories, gon.units_capacity_series , "Capacidade das unidades")
 }
 
 var bulbaColors = [
@@ -39,6 +40,51 @@ var bulbaColors = [
    '#833100',
    '#209483'
   ]
+
+function setWebChart(chartDiv, categories, chartData, title) {
+  chartDiv.highcharts({
+    chart: {
+       polar: true,
+       type: 'line',
+       height: 800,
+       width: 1200
+     },
+
+     title: {
+       text: title,
+       x: -80
+     },
+
+     pane: {
+       size: '80%'
+     },
+
+     xAxis: {
+       categories: categories,
+       tickmarkPlacement: 'on',
+       lineWidth: 0
+     },
+     yAxis: {
+       gridLineInterpolation: 'polygon',
+       lineWidth: 0,
+       min: 0
+     },
+
+     tooltip: {
+       shared: true,
+       pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+     },
+     legend: {
+       align: 'right',
+       verticalAlign: 'top',
+       y: 400,
+       layout: 'vertical'
+     },
+     colors: ["blue", "red"],
+     series: chartData
+   });
+
+}
 
 function setBarChart(chartDiv, categories, chartData, title) {
   chartDiv.highcharts({

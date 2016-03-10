@@ -4,36 +4,62 @@ class DashboardController < ApplicationController
   def index
     crimes_by_unit_chart
     measure_by_unit_chart
-    unit_by_measure_chart
-    unit_by_crime_chart
+    #unit_by_measure_chart
+    #unit_by_crime_chart
+    set_units_capacity_charts
   end
 
   private
 
-  def unit_by_measure_chart
-    units_by_measures = { }
+  def set_units_capacity_charts
+    begin
+      body = open("http://www11.stds.ce.gov.br/sgi/rest/crvqavu/#{Constants::CRV::PWD}").read
+      result = JSON.parse(body)
 
-    @measures_names.each do |measure|
-      units_by_measures[measure] = []
-    end
+      gon.units_capacity_categories = []
+      gon.units_capacity_series_percentage = {}
+      series = []
+      series << { name: I18n.t("views.dashboards.total_capacity") , data: [] }
+      series << { name: I18n.t("views.dashboards.occupied") , data: [], percentage_value: [] }
 
-    series = []
-
-    gon.units_by_measures_categories = @measures_names
-
-    Offender.joins(:measures).group("measures.measure_type", :unit).count.each do |o|
-      units_by_measures[o.first.first] << { o.first.last => o.last }
-    end
-
-    @units.each_with_index do |unit_name, i|
-      series << { name: unit_name , data: [] }
-      units_by_measures.each do |ubm|
-        series[i][:data] << ubm.last.reduce(Hash.new, :merge)[unit_name]
+      result.each do |r|
+        gon.units_capacity_categories << r["unidade"]
+        series[0][:data] << r["capacidade"]
+        series[1][:data] << r["totalOcupado"]
+        series[1][:percentage_value] << r["totalOcupado"].to_f/r["capacidade"].to_f*100
       end
-    end
 
-    gon.units_by_measures = series
+      gon.units_capacity_series = series
+    rescue
+      gon.units_capacity_series = []
+      gon.units_capacity_categories = []
+    end
   end
+
+  # def unit_by_measure_chart
+  #   units_by_measures = { }
+  #
+  #   @measures_names.each do |measure|
+  #     units_by_measures[measure] = []
+  #   end
+  #
+  #   series = []
+  #
+  #   gon.units_by_measures_categories = @measures_names
+  #
+  #   Offender.joins(:measures).group("measures.measure_type", :unit).count.each do |o|
+  #     units_by_measures[o.first.first] << { o.first.last => o.last }
+  #   end
+  #
+  #   @units.each_with_index do |unit_name, i|
+  #     series << { name: unit_name , data: [] }
+  #     units_by_measures.each do |ubm|
+  #       series[i][:data] << ubm.last.reduce(Hash.new, :merge)[unit_name]
+  #     end
+  #   end
+  #
+  #   gon.units_by_measures = series
+  # end
 
   def measure_by_unit_chart
     measure_by_units = { }
@@ -60,30 +86,30 @@ class DashboardController < ApplicationController
     gon.measures_by_units = series
   end
 
-  def unit_by_crime_chart
-    units_by_crimes = { }
-
-    gon.units_by_crimes_categories = @crime_names
-
-    @crime_names.each do |crime|
-      units_by_crimes[crime] = []
-    end
-
-    Offender.group(:unit).joins(:crimes).group("crimes.name").count.each do |o|
-      units_by_crimes[o.first.last] << { o.first.first => o.last }
-    end
-
-    series = []
-
-    @units.each_with_index do |unit_name, i|
-      series << { name: unit_name , data: [] }
-      units_by_crimes.each do |ubc|
-        series[i][:data] << ubc.last.reduce(Hash.new, :merge)[unit_name]
-      end
-    end
-
-    gon.units_by_crimes = series
-  end
+  # def unit_by_crime_chart
+  #   units_by_crimes = { }
+  #
+  #   gon.units_by_crimes_categories = @crime_names
+  #
+  #   @crime_names.each do |crime|
+  #     units_by_crimes[crime] = []
+  #   end
+  #
+  #   Offender.group(:unit).joins(:crimes).group("crimes.name").count.each do |o|
+  #     units_by_crimes[o.first.last] << { o.first.first => o.last }
+  #   end
+  #
+  #   series = []
+  #
+  #   @units.each_with_index do |unit_name, i|
+  #     series << { name: unit_name , data: [] }
+  #     units_by_crimes.each do |ubc|
+  #       series[i][:data] << ubc.last.reduce(Hash.new, :merge)[unit_name]
+  #     end
+  #   end
+  #
+  #   gon.units_by_crimes = series
+  #end
 
 
   def crimes_by_unit_chart

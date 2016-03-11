@@ -9,10 +9,10 @@ class OffendersController < ApplicationController
 
   private
   def set_counters
-    @total       = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
-    @duplicated  = [{ I18n.t("views.offenders.filter_panel.duplicated") => Offender.duplicated.count }]
-    search_terms = []
-    @counters    = []
+    @total                 = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
+    @near_due_date_counter = Measure.nears_due_date.count
+    search_terms           = []
+    @counters              = []
 
     if params[:q].present?
       params[:q].each do |key, value|
@@ -27,7 +27,6 @@ class OffendersController < ApplicationController
         current_value = Offender.ransack(terms).result.count
         percentage = @counters.blank? ? calculate_percentage(@total[0].values[0], current_value) : calculate_percentage(@counters.last.values[0], current_value)
         @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") => current_value, percentage: percentage }
-
       end
     end
   end

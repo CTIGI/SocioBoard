@@ -1,8 +1,7 @@
 module OffendersHelper
 
-  def near_due_date(end_date)
-     diff_days = (end_date.to_date - Date.today).to_i
-     "near_due_date" if diff_days < 10
+  def near_due_date(near_due_date)
+    "near_due_date" if near_due_date == "true"
   end
 
   def truncate_words(word)
@@ -18,7 +17,6 @@ module OffendersHelper
     word.gsub!("ZEQUINHA", "ZEQ.")
     word.gsub!("BARBOSA", "B.")
     word.gsub!("FRANCISCO", "FCO.")
-
     word
   end
 

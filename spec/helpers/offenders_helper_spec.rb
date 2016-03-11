@@ -43,4 +43,15 @@ RSpec.describe OffendersHelper, :type => :helper do
       expect(helper.measure_data(offender, :measure_type)).to eq(measure_types.join(", "))
     end
   end
+
+  describe "#near_due_date" do
+    it "should return css class .near_due_date to display offenders with end_date_measure less than today + 10 days and measure type equal 'Internação Provisória'" do
+      expect(helper.near_due_date("true")).to eq("near_due_date")
+    end
+
+    it "should return nothing if offender with end_date_measure greater then today + 10 days" do
+      provisional_admission_type = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
+      expect(helper.near_due_date("false")).to be_nil
+    end
+  end
 end

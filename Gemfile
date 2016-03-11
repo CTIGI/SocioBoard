@@ -22,6 +22,11 @@ gem "unicode_utils"
 gem "i18n-js", ">= 3.0.0.rc11"
 gem "sidekiq", "~> 4.1.0"
 gem 'whenever', :require => false
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+gem 'pundit'
+gem 'omniauth-oauth2', '~> 1.3.1'
+gem 'simple_form'
+gem 'seedbank'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -29,6 +34,8 @@ group :development, :test do
   gem "fuubar"
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'database_cleaner'
   gem 'enumerize-matchers'
   gem 'quiet_assets'

@@ -1,0 +1,23 @@
+<%= simple_form_for(@role, wrapper: "form") do |f| %>
+  <%= f.error_notification %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :name, hint: true, placeholder: true %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :activities %>
+        </div>
+      </div>
+    </div>
+    <div class="row form-actions">
+      <hr>
+      <div class="col-md-12">
+        <%= footer_actions(roles_path) %>
+      </div>
+    </div>
+  </div>
+<% end %>

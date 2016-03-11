@@ -49,7 +49,7 @@
           <%= truncate_words(offender.unit) %>
         </td>
         <td>
-          <%= truncate(offender.name) %>
+          <%= display_offender_name(offender.name, current_user) %>
         </td>
         <td>
           <%= show_field(offender.age) %>

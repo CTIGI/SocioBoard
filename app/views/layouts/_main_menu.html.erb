@@ -2,6 +2,8 @@
 
   <!--| MAIN MENU |-->
   <ul class="side-menu">
+    <%= render partial: "layouts/user_profile" if current_user %>
+    
     <li>
       <%= menu_icon(root_path, "home", t("main_menu.home")) %>
     </li>

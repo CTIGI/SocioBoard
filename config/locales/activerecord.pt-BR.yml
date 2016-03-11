@@ -19,5 +19,17 @@ pt-BR:
         measures_measure_situation: "Situação Medida"
         measures_near_due_date: "Próximo ao Vencimento"
         ammount_end_days: "Qtde dias término medida"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
         measure_type_list:
           provisional_admission: "Internação Provisória"
+      user:
+        email: "Email"
+        roles: "Papéis"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      role:
+        name: "Nome"
+        activities: "Atividades/Telas"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"

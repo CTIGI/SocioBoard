@@ -83,9 +83,12 @@ task deploy: :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
+      queue! "bundle exec whenever -c"
+
       queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       # invoke :'whenever:update'
       invoke :'sidekiq:restart'
+      queue! "bundle exec whenever -w"
     end
   end
 end

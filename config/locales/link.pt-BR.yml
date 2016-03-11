@@ -1,0 +1,11 @@
+pt-BR:
+  link:
+    send: "Enviar"
+    back: "Voltar"
+    new: "Criar"
+    show: "Exibir"
+    edit: "Editar"
+    destroy: "Excluir"
+    remove: "Remover"
+    actions: "Ações"
+    audit: "Auditoria"

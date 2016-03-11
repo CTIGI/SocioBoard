@@ -5,6 +5,17 @@ pt-BR:
     no_record: "Não Inform."
     filter: "Pesquisar"
     remove_filter: "Remover pesquisa"
+    back: "Voltar"
+    close: "Fechar"
+    no_content: "Nenhuma Informação cadastrada."
+    fullscreen_mode: "Modo Tela Cheia"
+    account_settings: "Detalhes da sua Conta"
+    sign_out: "Sair"
+    sign_in: "Entrar"
+    no_record: "Não cadastrado"
+    reload: "Recarregar"
+    save: "Salvar"
+
   main_menu:
     home: "Página Inicial"
     search: "Pesquisa"

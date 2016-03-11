@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308145023) do
+ActiveRecord::Schema.define(version: 20160311190412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(version: 20160308145023) do
     t.string   "measure_situation"
     t.string   "ammount_end_days"
     t.integer  "offender_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "measure_id"
+    t.boolean  "near_due_date",      default: false
   end
 
   add_index "measures", ["offender_id"], name: "index_measures_on_offender_id", using: :btree

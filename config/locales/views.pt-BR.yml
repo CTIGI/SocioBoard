@@ -5,8 +5,8 @@ pt-BR:
         total: "Total Socioed."
         duplicated: "Dados Repetidos"
       subtitle:
-        title: "Próximo ao Vencimento da Medida/Vencidas"
-        text: "Considera-se próximo ao vencimento da medida/vencidas todos que possuem DATA FIM MEDIDA inferior a %{date}"
+        title: "Próximo ao Vencimento de Medida de Internação Provisória"
+        text: "Considera-se próximo ao vencimento de medida de internação provisória todos que possuem DATA FIM MEDIDA inferior a %{date}"
     dashboards:
       total_capacity: "Capacidade do centro"
       occupied: "Vagas ocupadas"

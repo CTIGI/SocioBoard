@@ -2,10 +2,12 @@
 <%= render partial: "offenders/partials/show_results" %>
 
 <div class="row">
-  <div class="col-md-3 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="<%= I18n.t('views.offenders.subtitle.text', date: l(Date.today + 10))%>" title="<%= I18n.t('views.offenders.subtitle.title') %>" data-original-title="Péssimo">
-    <span class="subtitle bad bad-subtitle">&nbsp;</span>
-    <b><%= I18n.t('views.offenders.subtitle.title') %></b>
-  </div>
+  <%= link_to offenders_path({ q: { measures_near_due_date_true: 1} }) do %>
+    <div class="col-md-4 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="<%= I18n.t('views.offenders.subtitle.text', date: l(Date.today + 10))%>" title="<%= I18n.t('views.offenders.subtitle.title') %>" data-original-title="Péssimo">
+      <span class="subtitle bad bad-subtitle">&nbsp;</span>
+      <b><%= "#{I18n.t('views.offenders.subtitle.title')} (#{@near_due_date_counter})"%></b>
+    </div>
+  <% end %>
 </div>
 
 <table class="table">
@@ -48,7 +50,7 @@
   </thead>
   <tbody>
     <% @offenders.each do |offender| %>
-      <tr class="<%= near_due_date(measure_data(offender, :end_date_measure)) %>">
+      <tr class="<%= near_due_date(measure_data(offender, :near_due_date)) %>">
         <td>
           <%= truncate_words(offender.unit) %>
         </td>

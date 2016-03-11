@@ -2,6 +2,12 @@ class PopulateOffendersJob < ApplicationJob
   queue_as :default
   require 'open-uri'
 
+  def near_due_date?(end_date, measure_type)
+    provisional_admission  = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
+    diff_days = (end_date.to_date - Date.today).to_i
+    ( diff_days <= 10 && measure_type.include?(provisional_admission) )
+  end
+
   def perform
     body = open("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}").read
     result = JSON.parse(body)
@@ -35,6 +41,7 @@ class PopulateOffendersJob < ApplicationJob
           measure.measure_situation  = m["situacaoMedida"]
           measure.ammount_end_days   = m["qtdDiasTerminoMedida"]
           measure.offender_id        = offender.id
+          measure.near_due_date      = near_due_date?(measure.end_date_measure, measure.measure_type)
           measure.save
         end unless r["medidas"].blank?
       end

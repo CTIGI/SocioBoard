@@ -16,4 +16,7 @@ pt-BR:
         measures_start_date_measure: "Data Início Medida"
         measures_end_date_measure: "Data Fim Medida"
         measures_measure_situation: "Situação Medida"
+        measures_near_due_date: "Próximo ao Vencimento"
         ammount_end_days: "Qtde dias término medida"
+        measure_type_list:
+          provisional_admission: "Internação Provisória"

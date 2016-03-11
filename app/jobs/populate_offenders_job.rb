@@ -25,6 +25,7 @@ class PopulateOffendersJob < ApplicationJob
         ids << r["idCidadao"]
         offender.save
 
+        offender.measures.destroy_all
         r["medidas"].each do |m|
           measure = Measure.where(measure_id: m["idMedida"]).first_or_initialize
           measure.start_date_measure = m["dataInicioMedida"]
@@ -35,7 +36,7 @@ class PopulateOffendersJob < ApplicationJob
           measure.ammount_end_days   = m["qtdDiasTerminoMedida"]
           measure.offender_id        = offender.id
           measure.save
-        end
+        end unless r["medidas"].blank?
       end
       system_ids = Offender.all.map{ |o| o.id_citizen.to_i }
       ids_to_delete = system_ids - ids | ids - system_ids

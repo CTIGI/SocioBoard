@@ -18,6 +18,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "font-awesome-rails"
 gem "paloma"
 gem "gon"
+gem "unicode_utils"
 gem "i18n-js", ">= 3.0.0.rc11"
 gem "sidekiq", "~> 4.1.0"
 gem 'whenever', :require => false

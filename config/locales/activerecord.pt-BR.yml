@@ -18,11 +18,14 @@ pt-BR:
         measures_end_date_measure: "Data Fim Medida"
         measures_measure_situation: "Situação Medida"
         measures_near_due_date: "Próximo ao Vencimento"
+        measures_current_period_date: "Próximo ao Vencimento da Internação"
         ammount_end_days: "Qtde dias término medida"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+        current_period: "Período"
         measure_type_list:
           provisional_admission: "Internação Provisória"
+          admission: "Internação"
       user:
         email: "Email"
         roles: "Papéis"

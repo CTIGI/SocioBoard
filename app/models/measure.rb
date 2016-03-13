@@ -1,6 +1,7 @@
 class Measure < ApplicationRecord
   belongs_to :offender
-  scope :nears_due_date, -> { where(near_due_date: true) }
+  scope :nears_due_date,       -> { where(near_due_date: true) }
+  scope :near_current_periods, -> { where("current_period_date <= ?", Date.today + 30) }
 
   def self.render_data_list(field)
     data = [[I18n.t("app.no_record"), I18n.t("app.no_record")]]

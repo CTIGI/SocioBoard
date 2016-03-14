@@ -10,5 +10,8 @@
         <%= fa_icon("bars", class: "icon-head") %>
       </a>
     </li>
+
+    <%= render partial: "layouts/manage_users" if current_user.admin? %>
+
   </ul>
 </header>

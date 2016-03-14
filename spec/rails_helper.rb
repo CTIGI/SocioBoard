@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 require "capybara/rails"
+require "pundit/rspec"
 require "capybara/poltergeist"
 require "capybara/rspec"
 require "vcr"
@@ -54,6 +55,8 @@ RSpec.configure do |config|
   config.include Capybara::DSL, :type => :feature
   config.include FactoryGirl::Syntax::Methods
   config.include ApplicationHelper
+  config.include SpecHelpers::ControllerHelpers
+  config.include SpecHelpers::Authentication
 
   config.expect_with :rspec do |c|
     c.syntax = :expect

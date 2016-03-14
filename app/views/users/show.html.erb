@@ -1,0 +1,35 @@
+<span class="content-modal">
+  <div class="modal-body">
+    <table class="table table-stripped">
+      <thead class="bg-teal">
+        <tr>
+          <th colspan="4" class="text-center"><%= @user.email %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <b><%= t("activerecord.attributes.user.roles") %>:</b>
+          </td>
+          <td>
+            <%= @user.roles.map(&:name) %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <b><%= t("activerecord.attributes.role.ctigi_auth_uid") %>:</b>
+          </td>
+          <td><%= @user.ctigi_auth_uid %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-footer">
+    <hr>
+    <%= link_to users_path, class: "btn bg-gray btn-icon btn-back", id: "btn-close-modal", data: { dismiss: "modal" } do %>
+      <%= fa_icon("mail-reply") %>
+    <% end %>
+  </div>
+</span>

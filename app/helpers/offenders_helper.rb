@@ -4,6 +4,14 @@ module OffendersHelper
     "near_due_date" if near_due_date == "true"
   end
 
+  def display_offender_name(name, user)
+    if user.admin?
+      truncate(name)
+    else
+      I18n.t("views.offenders.confidential")
+    end
+  end
+
   def truncate_words(word)
     word.gsub!("CENTRO", "C.")
     word.gsub!("SOCIOEDUCATIVO", "SOCIOED.")

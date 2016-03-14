@@ -1,6 +1,7 @@
 class OffendersController < ApplicationController
   before_action :set_dependencies
   before_action :set_counters
+  skip_after_action :verify_policy_scoped
 
   def index
     @q = Offender.ransack(params[:q])

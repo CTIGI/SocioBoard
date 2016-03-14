@@ -1,0 +1,35 @@
+.login-content {
+  background: -webkit-linear-gradient(top, #058D4D 0%,#05753f 50%,#05753f 51%,#058D4D 100%);
+}
+
+#l-login {
+  border: none;
+}
+
+.lc-block {
+  background: none;
+  box-shadow: none;
+}
+
+.login-content:after {
+    width: 1px;
+    height: 100vh;
+}
+
+.lc-block {
+  margin-top: 280px;
+}
+
+@media screen and (max-width: 600px) { }
+.login-form {
+  top: 50%;
+  position:absolute;
+}
+
+.cracha {
+  background-image: url(asset-path("cracha.svg"));
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  width: 100%;
+  height: 100%;
+}

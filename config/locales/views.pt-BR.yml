@@ -1,6 +1,16 @@
 pt-BR:
   views:
+    general:
+      actions: "Ações"
+    roles:
+      new_role: "Cadastrar Papel"
+      edit_role: "Editar Papel"
+      delete_role: "Deletar Papel"
+      list_roles: "Papéis"
+    users:
+      list_users: "Usuários"
     offenders:
+      confidential: "Sigiloso"
       filter_panel:
         total: "Total Socioed."
         duplicated: "Dados Repetidos"

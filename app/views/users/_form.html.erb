@@ -1,0 +1,18 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.association :roles %>
+        </div>
+      </div>
+    </div>
+    <div class="row form-actions">
+      <hr>
+      <div class="col-md-12">
+        <%= footer_actions(users_path) %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+pt-BR:
+  main_menu:
+    home: "Página Inicial"
+    role_management:
+      role_management: "Gerenciar Papéis"
+      create: "Cadastrar"
+      list: "Listar"
+    user_management:
+      user_management: Controle de usuário
+      list: Gerir Usuários

@@ -1,0 +1,35 @@
+<span class="content-modal">
+  <div class="modal-body">
+    <table class="table table-stripped">
+      <thead class="bg-teal">
+        <tr>
+          <th colspan="4" class="text-center"><%= @role.name %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <b><%= t("activerecord.attributes.role.name") %>:</b>
+          </td>
+          <td>
+            <%= @role.name %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <b><%= t("activerecord.attributes.role.activities") %>:</b>
+          </td>
+          <td><%= @role.activities %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-footer">
+    <hr>
+    <%= link_to roles_path, class: "btn bg-gray btn-icon btn-back", id: "btn-close-modal", data: { dismiss: "modal" } do %>
+      <%= fa_icon("mail-reply") %>
+    <% end %>
+  </div>
+</span>

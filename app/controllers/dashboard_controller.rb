@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  skip_after_action :verify_policy_scoped
   before_action :set_units, :set_crimes_name, :set_measure_names
 
   def index

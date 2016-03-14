@@ -14,9 +14,15 @@ pt-BR:
       filter_panel:
         total: "Total Socioed."
         duplicated: "Dados Repetidos"
+        currrent_period_measure_type: "Período corrente/Medida"
+        current_period: "%{period}º Período"
       subtitle:
-        title: "Próximo ao Vencimento de Medida de Internação Provisória"
-        text: "Considera-se próximo ao vencimento de medida de internação provisória todos que possuem DATA FIM MEDIDA inferior a %{date}"
+          near_due_date:
+            title: "Próximo ao Vencimento de Medida de Internação Provisória"
+            text: "Considera-se próximo ao vencimento de medida de internação provisória todos que possuem DATA FIM MEDIDA igual ou inferior a %{date}"
+          current_period:
+            title: "Próximo ao Vencimento da Medida de Internação"
+            text: "Considera-se próximo ao vencimento da medida de internação todos que possuem 30 dias antes do seu período (um período equivale a cada 180 dias)"
     dashboards:
       total_capacity: "Capacidade do centro"
       occupied: "Vagas ocupadas"

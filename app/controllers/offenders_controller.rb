@@ -10,10 +10,11 @@ class OffendersController < ApplicationController
 
   private
   def set_counters
-    @total                 = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
-    @near_due_date_counter = Measure.nears_due_date.count
-    search_terms           = []
-    @counters              = []
+    @total                       = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
+    @near_due_date_counter       = Measure.nears_due_date.count
+    @near_current_period_counter = Measure.near_current_periods.count
+    search_terms                 = []
+    @counters                    = []
 
     if params[:q].present?
       params[:q].each do |key, value|

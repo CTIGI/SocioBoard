@@ -44,14 +44,23 @@ RSpec.describe OffendersHelper, :type => :helper do
     end
   end
 
-  describe "#near_due_date" do
-    it "should return css class .near_due_date to display offenders with end_date_measure less than today + 10 days and measure type equal 'Internação Provisória'" do
-      expect(helper.near_due_date("true")).to eq("near_due_date")
+  describe "#colorize_table_row" do
+    it "should return near_due_date if measure have it near_due_date css class if true flagged" do
+      offender = create(:offender)
+      measure = create(:measure, offender_id: offender.id, near_due_date: true)
+      expect(helper.colorize_table_row(measure.offender)).to eq("near_due_date")
     end
 
-    it "should return nothing if offender with end_date_measure greater then today + 10 days" do
-      provisional_admission_type = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
-      expect(helper.near_due_date("false")).to be_nil
+    it "should return near_current_period if measure have it current_period_date less or equal than today date more 30 days" do
+      offender = create(:offender)
+      measure = create(:measure, offender_id: offender.id, near_due_date: false)
+      expect(helper.colorize_table_row(measure.offender)).to eq("near_current_period")
+    end
+
+    it "should return nothing if measure have it current_period_date less or equal than today date more 30 days" do
+      offender = create(:offender)
+      measure = create(:measure, offender_id: offender.id, current_period_date: "")
+      expect(helper.colorize_table_row(measure.offender)).to be_blank
     end
   end
 end

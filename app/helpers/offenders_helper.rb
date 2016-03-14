@@ -1,12 +1,30 @@
 module OffendersHelper
 
-  def near_due_date(near_due_date)
-    "near_due_date" if near_due_date == "true"
+  def colorize_table_row(offender)
+    if near_due_date?(measure_data(offender, :near_due_date))
+      "near_due_date"
+    elsif near_current_period?(measure_data(offender, :current_period_date))
+      "near_current_period"
+    else
+      ""
+    end
+  end
+
+  def near_current_period?(current_period_date)
+    if current_period_date.blank?
+      false
+    else
+      current_period_date.to_date <= Date.today + 30.days
+    end
+  end
+
+  def near_due_date?(near_due_date)
+    near_due_date == "true"
   end
 
   def display_offender_name(name, user)
     if user.admin?
-      truncate(name)
+      name
     else
       I18n.t("views.offenders.confidential")
     end
@@ -62,6 +80,17 @@ module OffendersHelper
         )
       end
       raw result
+    end
+  end
+
+  def period_label(offender)
+    unless measure_data(offender, :current_period).blank?
+      content_tag(:b) do
+        concat(
+          t("views.offenders.filter_panel.current_period", period: measure_data(offender, :current_period))
+        )
+        concat(tag(:br))
+      end
     end
   end
 end

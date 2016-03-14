@@ -8,6 +8,38 @@ class PopulateOffendersJob < ApplicationJob
     ( diff_days <= 10 && measure_type.include?(provisional_admission) )
   end
 
+  def set_total_periods(measure_type, end_date_measure)
+    diff_days = ( (end_date_measure.year * 12) + end_date_measure.month ) - ( (Date.today.year * 12) + Date.today.month ).to_i
+    current_period = (
+      case diff_days
+      when 0..6
+        1
+      when 7..12
+        2
+      when 13..18
+        3
+      when 19..24
+        4
+      when 25..30
+        5
+      when 31..37
+        6
+      end
+    )
+
+    current_period if measure_type == I18n.t("activerecord.attributes.offender.measure_type_list.admission")
+  end
+
+  def set_current_period_date(period, start_date_measure)
+    unless period.blank?
+      periods_dates = []
+      (1..period).each_with_index do |p, i|
+        periods_dates << [i + 1, start_date_measure + (p * 6).months]
+      end
+      periods_dates.bsearch { |pd| pd[1] >= start_date_measure && pd[1] >= Date.today }
+    end
+  end
+
   def perform
     body = open("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}").read
     result = JSON.parse(body)
@@ -35,13 +67,18 @@ class PopulateOffendersJob < ApplicationJob
         r["medidas"].each do |m|
           measure = Measure.where(measure_id: m["idMedida"]).first_or_initialize
           measure.start_date_measure = m["dataInicioMedida"]
-          measure.end_date_measure   = m["dataFimPrevMedida"]
-          measure.measure_type       = m["tipoMedida"]
-          measure.measure_deadline   = m["prazoMedida"]
-          measure.measure_situation  = m["situacaoMedida"]
-          measure.ammount_end_days   = m["qtdDiasTerminoMedida"]
-          measure.offender_id        = offender.id
-          measure.near_due_date      = near_due_date?(measure.end_date_measure, measure.measure_type)
+          measure.end_date_measure    = m["dataFimPrevMedida"]
+          measure.measure_type        = m["tipoMedida"]
+          measure.measure_deadline    = m["prazoMedida"]
+          measure.measure_situation   = m["situacaoMedida"]
+          measure.ammount_end_days    = m["qtdDiasTerminoMedida"]
+          measure.offender_id         = offender.id
+          measure.near_due_date       = near_due_date?(measure.end_date_measure, measure.measure_type)
+          current_period              = set_current_period_date(set_total_periods(measure.measure_type, measure.end_date_measure), measure.start_date_measure)
+          unless current_period.blank?
+            measure.current_period      = current_period[0]
+            measure.current_period_date = current_period[1]
+          end
           measure.save
         end unless r["medidas"].blank?
       end

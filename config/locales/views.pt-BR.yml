@@ -37,7 +37,8 @@ pt-BR:
       units_capacity: "Capacidade das unidades"
       unitxacts: "Unidades x Tipos de Ato"
       unitxmeasures: "Unidades x Medidas"
-      total_capacity: "Capacidade do centro"
+      total_capacity: "Capacidade"
+      underflow: "Acima da Cap."
       occupied: "Vagas ocupadas"
       choose_chart: "Escolher gráficos"
     units:
@@ -59,3 +60,8 @@ pt-BR:
                          Ocupação: %{occupation} \n
                          Fora do Perfil: %{offenders_out_of_profile}\n
                          Proporcão Fora do Perfil/Ocupação: %{out_of_profile_percentage}%"
+    home:
+      age_range: FAIXA ETÁRIA
+      near_admission_date: VENC. 30 DIAS MI
+      near_provisional_admission_date: VENC. 30 DIAS MIP
+      out_of_profile: "Fora da Faixa Etária"

@@ -1,10 +1,11 @@
 var DashboardController = Paloma.controller('Dashboard');
 
 DashboardController.prototype.index = function() {
-  setBarChart($('#crime-by-unit'), gon.crimes_by_unit_categories, gon.crimes_by_units , "Unidades x Tipos de Ato")
-  setBarChart($('#measure-by-unit'), gon.measure_by_units_categories, gon.measures_by_units , "Unidades x Medidas")
-  setBarChart($('#unit-by-measure'), gon.units_by_measures_categories, gon.units_by_measures , "Medidas x Unidades")
-  setBarChart($('#unit-by-crimes'), gon.units_by_crimes_categories, gon.units_by_crimes , "Tipos de Ato x Unidades")
+  setCheckBoxes()
+  setBarChart($('#crime-by-unit'), gon.crimes_by_unit_categories, gon.crimes_by_units , "Unidades x Tipos de Ato");
+  setBarChart($('#measure-by-unit'), gon.measure_by_units_categories, gon.measures_by_units , "Unidades x Medidas");
+  setBarChart($('#unit-by-measure'), gon.units_by_measures_categories, gon.units_by_measures , "Medidas x Unidades");
+  setBarChart($('#unit-by-crimes'), gon.units_by_crimes_categories, gon.units_by_crimes , "Tipos de Ato x Unidades");
   setWebChart($('#units-capacity'), gon.units_capacity_categories, gon.units_capacity_series , "Capacidade das unidades")
 }
 
@@ -40,6 +41,36 @@ var bulbaColors = [
    '#833100',
    '#209483'
   ]
+
+function setCheckBoxes() {
+  $("#units_capacity_checkbox").iCheck('check');
+  $("#unitxacts_checkbox").iCheck('check');
+  $("#unitxmeasures_checkbox").iCheck('check');
+
+  $('#units_capacity_checkbox').on('ifChecked', function(event){
+     $('#units-capacity').show();
+  });
+
+  $('#units_capacity_checkbox').on('ifUnchecked', function(event){
+    $('#units-capacity').hide();
+  });
+
+  $('#unitxacts_checkbox').on('ifChecked', function(event){
+     $('#crime-by-unit').show();
+  });
+
+  $('#unitxacts_checkbox').on('ifUnchecked', function(event){
+    $('#crime-by-unit').hide();
+  });
+
+  $('#unitxmeasures_checkbox').on('ifChecked', function(event){
+     $('#measure-by-unit').show();
+  });
+
+  $('#unitxmeasures_checkbox').on('ifUnchecked', function(event){
+    $('#measure-by-unit').hide();
+  });
+}
 
 function setWebChart(chartDiv, categories, chartData, title) {
   chartDiv.highcharts({

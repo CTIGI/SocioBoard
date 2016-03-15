@@ -17,6 +17,13 @@ var Btn = {
   }
 }
 
+function enableiCheck() {
+  $('.i-checks').iCheck({
+    checkboxClass: 'icheckbox_square-green',
+    radioClass: 'iradio_square-green'
+  });
+}
+
 function enableSelect2() {
   $('.select2').select2({
     "language": "pt-BR"
@@ -167,6 +174,7 @@ var Mask = {
 $(document).ready(function() {
   General.loadLastStateMenu();
   enableSelect2();
+  enableiCheck();
   General.toggleMenu();
   Mask.datePicker();
 });

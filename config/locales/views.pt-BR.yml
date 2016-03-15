@@ -24,5 +24,9 @@ pt-BR:
             title: "Próximo ao Vencimento da Medida de Internação"
             text: "Considera-se próximo ao vencimento da medida de internação todos que possuem 30 dias antes do seu período (um período equivale a cada 180 dias)"
     dashboards:
+      units_capacity: "Capacidade das unidades"
+      unitxacts: "Unidades x Tipos de Ato"
+      unitxmeasures: "Unidades x Medidas"
       total_capacity: "Capacidade do centro"
       occupied: "Vagas ocupadas"
+      choose_chart: "Escolher gráficos"

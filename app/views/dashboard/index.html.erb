@@ -1,4 +1,43 @@
 <div class="container">
+  <div class="tile">
+    <div class="t-header th-alt bg-teal">
+      <div class="th-title">
+        <%= fa_icon("tasks") %>
+        <%= t("views.dashboards.choose_chart")%>
+      </div>
+    </div>
+  <div class="t-body tb-padding">
+    <div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <input id="units_capacity_checkbox" class="i-checks" type="checkbox"><span><%=t("views.dashboards.units_capacity")%>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <input id="unitxacts_checkbox" class="i-checks" type="checkbox"><%=t("views.dashboards.unitxacts")%>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <input id="unitxmeasures_checkbox" class="i-checks" type="checkbox"><%=t("views.dashboards.unitxmeasures")%>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</br>
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">

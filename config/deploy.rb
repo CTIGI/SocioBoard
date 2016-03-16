@@ -79,6 +79,7 @@ task deploy: :environment do
     invoke :'npm:install'
     queue! "bundle exec rake bower:install"
     invoke :'rails:db_migrate:force'
+    queue! "bundle exec rake bower:resolve"
     invoke :'rails:assets_precompile:force'
     invoke :'deploy:cleanup'
 

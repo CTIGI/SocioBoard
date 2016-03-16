@@ -2,6 +2,7 @@ class Measure < ApplicationRecord
   belongs_to :offender
   scope :nears_due_date,       -> { where(near_due_date: true) }
   scope :near_current_periods, -> { where("current_period_date <= ?", Date.today + 30) }
+  scope :overdues,             -> { where("end_date_measure <= ? AND measure_type = ?", Date.today,  I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")) } 
 
   def self.render_data_list(field)
     data = [[I18n.t("app.no_record"), I18n.t("app.no_record")]]

@@ -36,5 +36,24 @@ RSpec.describe Measure, :type => :model do
         expect(Measure.nears_due_date.count).to eq(measures_count1)
       end
     end
+
+    context "#near_current_periods" do
+      it "should return all near current periods" do
+        measures_count = rand(10)
+        offender = create(:offender)
+        create_list(:measure, measures_count, current_period_date: Faker::Date.backward(31), offender_id: offender.id)
+        expect(Measure.near_current_periods.count).to eq(measures_count)
+      end
+    end
+
+    context "#overdues" do
+      it "should return all overdues" do
+        measures_count = rand(10)
+        offender = create(:offender)
+        measure_type = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
+        create_list(:measure, measures_count, end_date_measure: Faker::Date.backward(31), offender_id: offender.id, measure_type: measure_type)
+        expect(Measure.overdues.count).to eq(measures_count)
+      end
+    end
   end
 end

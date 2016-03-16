@@ -23,6 +23,9 @@ pt-BR:
           current_period:
             title: "Próximo ao Vencimento da Medida de Internação"
             text: "Considera-se próximo ao vencimento da medida de internação todos que possuem 30 dias antes do seu período (um período equivale a cada 180 dias)"
+          overdue_measure:
+            title: "Medidas provisórias vencidas"
+            text: "Considera-se 'Medidas provisórias vencidas' medidas com a DATA FIM MEDIDA inferior a data de hoje e o tipo da medida 'INTERNAÇÃO PROVISÓRIA'"
     dashboards:
       units_capacity: "Capacidade das unidades"
       unitxacts: "Unidades x Tipos de Ato"

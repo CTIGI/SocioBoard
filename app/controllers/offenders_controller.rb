@@ -13,6 +13,7 @@ class OffendersController < ApplicationController
     @total                       = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
     @near_due_date_counter       = Measure.nears_due_date.count
     @near_current_period_counter = Measure.near_current_periods.count
+    @measure_overdues            = Measure.overdues.count
     search_terms                 = []
     @counters                    = []
 

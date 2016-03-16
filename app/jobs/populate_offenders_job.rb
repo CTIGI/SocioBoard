@@ -10,24 +10,7 @@ class PopulateOffendersJob < ApplicationJob
 
   def set_total_periods(measure_type, end_date_measure)
     diff_days = ( (end_date_measure.year * 12) + end_date_measure.month ) - ( (Date.today.year * 12) + Date.today.month ).to_i
-    current_period = (
-      case diff_days
-      when 0..6
-        1
-      when 7..12
-        2
-      when 13..18
-        3
-      when 19..24
-        4
-      when 25..30
-        5
-      when 31..37
-        6
-      end
-    )
-
-    current_period if measure_type == I18n.t("activerecord.attributes.offender.measure_type_list.admission")
+    (diff_days/6).to_i if measure_type == I18n.t("activerecord.attributes.offender.measure_type_list.admission")
   end
 
   def set_current_period_date(period, start_date_measure)

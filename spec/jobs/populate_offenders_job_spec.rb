@@ -27,7 +27,9 @@ RSpec.describe PopulateOffendersJob, :type => :job do
     describe "#set_total_periods" do
       it "should return the period if measure type is admission" do
         measure_type = I18n.t("activerecord.attributes.offender.measure_type_list.admission")
-        end_date_measure = Date.today + 7.months
+        end_date_measure = Date.today + 6.months
+        expect(PopulateOffendersJob.new.set_total_periods(measure_type, end_date_measure)).to eq(1)
+        end_date_measure = Date.today + 12.months
 
         expect(PopulateOffendersJob.new.set_total_periods(measure_type, end_date_measure)).to eq(2)
       end

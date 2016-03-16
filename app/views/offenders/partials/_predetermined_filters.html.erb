@@ -1,24 +1,24 @@
-<div class="row">
-  <div class="col-md-12">
+<div class="row subtitle-content">
+  <div class="col-md-12 ">
     <%= link_to offenders_path({ q: { measures_near_due_date_true: 1} }) do %>
-    <div class="col-md-4 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= I18n.t('views.offenders.subtitle.near_due_date.text', date: l(Date.today + 10))%>" title="<%= I18n.t('views.offenders.subtitle.near_due_date.title') %>" data-original-title="">
-      <span class="subtitle bad bad-subtitle">&nbsp;</span>
-      <b><%= "#{I18n.t('views.offenders.subtitle.near_due_date.title')} (#{@near_due_date_counter})"%></b>
-    </div>
+      <div class="col-md-4 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= I18n.t('views.offenders.subtitle.near_due_date.text', date: l(Date.today + 10))%>" title="<%= I18n.t('views.offenders.subtitle.near_due_date.title') %>" data-original-title="">
+        <span class="subtitle bad bad-subtitle text-center"><%= @near_due_date_counter %></span>
+        <b><%= "#{I18n.t('views.offenders.subtitle.near_due_date.title')} (#{@near_due_date_counter})"%></b>
+      </div>
     <% end %>
 
     <%= link_to offenders_path({ q: { measures_current_period_date_lteq: Date.today + 30.days} }) do %>
-    <div class="col-md-4 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= I18n.t('views.offenders.subtitle.current_period.text')%>" title="<%= I18n.t('views.offenders.subtitle.current_period.title') %>" data-original-title="">
-      <span class="subtitle regular regular-subtitle">&nbsp;</span>
-      <b><%= "#{I18n.t('views.offenders.subtitle.current_period.title')} (#{@near_current_period_counter})" %></b>
-    </div>
+      <div class="col-md-4 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= I18n.t('views.offenders.subtitle.current_period.text')%>" title="<%= I18n.t('views.offenders.subtitle.current_period.title') %>" data-original-title="">
+        <span class="subtitle regular regular-subtitle text-center"><%= @near_current_period_counter %></span>
+        <b><%= "#{I18n.t('views.offenders.subtitle.current_period.title')}" %></b>
+      </div>
     <% end %>
 
     <%= link_to offenders_path({ q: { measures_end_date_measure_lt: Date.today, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission") } }) do %>
-    <div class="col-md-4 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= I18n.t('views.offenders.subtitle.overdue_measure.text')%>" title="<%= I18n.t('views.offenders.subtitle.overdue_measure.title') %>" data-original-title="">
-      <span class="subtitle overdue overdue-subtitle">&nbsp;</span>
-      <b><%= "#{I18n.t('views.offenders.subtitle.overdue_measure.title')} (#{@measure_overdues})" %></b>
-    </div>
+      <div class="col-md-4 subtitle-panel" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= I18n.t('views.offenders.subtitle.overdue_measure.text')%>" title="<%= I18n.t('views.offenders.subtitle.overdue_measure.title') %>" data-original-title="">
+        <span class="subtitle overdue overdue-subtitle text-center"><%= @measure_overdues %></span>
+        <b><%= "#{I18n.t('views.offenders.subtitle.overdue_measure.title')}" %></b>
+      </div>
     <% end %>
   </div>
 </div>

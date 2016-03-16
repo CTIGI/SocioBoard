@@ -1,6 +1,9 @@
 // Place all the styles related to the offenders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.subtitle-content > div > a {
+  color: #068E4E !important
+}
 
 .near_due_date {
   background-color: #FFD0D0;
@@ -23,6 +26,7 @@
 .subtitle {
   border-radius: 5px;
   padding: 0px 5px 0px 10px;
+  font-weight: bold;
 }
 
 .bad {
@@ -47,4 +51,5 @@
 
 .overdue-subtitle {
   border: 1.5px solid #B31004;
+  color: white;
 }

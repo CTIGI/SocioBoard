@@ -14,6 +14,7 @@ class OffendersController < ApplicationController
     @near_due_date_counter       = Measure.nears_due_date.count
     @near_current_period_counter = Measure.near_current_periods.count
     @measure_overdues            = Measure.overdues.count
+    @sanctions                   = Measure.sanctions.count
     search_terms                 = []
     @counters                    = []
 

@@ -18,14 +18,17 @@ pt-BR:
         current_period: "%{period}º Período"
       subtitle:
           near_due_date:
-            title: "Próximo ao Vencimento de Medida de Internação Provisória"
+            title: "Próx. ao venc. de Medida de Internação Provisória"
             text: "Considera-se 'Próximo ao Vencimento de Medida de Internação Provisória' todos que possuem DATA FIM MEDIDA igual ou inferior a %{date}"
           current_period:
-            title: "Próximo ao vencimento da entrega de relatório técnico"
+            title: "Próx. ao venc. da entrega de relatório técnico"
             text: "Considera-se 'Próximo ao vencimento da entrega de relatório técnico' todos que possuem 30 dias antes do seu período (um período equivale a cada 180 dias)"
           overdue_measure:
             title: "Medidas de internação provisória vencidas"
             text: "Considera-se 'Medidas de internação provisória vencidas' medidas com a DATA FIM MEDIDA inferior a data de hoje e o tipo da medida 'INTERNAÇÃO PROVISÓRIA'"
+          sanction:
+            title: "Próx. ao venc. da medida de sanção"
+            text: "Considera-se 'Próx. ao venc. da medida de sanção' todos que possuem DATA FIM MEDIDA igual ou inferior a %{date}"
     dashboards:
       units_capacity: "Capacidade das unidades"
       unitxacts: "Unidades x Tipos de Ato"

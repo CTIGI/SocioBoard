@@ -31,8 +31,11 @@ RSpec.describe Measure, :type => :model do
         measures_count1 = rand(10)
         measures_count2 = rand(10)
         offender = create(:offender)
-        create_list(:measure, measures_count1, near_due_date: true, offender_id: offender.id)
-        create_list(:measure, measures_count2, near_due_date: false, offender_id: offender.id)
+        create_list(:measure, measures_count1,
+                    end_date_measure: Faker::Date.forward(10),
+                    measure_type: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission"),
+                    offender_id: offender.id)
+        create_list(:measure, measures_count2, end_date_measure: Faker::Date.forward(30), offender_id: offender.id)
         expect(Measure.nears_due_date.count).to eq(measures_count1)
       end
     end
@@ -53,6 +56,16 @@ RSpec.describe Measure, :type => :model do
         measure_type = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
         create_list(:measure, measures_count, end_date_measure: Faker::Date.backward(31), offender_id: offender.id, measure_type: measure_type)
         expect(Measure.overdues.count).to eq(measures_count)
+      end
+    end
+
+    context "#sanctions" do
+      it "should return all sanctions" do
+        sanctions_count = rand(10)
+        offender = create(:offender)
+        measure_type = I18n.t("activerecord.attributes.offender.measure_type_list.sanction")
+        create_list(:measure, sanctions_count, end_date_measure: Faker::Date.backward(9), offender_id: offender.id, measure_type: measure_type)
+        expect(Measure.sanctions.count).to eq(sanctions_count)
       end
     end
   end

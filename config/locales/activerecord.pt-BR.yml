@@ -26,6 +26,7 @@ pt-BR:
         measure_type_list:
           provisional_admission: "Internação Provisória"
           admission: "Internação"
+          sanction: "Sanção"
       user:
         email: "Email"
         roles: "Papéis"

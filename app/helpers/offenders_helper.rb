@@ -7,6 +7,8 @@ module OffendersHelper
       "near_current_period"
     elsif overdue_measure?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
       "overdue_measure"
+    elsif sanction?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
+      "sanction"
     else
       ""
     end
@@ -23,11 +25,17 @@ module OffendersHelper
   def near_due_date?(measure_type, end_date_measure)
     provisional_admission  = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
     diff_days = (end_date_measure.to_date - Date.today).to_i
-    ( (diff_days <= 10 && diff_days >= 0) && measure_type.include?(provisional_admission) )
+    ( (diff_days <= 10 && diff_days > 0) && measure_type.include?(provisional_admission) )
   end
 
   def overdue_measure?(measure_type, end_date_measure)
     ( end_date_measure.to_date < Date.today ) && measure_type == I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
+  end
+
+  def sanction?(measure_type, end_date_measure)
+    sanction  = I18n.t("activerecord.attributes.offender.measure_type_list.sanction")
+    diff_days = (end_date_measure.to_date - Date.today).to_i
+    ( (diff_days <= 10 ) && measure_type.include?(sanction) )
   end
 
   def display_offender_name(name, user)

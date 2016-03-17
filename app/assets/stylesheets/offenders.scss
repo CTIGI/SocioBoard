@@ -15,14 +15,24 @@
   color: white;
 }
 
+.sanction {
+  background-color: #F44336;
+  color: white;
+}
+
 .subtitle-panel {
   background-color: white;
-  padding: 10px 0 10px 0;
+  padding: 20px 0 20px 0;
+  a {
+    :hover {
+      border-radius: 5px;
+    }
+    margin-right: 10px;
+  }
 }
 
 .subtitle {
-  border-radius: 5px;
-  padding: 0px 5px 0px 10px;
+  padding: 10px 10px 10px 10px;
   font-weight: bold;
 }
 
@@ -49,4 +59,17 @@
 .overdue-subtitle {
   border: 1.5px solid #B31004;
   color: white;
+}
+
+.sanction {
+  background-color: #2A71E2;
+}
+
+.sanction-subtitle {
+  border: 1.5px solid #2A71E2;
+  color: white;
+}
+
+.subtitle-title {
+  margin-left: 10px;
 }

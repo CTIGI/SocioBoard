@@ -19,6 +19,8 @@ pt-BR:
         measures_measure_situation: "Situação Medida"
         measures_near_due_date: "Próximo ao Vencimento"
         measures_current_period_date: "Próximo ao Vencimento da Internação"
+        scope_units: "Unidades por tipo de medida"
+        admission_units: "Unidades de Internação"
         ammount_end_days: "Qtde dias término medida"
         created_at: "Criado em"
         updated_at: "Atualizado em"

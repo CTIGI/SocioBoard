@@ -24,13 +24,25 @@ class PopulateOffendersJob < ApplicationJob
   end
 
   def perform
+    body_units = open("http://www11.stds.ce.gov.br/sgi/rest/crvqavu/#{Constants::CRV::PWD}").read
+    result_units = JSON.parse(body_units)
+    unless result_units.blank?
+      result_units.each do |u|
+        unit = Unit.where(name: u["unidade"]).first_or_initialize
+        unit.capacity = u["capacidade"]
+        unit.occupied = u["totalOcupado"]
+        unit.save
+      end
+    end
+
     body = open("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}").read
     result = JSON.parse(body)
     unless result.blank?
       ids = []
       result.each do |r|
         offender = Offender.where(id_citizen: r["idCidadao"]).first_or_initialize
-        offender.unit          = r["unidade"]
+        unit = Unit.where(name: r["unidade"]).first
+        offender.unit_id       = unit.id
         offender.name          = r["nomeJovem"]
         offender.birth_date    = r["dataNascimento"]
         offender.age           = r["idade"].blank? ? I18n.t("app.no_record") : r["idade"].split(" ")[0]

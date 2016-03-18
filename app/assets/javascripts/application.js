@@ -27,3 +27,4 @@
 //= require iCheck/icheck
 //= require functions
 //= require general
+//= require remote_crud

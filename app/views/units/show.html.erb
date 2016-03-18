@@ -1,0 +1,35 @@
+<span class="content-modal">
+  <div class="modal-body">
+    <table class="table table-stripped">
+      <thead class="bg-teal">
+        <tr>
+          <th colspan="4" class="text-center"><%= @unit.name %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <b><%= t("activerecord.attributes.activity.name_responsible") %>:</b>
+          </td>
+          <td>
+            <%= @unit.min_age %>
+          </td>
+
+          <td>
+            <b><%= t("activerecord.attributes.activity.user_id") %>:</b>
+          </td>
+          <td>
+            <%= @unit.max_age %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-footer">
+    <hr>
+    <%= link_to "", class: "btn btn-danger btn-icon", id: "btn-close-modal", data: { dismiss: "modal" } do %>
+      <%= fa_icon("close") %>
+    <% end %>
+  </div>
+</span>

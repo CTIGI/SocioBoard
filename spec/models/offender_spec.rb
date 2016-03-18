@@ -20,6 +20,7 @@ describe Offender, :type => :model do
 
   context "Associations" do
     it { should have_many(:measures) }
+    it { should belong_to(:unit) }
   end
 
   context "scopes" do

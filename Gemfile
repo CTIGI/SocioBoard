@@ -19,7 +19,7 @@ gem "font-awesome-rails"
 gem "paloma"
 gem "gon"
 gem "unicode_utils"
-gem "i18n-js", ">= 3.0.0.rc11"
+gem "i18n-js", ">= 3.0.0.rc12"
 gem "sidekiq", "~> 4.1.0"
 gem 'whenever', :require => false
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'

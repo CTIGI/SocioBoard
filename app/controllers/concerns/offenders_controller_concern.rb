@@ -14,7 +14,7 @@ module Concerns
           units << Constants::FREE_RANGE_UNITS if params[:units].has_key?("free_range_units")
           units << Constants::ADMISSION if params[:units].has_key?("admission_units")
           units << Constants::PROVISIONAL_ADMISSION if params[:units].has_key?("provisional_admission_units")
-          params[:q] = { scope_units_in: units.flatten! }
+          params[:q] = params[:q].merge({ scope_units_in: units.flatten! })
         end
 
         params[:q]

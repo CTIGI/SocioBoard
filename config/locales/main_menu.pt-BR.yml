@@ -8,3 +8,9 @@ pt-BR:
     user_management:
       user_management: Controle de usuário
       list: Gerir Usuários
+    analysis:
+      analysis: "Análises"
+      unconformities: "Inconformidades"
+    configurations:
+      configurations: "Configurações"
+      units: "Unidades"

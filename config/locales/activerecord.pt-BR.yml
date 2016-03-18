@@ -3,8 +3,15 @@ pt-BR:
     models:
       offender: "Socio-educandos"
     attributes:
+      unit:
+        name: Nome da Unidade
+        min_age: "Idade Mínima"
+        max_age: "Idade Máxima"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
       offender:
         unit: "Unidade"
+        unit_id: "Unidade"
         name: "Nome"
         age: "Idade"
         recurrent: "Reincidente?"
@@ -39,3 +46,8 @@ pt-BR:
         activities: "Atividades/Telas"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+    errors:
+      models:
+        attributes:
+          unit:
+            min_age_bigger_than_max: "Idade máxima deve ser maior que idade minima"

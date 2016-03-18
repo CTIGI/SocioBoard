@@ -2,6 +2,7 @@ pt-BR:
   views:
     general:
       actions: "Ações"
+      last_updated: "Última Atualização"
     roles:
       new_role: "Cadastrar Papel"
       edit_role: "Editar Papel"
@@ -39,3 +40,18 @@ pt-BR:
       total_capacity: "Capacidade do centro"
       occupied: "Vagas ocupadas"
       choose_chart: "Escolher gráficos"
+    units:
+      list_units: "Unidades"
+      edit_unit: "Editar Unidade"
+    analysis:
+      unit: "Unidades"
+      unconformities: "Analisar Inconformidades"
+      age_group: "Faixa Etária"
+      applied_measure: "Medida Aplicada"
+      capacity: "Capacidade"
+      occupation: "Ocupação Atual"
+      out_off_profile: "Fora do Perfil"
+      out_off_profile_percentage: "Proporcão Fora do Perfil/Ocupação"
+      provisory: "Provisória"
+      detention: "Internação"
+      penalty: "Sansão"

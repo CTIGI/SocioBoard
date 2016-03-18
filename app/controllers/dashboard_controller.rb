@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
   skip_after_action :verify_policy_scoped
   before_action :set_units, :set_crimes_name, :set_measure_names
 
@@ -65,14 +66,16 @@ class DashboardController < ApplicationController
   def measure_by_unit_chart
     measure_by_units = { }
 
-    @units.each do |unit|
-      measure_by_units[unit] = []
+    @units.each do |u|
+      measure_by_units[u.last] = []
     end
 
     gon.measure_by_units_categories = @units
 
-    Offender.joins(:measures).group("measures.measure_type", :unit).count.each do |o|
-      measure_by_units[o.first.last] << { o.first.first => o.last }
+    units_hash = Hash[@units]
+
+    Offender.joins(:measures).group("measures.measure_type", :unit_id).count.each do |o|
+      measure_by_units[units_hash[o.first.last]] << { o.first.first => o.last }
     end
 
     series = []
@@ -118,12 +121,13 @@ class DashboardController < ApplicationController
 
     gon.crimes_by_unit_categories = @units
 
-    @units.each do |unit|
-      crimes_by_units[unit] = []
+    @units.each do |u|
+      crimes_by_units[u.last] = []
     end
 
-    Offender.group(:unit).joins(:crimes).group("crimes.name").count.each do |o|
-      crimes_by_units[o.first.first] << { o.first.last => o.last }
+    units_hash = Hash[@units]
+    Offender.group(:unit_id).joins(:crimes).group("crimes.name").count.each do |o|
+      crimes_by_units[units_hash[o.first.first]] << { o.first.last => o.last }
     end
 
     series = []
@@ -139,10 +143,7 @@ class DashboardController < ApplicationController
   end
 
   def set_units
-    @units = []
-    Offender.group(:unit).count.each do |unit|
-      @units << unit.first
-    end
+    @units = Unit.pluck(:id, :name)
   end
 
   def set_crimes_name

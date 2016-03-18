@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314141116) do
+ActiveRecord::Schema.define(version: 20160318141540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20160314141116) do
 
   create_table "offenders", force: :cascade do |t|
     t.string   "id_citizen"
-    t.string   "unit"
     t.string   "name"
     t.date     "birth_date"
     t.integer  "age"
@@ -62,7 +61,10 @@ ActiveRecord::Schema.define(version: 20160314141116) do
     t.datetime "updated_at",                    null: false
     t.integer  "crime_id"
     t.boolean  "duplicated",    default: false
+    t.integer  "unit_id"
   end
+
+  add_index "offenders", ["unit_id"], name: "index_offenders_on_unit_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -78,6 +80,16 @@ ActiveRecord::Schema.define(version: 20160314141116) do
 
   add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "capacity"
+    t.integer  "occupied"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "min_age",    default: 0
+    t.integer  "max_age",    default: 150
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "", null: false

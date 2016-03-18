@@ -3,7 +3,7 @@
   <!--| MAIN MENU |-->
   <ul class="side-menu">
     <%= render partial: "layouts/user_profile" if current_user %>
-    
+
     <li>
       <%= menu_icon(root_path, "home", t("main_menu.home")) %>
     </li>
@@ -15,5 +15,24 @@
     <li>
       <%= menu_icon(dashboard_index_path, "pie-chart", t("main_menu.dashboard")) %>
     </li>
+
+    <li class="sm-sub">
+      <%= menu_icon("", "file-text", t("main_menu.analysis.analysis")) %>
+      <ul>
+        <li>
+          <%= link_to t("main_menu.analysis.unconformities"), unconformities_analysis_index_path %>
+        </li>
+      </ul>
+    </li>
+
+    <li class="sm-sub">
+      <%= menu_icon("", "cogs", t("main_menu.configurations.configurations")) %>
+      <ul>
+        <li>
+          <%= link_to t("main_menu.configurations.units"), units_path %>
+        </li>
+      </ul>
+    </li>
+
   </ul>
 </aside>

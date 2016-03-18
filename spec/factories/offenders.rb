@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :offender do
     id_citizen { Faker::Number.number(3) }
-    unit { Faker::Address.city }
+    unit_id { 1 }
     name { Faker::Name.name }
     birth_date { Faker::Date.backward(14) }
     age { Faker::Number.number(2) }

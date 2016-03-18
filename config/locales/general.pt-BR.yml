@@ -20,3 +20,14 @@ pt-BR:
     home: "Página Inicial"
     search: "Pesquisa"
     dashboard: "Gráficos"
+  messages:
+    delete:
+      title: "Tem certeza que deseja excluir esse registro?"
+      text: "Essa ação não poderá ser desfeita."
+      confirm_button_text: "Sim, exclua-o!"
+      cancel_button_text: "Cancelar"
+      confirm_message_title: "Excluido!"
+      confirm_message_text: "Registro excluido com sucesso!"
+    saved:
+      title: "Salvo"
+      text: "Registro salvo com sucesso!"

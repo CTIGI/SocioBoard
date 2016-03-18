@@ -38,7 +38,7 @@
     <% @offenders.each do |offender| %>
       <tr class="<%= colorize_table_row(offender) %>">
         <td>
-          <%= truncate_words(offender.unit) %>
+          <%= truncate_words(offender.unit.name) %>
         </td>
         <td>
           <%= display_offender_name(offender.name, current_user) %>

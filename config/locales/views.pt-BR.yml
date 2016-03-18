@@ -11,6 +11,9 @@ pt-BR:
       list_users: "Usuários"
     offenders:
       confidential: "Sigiloso"
+      free_range_units: "Unidades de Semiliberdade"
+      admission_units: "Unidades de Internação"
+      provisional_admission: "Unidade de Internação Provisória"
       filter_panel:
         total: "Total Socioed."
         duplicated: "Dados Repetidos"

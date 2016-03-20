@@ -14,6 +14,7 @@
           <th><%= t("activerecord.attributes.unit.max_age") %></th>
           <th><%= t("activerecord.attributes.unit.created_at") %></th>
           <th><%= t("activerecord.attributes.unit.updated_at") %></th>
+          <th><%= t("activerecord.attributes.unit.measure_unit_type") %></th>
           <th><%= t("views.general.actions") %></th>
         </tr>
       </thead>
@@ -23,8 +24,9 @@
           <td><%= unit.name %></td>
           <td><%= unit.min_age %></td>
           <td><%= unit.max_age %></td>
-          <td><%= unit.created_at %></td>
-          <td><%= unit.updated_at %></td>
+          <td><%= l(unit.created_at, format: :short) %></td>
+          <td><%= l(unit.updated_at, format: :short) %></td>
+          <td><%= translate_measure_unit_type(unit.measure_unit_type) %></td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-expanded="false">

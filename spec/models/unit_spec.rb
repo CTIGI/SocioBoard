@@ -11,6 +11,7 @@ RSpec.describe Unit, :type => :model do
     it { should respond_to(:capacity) }
     it { should respond_to(:min_age) }
     it { should respond_to(:max_age) }
+    it { should respond_to(:measure_unit_type) }
   end
 
   context "Associations" do
@@ -43,4 +44,15 @@ RSpec.describe Unit, :type => :model do
     end
   end
 
+  context "Enums" do
+    context "#measure_unit_type" do
+      it "should return" do
+        expect(Unit.measure_unit_types).to eq({
+          "free_range_unit" => 1,
+          "admission_unit" => 2,
+          "provisional_admission_unit" => 3
+        })
+      end
+    end
+  end
 end

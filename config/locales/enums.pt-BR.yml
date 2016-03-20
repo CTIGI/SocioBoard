@@ -1,0 +1,7 @@
+pt-BR:
+  enums:
+    unit:
+      measure_unit_type:
+        free_range_unit: "Unidade de semiliberdade"
+        admission_unit: "Unidade de Internação"
+        provisional_admission_unit: "Unidade de Internação Provisória"

@@ -13,9 +13,12 @@
 
     <%= render partial: "layouts/manage_users" if current_user.admin? %>
 
-    <li class="pull-right">
-      <p class="white-text-p"><%=  t('views.general.last_updated') %><p>
-      <p class="white-text-p"><%=  l(Offender.first.updated_at, :format => :short) %><p>
+    <li class="pull-right" data-trigger="hover" data-toggle="popover" data-placement="left"
+    data-content="<%=  l(Offender.first.updated_at, :format => :short) %>"
+    data-original-title="<%=  t('views.general.last_updated') %>">
+      <a href="" data-toggle="dropdown">
+        <%= fa_icon("clock-o", class: "icon-head") %>
+      </a>
     </li>
   </ul>
 </header>

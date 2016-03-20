@@ -26,12 +26,12 @@ gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'pundit'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'simple_form'
+gem 'enum_help'
 gem 'seedbank'
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'faker'
-  gem "fuubar"
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'better_errors'
@@ -62,6 +62,7 @@ group :development do
   gem "mina", "~> 0.3"
   gem "mina-multistage", "~> 1.0", require: false
   gem "mina-sidekiq"
+  gem "rails-erd"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

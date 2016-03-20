@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318141540) do
+ActiveRecord::Schema.define(version: 20160320192742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,10 +40,9 @@ ActiveRecord::Schema.define(version: 20160318141540) do
     t.string   "measure_situation"
     t.string   "ammount_end_days"
     t.integer  "offender_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "measure_id"
-    t.boolean  "near_due_date",       default: false
     t.integer  "current_period"
     t.date     "current_period_date"
   end
@@ -85,10 +84,11 @@ ActiveRecord::Schema.define(version: 20160318141540) do
     t.string   "name"
     t.integer  "capacity"
     t.integer  "occupied"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "min_age",    default: 0
-    t.integer  "max_age",    default: 150
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "min_age",           default: 12
+    t.integer  "max_age",           default: 22
+    t.integer  "measure_unit_type"
   end
 
   create_table "users", force: :cascade do |t|

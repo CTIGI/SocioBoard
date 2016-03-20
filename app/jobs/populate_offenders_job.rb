@@ -2,12 +2,6 @@ class PopulateOffendersJob < ApplicationJob
   queue_as :default
   require 'open-uri'
 
-  def near_due_date?(end_date, measure_type)
-    provisional_admission  = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
-    diff_days = (end_date.to_date - Date.today).to_i
-    ( (diff_days <= 10 && diff_days >= 0) && measure_type.include?(provisional_admission) )
-  end
-
   def set_total_periods(measure_type, end_date_measure)
     diff_days = ( (end_date_measure.year * 12) + end_date_measure.month ) - ( (Date.today.year * 12) + Date.today.month ).to_i
     (diff_days/6).to_i if measure_type == I18n.t("activerecord.attributes.offender.measure_type_list.admission")
@@ -23,14 +17,27 @@ class PopulateOffendersJob < ApplicationJob
     end
   end
 
+  def set_measure_unit_type(unit_name)
+    if Constants::FREE_RANGE_UNITS.include?(unit_name)
+      Unit.measure_unit_types[:free_range_unit]
+    elsif Constants::ADMISSION_UNITS.include?(unit_name)
+      Unit.measure_unit_types[:admission_unit]
+    elsif Constants::PROVISIONAL_ADMISSION_UNITS.include?(unit_name)
+      Unit.measure_unit_types[:provisional_admission_unit]
+    else
+      nil
+    end
+  end
+
   def perform
     body_units = open("http://www11.stds.ce.gov.br/sgi/rest/crvqavu/#{Constants::CRV::PWD}").read
     result_units = JSON.parse(body_units)
     unless result_units.blank?
       result_units.each do |u|
         unit = Unit.where(name: u["unidade"]).first_or_initialize
-        unit.capacity = u["capacidade"]
-        unit.occupied = u["totalOcupado"]
+        unit.capacity          = u["capacidade"]
+        unit.occupied          = u["totalOcupado"]
+        unit.measure_unit_type = set_measure_unit_type(u["unidade"])
         unit.save
       end
     end
@@ -68,7 +75,6 @@ class PopulateOffendersJob < ApplicationJob
           measure.measure_situation   = m["situacaoMedida"]
           measure.ammount_end_days    = m["qtdDiasTerminoMedida"]
           measure.offender_id         = offender.id
-          measure.near_due_date       = near_due_date?(measure.end_date_measure, measure.measure_type)
           current_period              = set_current_period_date(set_total_periods(measure.measure_type, measure.end_date_measure), measure.start_date_measure)
           unless current_period.blank?
             measure.current_period      = current_period[0]

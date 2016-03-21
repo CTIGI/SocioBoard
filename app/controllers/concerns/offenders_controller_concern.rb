@@ -11,10 +11,12 @@ module Concerns
       def params_search
         units = []
         if params[:units].present?
-          units << Constants::FREE_RANGE_UNITS if params[:units].has_key?("free_range_units")
-          units << Constants::ADMISSION if params[:units].has_key?("admission_units")
-          units << Constants::PROVISIONAL_ADMISSION if params[:units].has_key?("provisional_admission_units")
-          params[:q] = params[:q].merge({ scope_units_in: units.flatten! })
+          params[:units].each_key do |k|
+            measure_unit_type     = Unit.measure_unit_types[k]
+            measure_unit_type_ids = Unit.where(measure_unit_type: measure_unit_type).pluck(:id)
+            units << measure_unit_type_ids if params[:units].has_key?(k)
+          end
+          params[:q] = { "scope_units_in": units.flatten }.merge(params[:q])
         end
 
         params[:q]

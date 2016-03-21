@@ -14,7 +14,6 @@ RSpec.describe Measure, :type => :model do
     it { should respond_to(:measure_situation) }
     it { should respond_to(:ammount_end_days) }
     it { should respond_to(:offender_id) }
-    it { should respond_to(:near_due_date) }
     it { should respond_to(:current_period) }
     it { should respond_to(:current_period_date) }
     it { should respond_to(:created_at) }

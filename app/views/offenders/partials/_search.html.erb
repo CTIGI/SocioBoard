@@ -11,21 +11,21 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <%= check_box_tag "units[free_range_units]", true, is_checked?("units", "free_range_units"), { class: 'i-checks' } %>
+            <%= check_box_tag "units[free_range_unit]", true, is_checked?("units", "free_range_unit"), { class: 'i-checks' } %>
             <%= f.label :free_range_units, t('views.offenders.free_range_units').upcase %>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="form-group">
-            <%= check_box_tag 'units[admission_units]', true, is_checked?("units", "admission_units"), { class: 'i-checks' } %>
+            <%= check_box_tag 'units[admission_unit]', true, is_checked?("units", "admission_unit"), { class: 'i-checks' } %>
             <%= f.label :admission_units, UnicodeUtils.upcase(t('views.offenders.admission_units')) %>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="form-group">
-            <%= check_box_tag 'units[provisional_admission_units]', true, is_checked?("units", "provisional_admission_units"), { class: 'i-checks' } %>
+            <%= check_box_tag 'units[provisional_admission_unit]', true, is_checked?("units", "provisional_admission_unit"), { class: 'i-checks' } %>
             <%= f.label :provisional_admission, UnicodeUtils.upcase(t('views.offenders.provisional_admission')) %>
           </div>
         </div>

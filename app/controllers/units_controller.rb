@@ -35,7 +35,8 @@ class UnitsController < ApplicationController
   def unit_params
     params.require(:unit).permit(
       :min_age,
-      :max_age
+      :max_age,
+      :measure_unit_type
     )
   end
 end

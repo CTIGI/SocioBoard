@@ -8,6 +8,12 @@ class Unit < ApplicationRecord
 
   validate  :check_ages
 
+  enum measure_unit_type: {
+    free_range_unit: 1,
+    admission_unit: 2,
+    provisional_admission_unit: 3
+  }
+
   def offenders_out_of_profile
     offenders.where("age < ? OR age > ?", min_age, max_age).count
   end

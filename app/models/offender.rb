@@ -24,12 +24,8 @@ class Offender < ApplicationRecord
     data
   end
 
-  ransacker :crimes_names do
-    Arel::Nodes::SqlLiteral.new "offenders.crimes::varchar"
-  end
-
   ransacker :scope_units do
-    Arel::Nodes::SqlLiteral.new "offenders.unit"
+    Arel::Nodes::SqlLiteral.new "offenders.unit_id"
   end
 
 end

@@ -59,7 +59,7 @@ RSpec.describe OffendersHelper, :type => :helper do
   describe "#colorize_table_row" do
     it "should return near_current_period if measure have it current_period_date less or equal than today date more 30 days" do
       offender = create(:offender)
-      measure = create(:measure, offender_id: offender.id, near_due_date: false)
+      measure = create(:measure, offender_id: offender.id)
       expect(helper.colorize_table_row(measure.offender)).to eq("near_current_period")
     end
 

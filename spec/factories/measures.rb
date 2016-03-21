@@ -7,7 +7,6 @@ FactoryGirl.define do
     measure_situation  { Faker::Lorem.word }
     ammount_end_days { "#{Faker::Number.number(3)} dias"}
     offender_id 1
-    near_due_date false
     current_period { 1 }
     current_period_date { Date.today }
   end

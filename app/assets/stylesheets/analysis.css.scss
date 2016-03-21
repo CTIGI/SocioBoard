@@ -5,6 +5,13 @@
   color: #FFFFFF !important;
 }
 
+.table-hover tbody tr:hover td
+{
+  outline: none  !important;
+  border-color: #9ecaed  !important;
+  box-shadow: 0 0 10px #9ecaed  !important;
+}
+
 .table-light-green-rowspan {
   background-color: #cbde8a !important;
   border-top: 0px !important;

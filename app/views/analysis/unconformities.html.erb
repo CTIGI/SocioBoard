@@ -11,10 +11,6 @@
       <thead>
         <tr>
           <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.unit") %></th>
-          <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.occupation") %></th>
-          <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.out_off_profile") %></th>
-          <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.out_off_profile_percentage") %></th>
-
           <th colspan="10" class="table-strong-green-rowspan"><%= t("views.analysis.provisory") %></th>
           <th colspan="10" class="table-strong-green-rowspan"><%= t("views.analysis.detention") %></th>
           <th colspan="10" class="table-strong-green-rowspan"><%= t("views.analysis.penalty") %></th>
@@ -66,13 +62,10 @@
         <% @units.each do |unit| %>
         <tr>
           <td>
-            <div class="text-center" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="right" data-content="<%= simple_format(t('views.analysis.unit_information', min_age: unit.min_age, max_age: unit.max_age, occupation: unit.occupied))%>" title="<%= unit.name %>" data-original-title="">
+            <div class="text-center" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="right" data-content="<%= simple_format(t('views.analysis.unit_information', min_age: unit.min_age, max_age: unit.max_age, occupation: unit.occupied, offenders_out_of_profile: unit.offenders_out_of_profile, out_of_profile_percentage: unit.offenders_out_of_profile_percentage ))%>" title="<%= unit.name %>" data-original-title="">
               <%= truncate_words unit.name %>
             </div>
           </td>
-          <td><%= unit.occupied %></td>
-          <td><%= unit.offenders_out_of_profile %></td>
-          <td><%= "#{ unit.offenders_out_of_profile_percentage }%" %></td>
 
           <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Internação Provisória")) %>
           <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Internação Provisória")) %>

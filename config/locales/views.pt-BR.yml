@@ -56,4 +56,6 @@ pt-BR:
       detention: "Internação"
       penalty: "Sansão"
       unit_information: "Faixa Etária %{min_age} - %{max_age}\n
-                         Ocupação: %{occupation} \n"
+                         Ocupação: %{occupation} \n
+                         Fora do Perfil: %{offenders_out_of_profile}\n
+                         Proporcão Fora do Perfil/Ocupação: %{out_of_profile_percentage}%"

@@ -1,6 +1,26 @@
-.table-grey-rowspan {
-  background-color: #CCCCCC !important;
-  border-top: 0px !important
+.table-strong-green-rowspan {
+  background-color: #80a309 !important;
+  border-top: 0px !important;
+  font-weight: bold !important;
+  color: #FFFFFF !important;
+}
+
+.table-light-green-rowspan {
+  background-color: #cbde8a !important;
+  border-top: 0px !important;
+  font-weight: bold !important;
+}
+
+.table-red-rowspan{
+  background-color: #ec1623 !important;
+  border-top: 0px !important;
+  color: #FFFFFF;
+}
+
+.table-blue-rowspan{
+  background-color: #1639ec !important;
+  border-top: 0px !important;
+  color: #FFFFFF;
 }
 
 .analysis-table {

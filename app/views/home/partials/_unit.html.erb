@@ -1,0 +1,70 @@
+<div class="row info-unit">
+  <div class="col-md-4">
+    <%= fa_icon("building") %>
+    <%= translate_measure_unit_type(unit_type) %>
+  </div>
+
+  <div class="col-md-4">
+    <%= fa_icon("child") %>
+    <%= UnicodeUtils.upcase(t("views.home.age_range")) %>: <%= range_date %>
+  </div>
+
+  <div class="col-md-4">
+    <%= fa_icon("users") %>
+    <%= UnicodeUtils.upcase(t("views.dashboards.total_capacity")) %>:  <%= capacity %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 unit-box with-border">
+    <div class="col-md-12">
+      <ul class="items-unit">
+        <li>
+          <b>
+            <%= fa_icon("users") %>
+            <%= t("views.dashboards.occupied").upcase %>: <%= occupied %>
+          </b>
+        </li>
+        <li>
+          <b class="<%= underflow(capacity, occupied)[1] %>">
+            <%= fa_icon("users") %>
+            <%= t("views.dashboards.underflow").upcase %>: <%= underflow(capacity, occupied)[0] %>
+          </b>
+        </li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-6 unit-box">
+    <div class="col-md-12">
+      <ul class="items-unit">
+        <li>
+          <b class=" <%= render_admission_data(offenders_out_of_profile, "danger-item")[1] %>">
+            <%= fa_icon("building") %>
+            <%= UnicodeUtils.upcase(t("views.home.out_of_profile")) %>: <%= render_admission_data(offenders_out_of_profile)[0] %>
+          </b>
+        </li>
+        <li>
+          <b class="<%= render_admission_data(offenders_out_of_measure, "danger-item")[1] %>">
+            <%= fa_icon("child") %>
+            FORA DA MEDIDA: <%= render_admission_data(offenders_out_of_measure)[0] %>
+          </b>
+        </li>
+        <li>
+          <b class="<%= render_admission_data(near_admission_date)[1] %>">
+            <%= fa_icon("calendar") %>
+            <%= t("views.home.near_admission_date")%>: <%= render_admission_data(near_admission_date)[0] %>
+          </b>
+        </li>
+        <li>
+          <b class="<%= render_admission_data(near_provisional_admission_date)[1] %>">
+            <%= fa_icon("calendar") %>
+            <%= t("views.home.near_provisional_admission_date")%>: <%= render_admission_data(near_provisional_admission_date)[0] %>
+          </b>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,15 @@ class Unit < ApplicationRecord
     offenders.where(age: age).joins(:measures).where("measures.measure_type" => measure_type).count
   end
 
+  def offenders_out_of_measure
+    if measure_unit_type.blank?
+      0
+    else
+      measure_type = measure_unit_type_i18n.gsub("Unidade de ", "").downcase
+      offenders.joins(:measures).where('lower(measure_type) <> ?', measure_type).count
+    end
+  end
+
   private
 
   def check_ages

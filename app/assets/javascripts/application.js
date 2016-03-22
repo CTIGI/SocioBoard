@@ -23,6 +23,7 @@
 //= require jquery-animateNumber/jquery.animateNumber.min
 //= require highcharts-release/highcharts
 //= require highcharts-release/highcharts-more
+//= require jQuery.Hotkeys/jquery.hotkeys.js
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require iCheck/icheck
 //= require functions

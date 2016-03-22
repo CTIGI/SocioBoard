@@ -55,6 +55,7 @@ pt-BR:
       out_off_profile_percentage: "Proporcão Fora do Perfil/Ocupação"
       provisory: "Provisória"
       detention: "Internação"
+      inconsistences: "Inconsistencias"
       penalty: "Sanção"
       unit_information: "Faixa Etária %{min_age} - %{max_age}\n
                          Ocupação: %{occupation} \n

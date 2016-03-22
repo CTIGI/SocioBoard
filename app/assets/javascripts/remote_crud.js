@@ -17,6 +17,21 @@ function showDetails() {
   })
 }
 
+function showIndex() {
+  $('.index-object').click(function(e) {
+    e.preventDefault();
+    var url = $(this).attr('data-link');
+    $.ajax({
+      method: "get",
+      url: url,
+      success: function(rt) {
+        $('#skinny-modal').find('.response-content').html(rt);
+        $('#skinny-modal').modal();
+      }
+    })
+  })
+}
+
 function renderFormObject(markup, modalTitle) {
   var url = $(markup).attr('data-link');
   setModalTitle(modalTitle, '#skinny-modal');

@@ -18,6 +18,10 @@ class Unit < ApplicationRecord
     offenders.where("age < ? OR age > ?", min_age, max_age).count
   end
 
+  def inconsistences
+    offenders.where("age < ? OR age > ?", 12, 20).count
+  end
+
   def offenders_out_of_profile_percentage
     ((offenders_out_of_profile.to_f/capacity.to_f)*(100)).round(2)
   end

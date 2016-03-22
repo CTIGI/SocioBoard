@@ -5,11 +5,20 @@
   color: #FFFFFF !important;
 }
 
+.vertical-text span{
+  writing-mode: vertical-rl !important;
+  transform: rotate(180deg);
+}
+
 .table-hover tbody tr:hover td
 {
   outline: none  !important;
   border-color: #9ecaed  !important;
   box-shadow: 0 0 10px #9ecaed  !important;
+}
+
+.link-index {
+  color: #FFFFFF !important;
 }
 
 .table-light-green-rowspan {

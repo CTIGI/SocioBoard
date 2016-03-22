@@ -31,7 +31,7 @@
 }
 
 .unit {
-  background-image: url(path("/assets/institution.png"));
+  background-image: url(image-path("institution.png"));
   background-repeat: no-repeat;
   background-position: center;
   background-size: 200px;
@@ -41,7 +41,7 @@
   color: #FF0005;
   text-shadow: 0 0 1px #770606;
   font: bolder;
-  animation: blinker 1s cubic-bezier(.5, 0, 1, 1) infinite alternate;
+  animation: blinker 1.0s cubic-bezier(.5, 0, 1, 1) infinite alternate;
 }
 
 .warning-item {

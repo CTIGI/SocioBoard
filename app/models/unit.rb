@@ -15,7 +15,7 @@ class Unit < ApplicationRecord
   }
 
   def offenders_out_of_profile
-    offenders.where("age <= ? OR age >= ?", min_age, max_age).count
+    offenders.where("age < ? OR age > ?", min_age, max_age).count
   end
 
   def offenders_out_of_profile_percentage

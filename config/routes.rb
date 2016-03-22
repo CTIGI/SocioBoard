@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :offenders
+  resources :offenders do
+    collection do
+      get :modal_index
+    end
+  end
   resources :dashboard
   resources :analysis, only: [] do
     collection do

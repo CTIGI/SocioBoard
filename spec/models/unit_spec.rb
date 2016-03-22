@@ -18,6 +18,39 @@ RSpec.describe Unit, :type => :model do
     it { should have_many(:offenders) }
   end
 
+  context "Instance Methods" do
+    describe ".offenders_out_of_profile" do
+      it "should return the number of offenders out of profile" do
+        unit = create(:unit, min_age: 12, max_age: 14)
+        offender_1 = create(:offender, age: 12, unit: unit)
+        offender_2 = create(:offender, age: 15, unit: unit)
+
+        expect(unit.offenders_out_of_profile). to eq 1
+      end
+    end
+
+    describe ".inconsistences" do
+      it "should return the number of offenders with inconsistences" do
+        unit = create(:unit, min_age: 12, max_age: 14)
+        offender_1 = create(:offender, age: 12, unit: unit)
+        offender_2 = create(:offender, age: 0, unit: unit)
+        offender_2 = create(:offender, age: 23, unit: unit)
+
+        expect(unit.inconsistences). to eq 2
+      end
+    end
+
+    describe ".offenders_out_of_profile_percentage" do
+      it "should return the number of offenders out of profile percentage" do
+        unit = create(:unit, min_age: 12, max_age: 14, capacity: 2)
+        offender_1 = create(:offender, age: 12, unit: unit)
+        offender_2 = create(:offender, age: 15, unit: unit)
+
+        expect(unit.offenders_out_of_profile_percentage). to eq 50
+      end
+    end
+  end
+
   context "validations" do
     it "max age should be bigger than 12 and lower than 22" do
       unit = build(:unit, max_age: 23)

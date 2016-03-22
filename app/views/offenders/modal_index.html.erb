@@ -1,0 +1,66 @@
+<span class="content-modal">
+  <div class="modal-body">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>
+            <%= t('activerecord.attributes.offender.name') %>
+          </th>
+          <th>
+            <%= t('activerecord.attributes.offender.age') %>
+          </th>
+          <th>
+            <%= t('activerecord.attributes.offender.recurrent') %>
+          </th>
+          <th>
+            <%= t('activerecord.attributes.offender.article') %>
+          </th>
+          <th>
+            <%= t('views.offenders.filter_panel.currrent_period_measure_type') %>
+          </th>
+          <th>
+            <%= t('activerecord.attributes.offender.measures_measure_deadline') %>
+          </th>
+          <th>
+            <%= raw t('activerecord.attributes.offender.measure_dates') %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @offenders.each do |offender| %>
+          <tr>
+            <td>
+              <%= display_offender_name(offender.name, current_user) %>
+            </td>
+            <td>
+              <%= show_field(offender.age) %>
+            </td>
+            <td>
+              <%= show_field(offender.recurrent) %>
+            </td>
+            <td>
+              <%= show_field(offender.crimes.pluck(:name).join(", ")) %>
+            </td>
+            <td>
+              <%= period_label(offender) %>
+              <b><%= UnicodeUtils.upcase(measure_data(offender, :measure_type)) %></b>
+              <br/>
+              (<%= measure_data(offender, :measure_situation) %>)
+            </td>
+            <td>
+              <%= measure_data(offender, :measure_deadline) %>
+            </td>
+            <td data-trigger="hover" data-toggle="popover" data-container="body"
+                data-placement="top" data-content='<%= measure_data(offender, :ammount_end_days) %>'
+                title='<%= t('activerecord.attributes.offender.ammount_end_days')%>'>
+              <%= l(measure_data(offender, :start_date_measure).to_date) %><br/>
+              <%= l(measure_data(offender, :end_date_measure).to_date) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= render partial: "shared/modal_footer_without_submit", locals: { submit_id: "btn-submit-action" } %>
+
+</span>

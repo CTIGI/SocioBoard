@@ -19,6 +19,7 @@
     "jquery-animateNumber": "latest",
     "highcharts-release": "latest",
     "highstock-release": "latest",
+    "jQuery.Hotkeys": "latest",
     "eonasdan-bootstrap-datetimepicker": "latest",
     "hover": "latest"
   }

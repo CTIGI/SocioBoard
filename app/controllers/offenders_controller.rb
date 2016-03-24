@@ -1,20 +1,16 @@
 class OffendersController < ApplicationController
   include Concerns::OffendersControllerConcern
-  before_action :authenticate_user!
-  before_action :set_dependencies
-  before_action :set_counters
-  skip_after_action :verify_policy_scoped
-  skip_after_action :verify_authorized
 
   def index
-    @q = Offender.ransack(params_search)
-    @offenders = @q.result.page(params[:page])
-    respond_with(@offenders)
-  end
-
-  def modal_index
-    @q = Offender.ransack(params_search)
-    @offenders = @q.result
-    respond_with(@offenders, layout: false)
+    if params.include?(:search) || !params[:q].present?
+      @q = Offender.ransack(session[:query_search])
+      @result = @q.result
+      @offenders = @result.page(params[:page])
+      respond_with(@offenders)
+    elsif params.include?(:export_pdf)
+      redirect_to action: :generate_pdf, format: :pdf
+    elsif params.include?(:export_sheet)
+      redirect_to action: :generate_sheet, format: :xlsx
+    end
   end
 end

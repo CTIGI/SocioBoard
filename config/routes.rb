@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :offenders do
     collection do
       get :modal_index
+      get :generate_pdf
+      get :generate_sheet
     end
   end
   resources :dashboard

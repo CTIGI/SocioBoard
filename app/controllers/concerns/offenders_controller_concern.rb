@@ -1,13 +1,36 @@
 module Concerns
   module OffendersControllerConcern
-    extend ActiveSupport::Concern
+  extend ActiveSupport::Concern
 
     included do
-      before_action :params_search
-      before_action :set_dependencies
-      before_action :set_counters
+      before_action :authenticate_user!
+      skip_after_action :verify_policy_scoped
+      skip_after_action :verify_authorized
+      before_action :set_dependencies, only: [:index]
+      before_action :params_search, only: [:index]
+      before_action :set_counters, only: [:index, :generate_pdf, :generate_sheet]
+      before_action :format_data_search_for_pdf, only: [:generate_pdf]
+
+      def modal_index
+        result_offenders
+        respond_with(@offenders, layout: false)
+      end
+
+      def generate_pdf
+        result_offenders
+      end
+
+      def generate_sheet
+        result_offenders
+      end
 
       private
+
+      def result_offenders
+        @q = Offender.ransack(session[:query_search])
+        @offenders = @q.result
+      end
+
       def params_search
         units = []
         if params[:units].present?
@@ -19,7 +42,20 @@ module Concerns
           params[:q] = { "scope_units_in": units.flatten }.merge(params[:q])
         end
 
-        params[:q]
+        session[:query_search] = params[:q]
+      end
+
+      def format_data_search_for_pdf
+        headers = []
+        values  = []
+        @total[0].to_a.transpose
+        @data_result = @total[0].to_a.transpose
+        @counters.each do |c|
+          @data_result[0] << c.keys[0]
+          @data_result[1] << "#{c.values[0]} (#{c.values[1]})"
+          counter = c.to_a[0]
+        end
+        @data_result[1].map! {|dr| dr = "<font size='14'>#{dr}</font>"}
       end
 
       def set_counters
@@ -30,9 +66,8 @@ module Concerns
         @sanctions                   = Measure.sanctions.count
         search_terms                 = []
         @counters                    = []
-
-        if params[:q].present?
-          params[:q].each do |key, value|
+        if session[:query_search].present?
+          session[:query_search].each do |key, value|
             search_terms << ({ key => value }) unless ( value.class == Array ? value.reject(&:blank?).blank? : value.blank? )
           end
           terms = { }

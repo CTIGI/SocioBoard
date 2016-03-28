@@ -1,0 +1,16 @@
+.select2-results__group {
+  font-weight: bold;
+  background-color: #069351;
+  color: white;
+}
+
+.select2-container--default .select2-results__option .select2-results__option {
+  padding-left: 2em !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: rgba(8, 164, 91, 0.48) !important;
+    color: #2B2B2B !important;
+}
+
+// .select2-selection__choice

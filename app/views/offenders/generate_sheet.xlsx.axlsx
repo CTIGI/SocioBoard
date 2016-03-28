@@ -12,25 +12,42 @@ wb.add_worksheet(name: t("views.reports.offenders_list")) do |sheet|
     t('activerecord.attributes.offender.measure_dates')
   ]
 
-
   sheet.add_row [t("views.reports.report_data", data: Time.now.strftime('%d/%m/%Y às %H:%M'))]
+  sheet.add_style 'A1', bg_color: 'afafaf', b: true
+  sheet.add_border 'A1:A1'
   sheet.add_row
   sheet.add_row [@total[0].to_a.join(" : ")]
   @counters.each {|c| sheet.add_row [ "#{c.keys[0]} : #{c.values[0]} (#{c.values[1]})" ] } unless @counters.blank?
+
+  (0..@counters.size).each do |row|
+    cell = "A#{3 + row}:A#{3 + row}"
+    sheet.add_border cell
+    sheet.add_style cell, bg_color: '3DA775',font_color: '3DA775', b: true
+  end
+
   sheet.add_row
   sheet.add_row header
 
-  @offenders.each do |offender|
+  header_table_pos = 3 + 2 + @counters.size
+  header_table = "A#{header_table_pos}:I#{header_table_pos}"
+  sheet.add_style header_table, bg_color: '3DA775',font_color: '3DA775', b: true
+  ("A".."I").each {|col| sheet.add_border "#{col}#{header_table_pos}:#{col}#{header_table_pos}" }
+
+  @offenders.each_with_index do |offender, index|
     sheet.add_row [
       truncate_words(offender.unit.name),
       display_offender_name(offender.name, current_user),
       show_field(offender.age),
+      show_field(offender.recurrent),
+      show_field(offender.origin_county),
       show_field(offender.crimes.pluck(:name).join(", ")),
       "#{ActionView::Base.full_sanitizer.sanitize(period_label(offender))} - #{UnicodeUtils.upcase(measure_data(offender, :measure_type))} - #{
       (measure_data(offender, :measure_situation))}",
       measure_data(offender, :measure_deadline),
       "#{l(measure_data(offender, :start_date_measure).to_date)} - #{l(measure_data(offender, :end_date_measure).to_date)}"
-    ], sz: 10
+    ]
+    row_index = header_table_pos + index + 1
+    ("A".."I").each {|col| sheet.add_border "#{col}#{row_index}:#{col}#{row_index}" }
   end
 
   wb.apply_styles

@@ -8,6 +8,14 @@ module OffendersHelper
     end
   end
 
+  def value_selected(form_element, input)
+    if params[form_element].present?
+      params[form_element][input]
+    else
+      [""]
+    end
+  end
+
   def colorize_table_row(offender)
     if near_due_date?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
       "near_due_date"

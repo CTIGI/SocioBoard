@@ -79,4 +79,17 @@ RSpec.describe OffendersHelper, :type => :helper do
       expect(helper.colorize_table_row(measure.offender)).to be_blank
     end
   end
+
+  describe "#value_selected" do
+    it "should return blank array if haven't params" do
+      allow(controller).to receive_messages(params: { q: {} })
+      expect(helper.value_selected("q", "test")).to eq([""])
+    end
+
+    it "should return value array if have params" do
+      value = rand(1..10)
+      allow(controller).to receive_messages(params: { q: { test: value } })
+      expect(helper.value_selected(:q, :test)).to eq(value)
+    end
+  end
 end

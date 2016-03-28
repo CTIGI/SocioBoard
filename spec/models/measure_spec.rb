@@ -34,7 +34,7 @@ RSpec.describe Measure, :type => :model do
                     end_date_measure: Faker::Date.forward(10),
                     measure_type: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission"),
                     offender_id: offender.id)
-        create_list(:measure, measures_count2, end_date_measure: Faker::Date.forward(30), offender_id: offender.id)
+        create_list(:measure, measures_count2, end_date_measure: Faker::Date.forward(28), offender_id: offender.id)
         expect(Measure.nears_due_date.count).to eq(measures_count1)
       end
     end

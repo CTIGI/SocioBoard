@@ -1,8 +1,15 @@
 pt-BR:
   views:
+    reports:
+      report_data: "Pesquisa realizada em %{data}"
+      offenders_list: "Listagem de Socioeducandos"
     general:
       actions: "Ações"
       last_updated: "Última Atualização"
+      search: "Pesquisar"
+      export:
+        to_pdf: "Exportar para PDF"
+        to_excel: "Exportar Para Planilha"
     roles:
       new_role: "Cadastrar Papel"
       edit_role: "Editar Papel"

@@ -28,6 +28,10 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'simple_form'
 gem 'enum_help'
 gem 'seedbank'
+gem 'prawn-rails'
+gem 'prawn-table'
+gem 'axlsx_rails'
+gem 'axlsx_styler'
 
 group :development, :test do
   gem 'pry-byebug'

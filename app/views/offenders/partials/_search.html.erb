@@ -107,10 +107,28 @@
       </div>
     </div>
 
-    <%= f.submit class: "btn btn-success" %>
-    <%= link_to offenders_path, class: "btn btn-danger" do %>
-      <%= t("app.remove_filter")%>
-    <% end %>
+      <span>
+        <%= button_tag(type: 'submit', name: "search", class: "btn btn-success generate-files") do %>
+          <%= fa_icon("search") %>
+          <%= t("views.general.search") %>
+        <% end %>
+
+        <%= link_to offenders_path, class: "btn btn-danger" do %>
+        <%= fa_icon("search-minus") %>
+        <%= t("app.remove_filter")%>
+        <% end %>
+      </span>
+
+      <span class="pull-right">
+        <%= button_tag(type: 'submit', name: "export_pdf", class: "btn btn-success", formtarget: "_blank") do %>
+          <%= fa_icon("file-pdf-o") %>
+          <%= t("views.general.export.to_pdf") %>
+        <% end %>
+        <%= button_tag(type: 'submit', name: "export_sheet", class: "btn btn-success", formtarget: "_blank") do %>
+          <%= fa_icon("file-excel-o") %>
+          <%= t("views.general.export.to_excel")%>
+        <% end %>
+      </span>
   <% end %>
  </div>
 </div>

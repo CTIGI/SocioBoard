@@ -5,12 +5,6 @@
       <% end %>
     </li>
 
-    <li>
-      <a href="#" id="toggleMenu">
-        <%= fa_icon("bars", class: "icon-head") %>
-      </a>
-    </li>
-
     <%= render partial: "layouts/manage_users" if current_user.admin? %>
 
     <li class="pull-right" data-trigger="hover" data-toggle="popover" data-placement="left"

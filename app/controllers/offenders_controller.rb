@@ -13,4 +13,11 @@ class OffendersController < ApplicationController
       respond_with(@offenders)
     end
   end
+
+  def modal_index
+    @q = Offender.ransack(params_search)
+    @offenders = @q.result
+    respond_with(@offenders, layout: false)
+  end
+
 end

@@ -7,8 +7,7 @@ module AnalysisHelper
 
     content_tag(:td, class: td_class) do
       if inconsistences_value > 0
-        link_to "#", class: "index-object link-index", data: { link: modal_index_offenders_path(q:
-                { age_lt: 12, age_qt: 20, unit_id_eq: unit_id}) } do
+        link_to "#", class: "index-object link-index", data: { link: modal_index_offenders_path(unit_id: unit_id ) } do
           concat(inconsistences_value)
         end
       end

@@ -15,6 +15,12 @@ def result_search(pdf, data_result)
   pdf.table(data_result, column_widths: Array.new(data_result[1].size, 120), cell_style: cell_style, position: 10)
 end
 
+def range_dates_measure(start_date_measure, end_date_measure)
+  start_date_measure = start_date_measure == t("app.no_record") ? "" : l(start_date_measure.to_date)
+  end_date_measure   = end_date_measure == t("app.no_record") ? "" : l(end_date_measure.to_date)
+  "#{start_date_measure}<br/>#{end_date_measure}"
+end
+
 def table_result_search(pdf)
   pdf.move_down 10
   pdf.fill_color '000000'
@@ -49,7 +55,7 @@ def table_result_search(pdf)
       "#{period_label(offender)} #{UnicodeUtils.upcase(measure_data(offender, :measure_type))} <br/>#{
       (measure_data(offender, :measure_situation))}",
       measure_data(offender, :measure_deadline),
-      "#{l(measure_data(offender, :start_date_measure).to_date)}<br/>#{l(measure_data(offender, :end_date_measure).to_date)}"
+      range_dates_measure(measure_data(offender, :start_date_measure), measure_data(offender, :end_date_measure))
     ]
   end
 

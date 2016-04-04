@@ -40,8 +40,10 @@ module OffendersHelper
 
   def near_due_date?(measure_type, end_date_measure)
     provisional_admission  = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
-    diff_days = (end_date_measure.to_date - Date.today).to_i
-    ( (diff_days <= 10 && diff_days > 0) && measure_type.include?(provisional_admission) )
+    unless end_date_measure == t("app.no_record")
+      diff_days = (end_date_measure.to_date - Date.today).to_i
+      ( (diff_days <= 10 && diff_days > 0) && measure_type.include?(provisional_admission) )
+    end
   end
 
   def overdue_measure?(measure_type, end_date_measure)

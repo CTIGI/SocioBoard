@@ -240,7 +240,11 @@ Devise.setup do |config|
 
   # ==> OmniAuth
   config.omniauth :ctigi_auth, Figaro.env.ctigi_auth_app_id, Figaro.env.ctigi_auth_app_secret,
-                   client_options: { site: Figaro.env.ctigi_auth_app_url }, strategy_class: OmniAuth::Strategies::CtigiAuth
+                   client_options: { site: Figaro.env.ctigi_auth_app_url },
+                   strategy_class: OmniAuth::Strategies::CtigiAuth,
+                   authorize_params: { layout: "socioboard" },
+                   setup: true
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

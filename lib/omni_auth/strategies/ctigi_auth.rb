@@ -9,6 +9,8 @@ module OmniAuth
         authorize_url: "/oauth/authorize"
       }
 
+      option :authorize_params, { layout: "login_cp"}
+
       uid { raw_info["user"]["ctigi_auth_uid"] }
 
       info do

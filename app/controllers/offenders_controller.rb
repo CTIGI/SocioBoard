@@ -15,7 +15,11 @@ class OffendersController < ApplicationController
   end
 
   def modal_index
-    @offenders = Offender.where(unit_id: params[:unit_id]).where("age < 12 OR age > 20")
+    if params[:unit_id]
+      @offenders = Offender.where(unit_id: params[:unit_id]).where("age < 12 OR age > 20")
+    else
+      @offenders = Offender.ransack(params[:q]).result
+    end
     respond_with(@offenders, layout: false)
   end
 

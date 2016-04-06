@@ -64,15 +64,26 @@ pt-BR:
       detention: "Internação"
       inconsistences: "Inconsistencias"
       penalty: "Sanção"
-      total_on_measure: "Total de inconformidades: Medida"
-      total_on_age: "Total de inconformidades: Faixa etária"
-      total_on_measure_age: "Total de inconformidades: Faixa etária e Medida"
-      total_conformities: "Total de conformidades"
+      total_on_measure: "Fora da Medida"
+      total_on_age: "Fora da Faixa etária"
+      total_on_measure_age: "Fora da Faixa etária e Medida"
+      total_conformities: "Conformidades"
       unit_information: "Faixa Etária %{min_age} - %{max_age}\n
                          Ocupação: %{occupation} \n
                          Fora do Perfil: %{offenders_out_of_profile}\n
                          Proporcão Fora do Perfil/Ocupação: %{out_of_profile_percentage}%\n
                          Tipos de medidas: %{measures}"
+    indicators:
+      total_offenders: "Total de Socioeducandos"
+      manager_data: "Situação Atual"
+      total_inconsistences: "Total de Inconsistentes"
+      out_of_measure: "Fora da Medida"
+      out_of_profile: "Fora do Perfil"
+      inconsistences_title_chart: "Inconformidades por centro"
+      inconsistences:
+        by_age: "Por Idade"
+        by_measure: "Por Medida"
+        by_other_things: "Outros"
     home:
       age_range: FAIXA ETÁRIA
       near_admission_date: VENC. 30 DIAS MI

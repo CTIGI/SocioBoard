@@ -12,6 +12,13 @@ Rails.application.routes.draw do
       get :unconformities, as: :unconformities
     end
   end
+
+  resources :indicators, only: [] do
+    collection do
+      get :indicator_01, as: :indicator_01
+    end
+  end
+  
   resources :roles
   resources :users, only: [:index, :edit, :update, :show]
   resources :units, only: [:index, :edit, :update, :show]

@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  include Concerns::SharedChartsDataConcern
+  
   before_action :authenticate_user!
   skip_after_action :verify_policy_scoped
   before_action :set_units, :set_crimes_name, :set_measure_names
@@ -9,33 +11,6 @@ class DashboardController < ApplicationController
     #unit_by_measure_chart
     #unit_by_crime_chart
     set_units_capacity_charts
-  end
-
-  private
-
-  def set_units_capacity_charts
-    begin
-      body = open("http://www11.stds.ce.gov.br/sgi/rest/crvqavu/#{Constants::CRV::PWD}").read
-      result = JSON.parse(body)
-
-      gon.units_capacity_categories = []
-      gon.units_capacity_series_percentage = {}
-      series = []
-      series << { name: I18n.t("views.dashboards.total_capacity") , data: [] }
-      series << { name: I18n.t("views.dashboards.occupied") , data: [], percentage_value: [] }
-
-      result.each do |r|
-        gon.units_capacity_categories << r["unidade"]
-        series[0][:data] << r["capacidade"]
-        series[1][:data] << r["totalOcupado"]
-        series[1][:percentage_value] << r["totalOcupado"].to_f/r["capacidade"].to_f*100
-      end
-
-      gon.units_capacity_series = series
-    rescue
-      gon.units_capacity_series = []
-      gon.units_capacity_categories = []
-    end
   end
 
   # def unit_by_measure_chart

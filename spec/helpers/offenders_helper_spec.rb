@@ -40,6 +40,13 @@ RSpec.describe OffendersHelper, :type => :helper do
       expect(helper.truncate_words("BARBOSA")).to eq("B.")
       expect(helper.truncate_words("FRANCISCO")).to eq("FCO.")
     end
+
+    it "mode EXTREME" do
+      expect(helper.truncate_words("SOCIOEDUCATIVO", true)).to eq("")
+      expect(helper.truncate_words("EDUCACIONAL", true)).to eq("")
+      expect(helper.truncate_words("UNIDADE", true)).to eq("")
+      expect(helper.truncate_words("UNIDADE", true)).to eq("")
+    end
   end
 
   describe "#measure_data" do

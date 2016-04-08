@@ -44,6 +44,7 @@ function renderFormObject(markup, modalTitle) {
     success: function(rt) {
       $('#skinny-modal').find('.response-content').html($(rt));
       $('#skinny-modal').modal();
+      enableSelect2()
     }
   });
 }

@@ -14,20 +14,19 @@
                 </div>
 
                 <div class="row">
-
-                  <div class="col-md-4">
-                    <%= f.input :measure_unit_type %>
-                  </div>
-
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <%= f.input :min_age, collection: 12..22 %>
                   </div>
-
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                     <%= f.input :max_age, collection: 12..22 %>
                   </div>
                 </div>
 
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= f.association :measure_types, input_html: { class: "select2 big-select2" }%>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

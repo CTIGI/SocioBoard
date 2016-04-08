@@ -1,6 +1,5 @@
 FactoryGirl.define do
-  factory :crime do
+  factory :measure_type do
     name { Faker::Name.name }
-    offender_id 1
   end
 end

@@ -7,7 +7,7 @@ pt-BR:
         name: Nome da Unidade
         min_age: "Idade Mínima"
         max_age: "Idade Máxima"
-        measure_unit_type: "Tipo de Medida"
+        measure_types: "Tipo de Medida"
         created_at: "Criado em"
         updated_at: "Atualizado em"
       offender:

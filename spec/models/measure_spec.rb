@@ -27,8 +27,8 @@ RSpec.describe Measure, :type => :model do
   context "scopes" do
     context "#nears_due_date" do
       it "should return all near due dates flagged as true" do
-        measures_count1 = rand(10)
-        measures_count2 = rand(10)
+        measures_count1 = 2
+        measures_count2 = 3
         offender = create(:offender)
         create_list(:measure, measures_count1,
                     end_date_measure: Faker::Date.forward(10),
@@ -41,7 +41,7 @@ RSpec.describe Measure, :type => :model do
 
     context "#near_current_periods" do
       it "should return all near current periods" do
-        measures_count = rand(10)
+        measures_count = 2
         offender = create(:offender)
         create_list(:measure, measures_count, current_period_date: Faker::Date.backward(31), offender_id: offender.id)
         expect(Measure.near_current_periods.count).to eq(measures_count)
@@ -50,7 +50,7 @@ RSpec.describe Measure, :type => :model do
 
     context "#overdues" do
       it "should return all overdues" do
-        measures_count = rand(10)
+        measures_count = 2
         offender = create(:offender)
         measure_type = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
         create_list(:measure, measures_count, end_date_measure: Faker::Date.backward(31), offender_id: offender.id, measure_type: measure_type)
@@ -60,7 +60,7 @@ RSpec.describe Measure, :type => :model do
 
     context "#sanctions" do
       it "should return all sanctions" do
-        sanctions_count = rand(10)
+        sanctions_count = 2
         offender = create(:offender)
         measure_type = I18n.t("activerecord.attributes.offender.measure_type_list.sanction")
         create_list(:measure, sanctions_count, end_date_measure: Faker::Date.backward(9), offender_id: offender.id, measure_type: measure_type)

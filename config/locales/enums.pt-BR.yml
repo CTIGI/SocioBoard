@@ -1,5 +1,5 @@
 pt-BR:
-  enums:
+  enumerize:
     unit:
       measure_unit_type:
         free_range_unit: "Unidade de semiliberdade"

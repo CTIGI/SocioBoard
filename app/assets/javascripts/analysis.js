@@ -9,28 +9,28 @@ AnalysisController.prototype.unconformities = function() {
 function countOffenders() {
   var count = 0
   $('.table-red-rowspan').map(function() {
-    count += parseInt(this.children[0].children[0].innerText, 10)
+    count += parseInt(this.children[0].children[0].textContent, 10)
   })
 
   $('#total-measure-span').text(count);
 
   count = 0
   $('.table-yellow-rowspan').map(function() {
-    count += parseInt(this.children[0].children[0].innerText, 10)
+    count += parseInt(this.children[0].children[0].textContent, 10)
   })
 
   $('#total-age-span').text(count);
 
   count = 0
   $('.table-orange-rowspan').map(function() {
-    count += parseInt(this.children[0].children[0].innerText, 10)
+    count += parseInt(this.children[0].children[0].textContent, 10)
   })
 
   $('#total-age-measure-span').text(count);
 
   count = 0
   $('.table-blue-rowspan').map(function() {
-    count += parseInt(this.children[0].children[0].innerText, 10)
+    count += parseInt(this.children[0].children[0].textContent, 10)
   })
 
   $('#total-conformities-span').text(count);

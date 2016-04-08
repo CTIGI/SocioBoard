@@ -6,14 +6,15 @@ function inconformsData() {
       var by_measures = $(rt).find('.table-red-rowspan')
       var by_measures_count = 0
       by_measures.map(function() {
-        by_measures_count += parseInt(this.children[0].children[0].innerContent, 10)
+        by_measures_count += parseInt(this.children[0].children[0].textContent, 10)
       });
       $('#total-measure-span').text(by_measures_count);
+      console.log(by_measures_count);
 
       var by_age = $(rt).find('.table-yellow-rowspan')
       var by_age_count = 0
       by_age.map(function() {
-        by_age_count += parseInt(this.children[0].children[0].innerContent, 10)
+        by_age_count += parseInt(this.children[0].children[0].textContent, 10)
       });
       $('#total-age-span').text(by_age_count);
 
@@ -21,7 +22,7 @@ function inconformsData() {
       var by_age_and_measure_count = 0
 
       by_age_and_measure.map(function() {
-        by_age_and_measure_count += parseInt(this.children[0].children[0].innerContent, 10)
+        by_age_and_measure_count += parseInt(this.children[0].children[0].textContent, 10)
       });
       $('#total-age-measure-span').text(by_age_and_measure_count);
 
@@ -29,7 +30,7 @@ function inconformsData() {
       var by_conformities_count = 0
 
       by_conformities.map(function() {
-        by_conformities_count += parseInt(this.children[0].children[0].innerContent, 10)
+        by_conformities_count += parseInt(this.children[0].children[0].textContent, 10)
       });
       $('#total-conformities-span').text(by_conformities_count);
     }

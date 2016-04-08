@@ -64,15 +64,25 @@ module OffendersHelper
     end
   end
 
-  def truncate_words(word)
+  def truncate_words(word, extreme = false)
     word.gsub!("CENTRO", "C.")
-    word.gsub!("SOCIOEDUCATIVO", "SOCIOED.")
-    word.gsub!("EDUCACIONAL", "ED.")
-    word.gsub!("UNIDADE", "UN.")
+
+    truncated_word = (extreme == true) ? "" : "SOCIOED."
+    word.gsub!("SOCIOEDUCATIVO", truncated_word)
+
+    truncated_word = (extreme == true) ? "" : "ED."
+    word.gsub!("EDUCACIONAL", truncated_word)
+
+    truncated_word = (extreme == true) ? "" : "UN."
+    word.gsub!("UNIDADE", truncated_word)
+
     word.gsub!("INTERNAÇÃO", "INT.")
+    word.gsub!("SEMILIBERDADE", "SEMILIB.")
     word.gsub!("PROVISÓRIA", "PROV.")
-    word.gsub!("SEMILIBERDADE", "SEMILIB.")
-    word.gsub!("SEMILIBERDADE", "SEMILIB.")
+
+    truncated_word = (extreme == true) ? "" : "DE "
+    word.gsub!("DE ", truncated_word)
+
     word.gsub!("ALOISIO", "AL.")
     word.gsub!("ZEQUINHA", "ZEQ.")
     word.gsub!("BARBOSA", "B.")

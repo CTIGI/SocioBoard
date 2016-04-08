@@ -38,4 +38,9 @@ module HomeHelper
   def render_admission_data(near_admission_date, markup = "warning-item")
     near_admission_date > 0 ? [near_admission_date, markup] : [ 0, "" ]
   end
+
+  def randomEntrance
+     animation = ["fadeInRight", "fadeInLeft", "fadeInUp", "fadeInDown"].sample
+    "animated #{animation}"
+  end
 end

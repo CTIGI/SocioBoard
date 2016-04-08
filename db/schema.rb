@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 20160407141043) do
     t.string   "name"
     t.integer  "capacity"
     t.integer  "occupied"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.integer  "min_age",    default: 0
-    t.integer  "max_age",    default: 150
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "min_age",    default: 12
+    t.integer  "max_age",    default: 22
   end
 
   create_table "users", force: :cascade do |t|

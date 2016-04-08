@@ -1,0 +1,46 @@
+.value-widget {
+  font-weight: bold;
+  color: white;
+  font-size: 83px;
+}
+
+.dark-font {
+  h3, small {
+    color: #868585 !important;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+  }
+}
+
+.light-font {
+  small {
+    font-weight: bold !important;
+    font-size: 14px !important;
+  }
+  h3, small {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+  }
+}
+
+#units-capacity {
+    width: 112%;
+}

@@ -100,7 +100,6 @@ function setWebChart(chartDiv, categories, chartData, title) {
        lineWidth: 0,
        min: 0
      },
-
      tooltip: {
        shared: true,
        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'

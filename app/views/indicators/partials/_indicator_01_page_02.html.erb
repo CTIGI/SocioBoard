@@ -1,0 +1,60 @@
+<div class="bg-white count-box">
+  <div class="row">
+    <div  class="col-md-12 text-center <%= randomEntrance %>">
+      <h3><%= t("views.indicators.total_offenders") %></h3>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="o-item bg-red <%= randomEntrance %>">
+        <div class="oi-title">
+          <span><%= t("views.analysis.total_on_measure") %></span>
+        </div>
+        <div class="value-widget text-center">
+          <span id="total-measure-span"><span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="o-item bg-deeporange <%= randomEntrance %>">
+        <div class="oi-title">
+          <span><%= t("views.analysis.total_on_age")%></span>
+        </div>
+        <div class="value-widget text-center">
+          <span id="total-age-span"><span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="o-item bg-orange <%= randomEntrance %>">
+        <div class="oi-title">
+          <span><%= t("views.analysis.total_on_measure_age")%></span>
+        </div>
+        <div class="value-widget text-center">
+          <span id="total-age-measure-span"><span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="o-item bg-blue <%= randomEntrance %>">
+        <div class="oi-title">
+          <span><%= t("views.analysis.total_conformities") %></span>
+        </div>
+        <div class="value-widget text-center">
+          <span id="total-conformities-span"><span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-md-12">
+      <div id="units-inconsistences"></div>
+    </div>
+  </div> -->
+</div>

@@ -1,6 +1,4 @@
 class Unit < ApplicationRecord
-  extend Enumerize
-
   has_many :offenders
   has_and_belongs_to_many :measure_types
 
@@ -47,7 +45,7 @@ class Unit < ApplicationRecord
     if !measure_type_names.include? 'Unidade de Sanção'
       count += self.offenders.joins(:measures).where('measure_type = ?', 'Sanção').count
     end
-    
+
     return count
   end
 

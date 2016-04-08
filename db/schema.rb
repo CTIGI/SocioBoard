@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320192742) do
+ActiveRecord::Schema.define(version: 20160407141043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20160320192742) do
 
   add_index "crimes_offenders", ["crime_id"], name: "index_crimes_offenders_on_crime_id", using: :btree
   add_index "crimes_offenders", ["offender_id"], name: "index_crimes_offenders_on_offender_id", using: :btree
+
+  create_table "measure_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "measure_types_units", force: :cascade do |t|
+    t.integer "measure_type_id"
+    t.integer "unit_id"
+  end
+
+  add_index "measure_types_units", ["measure_type_id"], name: "index_measure_types_units_on_measure_type_id", using: :btree
+  add_index "measure_types_units", ["unit_id"], name: "index_measure_types_units_on_unit_id", using: :btree
 
   create_table "measures", force: :cascade do |t|
     t.date     "start_date_measure"
@@ -84,11 +98,10 @@ ActiveRecord::Schema.define(version: 20160320192742) do
     t.string   "name"
     t.integer  "capacity"
     t.integer  "occupied"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "min_age",           default: 0
-    t.integer  "max_age",           default: 150
-    t.integer  "measure_unit_type"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "min_age",    default: 0
+    t.integer  "max_age",    default: 150
   end
 
   create_table "users", force: :cascade do |t|

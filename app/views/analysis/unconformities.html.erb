@@ -1,5 +1,43 @@
 <div class="container overflow-visible">
   <div class="tile">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+              <button type="button" class="btn m-r-sm btn-total-measure">
+                <span id="total-measure-span"><span>
+              </button>
+              <%= t("views.analysis.total_on_measure")%>
+          </td>
+          <td>
+              <button type="button" class="btn m-r-sm btn-total-age">
+                <span id="total-age-span"><span>
+
+              </button>
+              <%= t("views.analysis.total_on_age")%>
+          </td>
+          <td>
+             <button type="button" class="btn m-r-sm btn-total-age-measure">
+               <span id="total-age-measure-span"><span>
+
+             </button>
+             <%= t("views.analysis.total_on_measure_age")%>
+          </td>
+          <td>
+             <button type="button" class="btn m-r-sm total-conformities">
+               <span id="total-conformities-span"><span>
+             </button>
+             <%= t("views.analysis.total_conformities")%>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="container overflow-visible">
+  <div class="tile">
     <div class="t-header th-alt bg-teal">
       <div class="th-title">
         <span class="tile-text"><%= t("views.analysis.unconformities")%></span>
@@ -14,7 +52,7 @@
           <th colspan="9" class="table-strong-green-rowspan"><%= t("views.analysis.provisory") %></th>
           <th colspan="9" class="table-strong-green-rowspan"><%= t("views.analysis.detention") %></th>
           <th colspan="9" class="table-strong-green-rowspan"><%= t("views.analysis.penalty") %></th>
-          <th rowspan="3" class="table-strong-green-rowspan vertical-text"><span><%= t("views.analysis.inconsistences") %></span></th>
+          <th rowspan="3" class="table-light-blue-rowspan vertical-text"><span><%= t("views.analysis.inconsistences") %></span></th>
         </tr1>
 
         <tr>
@@ -60,40 +98,40 @@
         <% @units.each do |unit| %>
         <tr>
           <td>
-            <div class="text-center" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="right" data-content="<%= simple_format(t('views.analysis.unit_information', min_age: unit.min_age, max_age: unit.max_age, occupation: unit.occupied, offenders_out_of_profile: unit.offenders_out_of_profile, out_of_profile_percentage: unit.offenders_out_of_profile_percentage ))%>" title="<%= unit.name %>" data-original-title="">
+            <div class="text-center" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="right" data-content="<%= simple_format(t('views.analysis.unit_information', min_age: unit.min_age, max_age: unit.max_age, occupation: unit.occupied, offenders_out_of_profile: unit.offenders_out_of_profile_by_age, measures: unit.measure_type_names, out_of_profile_percentage: unit.offenders_out_of_profile_percentage))%>" title="<%= unit.name %>" data-original-title="">
               <%= truncate_words unit.name %>
             </div>
           </td>
 
-          <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(14, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(14, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(15, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(15, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(16, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(16, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(17, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(17, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(18, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(18, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(19, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(19, "Internação Provisória"), unit.id, "Internação Provisória") %>
-          <%= show_table_unconformities_value(20, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(20, "Internação Provisória"), unit.id, "Internação Provisória") %>
+          <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(14, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(14, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(15, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(15, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(16, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(16, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(17, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(17, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(18, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(18, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(19, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(19, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
+          <%= show_table_unconformities_value(20, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(20, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória") %>
 
-          <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(14, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(14, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(15, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(15, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(16, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(16, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(17, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(17, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(18, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(18, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(19, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(19, "Internação"), unit.id, "Internação") %>
-          <%= show_table_unconformities_value(20, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(20, "Internação"), unit.id, "Internação") %>
+          <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(14, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(14, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(15, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(15, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(16, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(16, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(17, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(17, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(18, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(18, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(19, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(19, "Internação"), unit.id, "Internação","Unidade de Internação") %>
+          <%= show_table_unconformities_value(20, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(20, "Internação"), unit.id, "Internação","Unidade de Internação") %>
 
-          <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(14, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(14, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(15, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(15, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(16, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(16, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(17, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(17, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(18, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(18, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(19, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(19, "Sanção"), unit.id, "Sanção") %>
-          <%= show_table_unconformities_value(20, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(20, "Sanção"), unit.id, "Sanção") %>
+          <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(14, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(14, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(15, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(15, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(16, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(16, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(17, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(17, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(18, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(18, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(19, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(19, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
+          <%= show_table_unconformities_value(20, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(20, "Sanção"), unit.id, "Sanção", "Unidade de Sanção") %>
 
           <%= show_inconsistences(unit.id, unit.inconsistences) %>
         </tr>

@@ -6,6 +6,14 @@
   text-align: center !important;
 }
 
+.table-light-blue-rowspan {
+  background-color: #aec7eb !important;
+  border-top: 0px !important;
+  font-weight: bold !important;
+  color: #000000 !important;
+  text-align: center !important;
+}
+
 .vertical-text span{
   writing-mode: vertical-rl !important;
   transform: rotate(180deg);
@@ -22,6 +30,10 @@
   color: #FFFFFF !important;
 }
 
+.link-index-black {
+  color: #000000 !important;
+}
+
 .table-light-green-rowspan {
   background-color: #cbde8a !important;
   border-top: 0px !important;
@@ -30,15 +42,33 @@
 }
 
 .table-red-rowspan{
-  background-color: #ec1623 !important;
+  background-color: rgba(244, 67, 54, 0.74) !important;
   border-top: 0px !important;
   color: #FFFFFF;
 }
 
 .table-blue-rowspan{
-  background-color: #1639ec !important;
+  background-color: #5389D6 !important;
   border-top: 0px !important;
-  color: #FFFFFF;
+  color: #000000;
+}
+
+.table-light-blue-rowspan{
+  background-color: #aec7eb !important;
+  border-top: 0px !important;
+  color: #000000 !important;
+}
+
+.table-yellow-rowspan{
+  background-color: yellow !important;
+  border-top: 0px !important;
+  color: #000000 !important;
+}
+
+.table-orange-rowspan{
+  background-color: orange !important;
+  border-top: 0px !important;
+  color: #000000 !important;
 }
 
 .analysis-table {
@@ -67,4 +97,32 @@ td:first-child, .table > tfoot > tr > td:first-child {
   border: 1px solid #000000 !important;
   border-right-width:1px !important;
   border-left-width:1px !important;
+}
+
+.btn-total-measure{
+  background-color: rgba(244, 67, 54, 0.74);
+  color: black;
+  font-weight: bold !important;
+}
+
+.btn-total-age{
+  background-color: yellow;
+  color: black;
+  font-weight: bold !important;
+}
+
+.btn-total-age-measure{
+  background-color: orange;
+  color: black;
+  font-weight: bold !important;
+}
+
+.total-conformities{
+  background-color: #5389D6;
+  color: black;
+  font-weight: bold !important;
+}
+
+.big-select2 {
+    width: 600px !important;
 }

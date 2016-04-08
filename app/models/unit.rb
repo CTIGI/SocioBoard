@@ -1,5 +1,8 @@
 class Unit < ApplicationRecord
+  extend Enumerize
+
   has_many :offenders
+  has_and_belongs_to_many :measure_types
 
   validates :min_age, presence: true, numericality: { greater_than_or_equal_to: 12,
                                                       less_than_or_equal_to: 22 }
@@ -8,13 +11,11 @@ class Unit < ApplicationRecord
 
   validate  :check_ages
 
-  enum measure_unit_type: {
-    free_range_unit: 1,
-    admission_unit: 2,
-    provisional_admission_unit: 3
-  }
+  def measure_type_names
+    measure_types.map(&:name).join(",")
+  end
 
-  def offenders_out_of_profile
+  def offenders_out_of_profile_by_age
     offenders.where("age < ? OR age > ?", min_age, max_age).count
   end
 
@@ -23,7 +24,7 @@ class Unit < ApplicationRecord
   end
 
   def offenders_out_of_profile_percentage
-    ((offenders_out_of_profile.to_f/capacity.to_f)*(100)).round(2)
+    ((offenders_out_of_profile_by_age.to_f/capacity.to_f)*(100)).round(2)
   end
 
   def count_applied_measure_by_age(age, measure_type)
@@ -31,12 +32,23 @@ class Unit < ApplicationRecord
   end
 
   def offenders_out_of_measure
-    if measure_unit_type.blank?
-      0
-    else
-      measure_type = measure_unit_type_i18n.gsub("Unidade de ", "").downcase
-      offenders.joins(:measures).where('lower(measure_type) <> ?', measure_type).count
+    count = 0
+    if !measure_type_names.include? 'Unidade de Internação'
+      count += self.offenders.joins(:measures).where('measure_type = ?', 'Internação').count
     end
+
+    if !measure_type_names.include? 'Unidade de semiliberdade'
+      count += self.offenders.joins(:measures).where('measure_type = ?', 'SemiLiberdade').count
+    end
+
+    if !measure_type_names.include? 'Unidade de Internação Provisória'
+      count += self.offenders.joins(:measures).where('measure_type = ?', 'Internação Provisória').count
+    end
+    if !measure_type_names.include? 'Unidade de Sanção'
+      count += self.offenders.joins(:measures).where('measure_type = ?', 'Sanção').count
+    end
+    
+    return count
   end
 
   private

@@ -293,3 +293,7 @@ input[type="radio"], input[type="checkbox"] {
 #toggleMenu {
   margin: 5px;
 }
+
+.table > thead > tr > th:last-child, .table > tbody > tr > th:last-child, .table > tfoot > tr > th:last-child, .table > thead > tr > td:last-child, .table > tbody > tr > td:last-child, .table > tfoot > tr > td:last-child {
+  padding-right: 10px !important; 
+}

@@ -84,8 +84,16 @@ pt-BR:
         by_age: "Por Idade"
         by_measure: "Por Medida"
         by_other_things: "Outros"
+      units:
+        free_range_unit: "Unidade de semiliberdade"
+        free_range_unit_initial: "USL"
+        admission_unit: "Unidade de Internação"
+        admission_unit_initial: "UI"
+        provisional_admission_unit: "Unidade de Internação Provisória"
+        provisional_admission_unit_initial: "UIP"
     home:
       age_range: FAIXA ETÁRIA
       near_admission_date: VENC. 30 DIAS MI
       near_provisional_admission_date: VENC. 30 DIAS MIP
       out_of_profile: "Fora da Faixa Etária"
+      out_of_measure: "Fora da Medida"

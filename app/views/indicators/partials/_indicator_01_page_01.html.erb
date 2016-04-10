@@ -1,54 +1,57 @@
 <div class="bg-white count-box">
   <div class="row">
-    <div  class="col-md-12 text-center">
-      <h3><%= t("views.indicators.manager_data") %></h3>
-      <hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-2">
-      <div class="o-item bg-bluegray <%= randomEntrance %>">
-        <div class="oi-title">
-          <span><%= t("views.indicators.total_offenders")  %></span>
+      <%= link_to offenders_path do %>
+        <div class="col-md-2">
+          <div class="o-item bg-bluegray <%= randomEntrance %>">
+            <div class="oi-title">
+              <span><%= t("views.indicators.total_offenders")  %></span>
+            </div>
+            <div class="value-widget text-center">
+              <%= @total_offenders %>
+            </div>
+          </div>
         </div>
-        <div class="value-widget text-center">
-          <%= @total_offenders %>
+      <% end %>
+
+      <%= link_to offenders_path({q:{ measures_end_date_measure_lt: Date.today + 10, measures_end_date_measure_gt: Date.today, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission") }}) do %>
+        <div class="col-sm-5 col-xs-6">
+          <div class="cb-item bad light-font <%= randomEntrance %>">
+            <h3><%= @near_due_date_counter %></h3>
+            <hr>
+            <small><%= t('views.offenders.subtitle.near_due_date.title') %></small>
+          </div>
         </div>
-      </div>
-    </div>
+      <% end %>
 
-    <div class="col-sm-5 col-xs-6">
-      <div class="cb-item bad light-font <%= randomEntrance %>">
-        <h3><%= @near_due_date_counter %></h3>
-        <hr>
-        <small><%= t('views.offenders.subtitle.near_due_date.title') %></small>
-      </div>
-    </div>
+      <%= link_to offenders_path({ q: { measures_current_period_date_lteq: Date.today + 30.days} }) do %>
+        <div class="col-sm-5 col-xs-6">
+          <div class="cb-item regular light-font <%= randomEntrance %>">
+            <h3><%= @near_current_period_counter %></h3>
+            <hr>
+            <small><%= I18n.t('views.offenders.subtitle.current_period.title') %></small>
+          </div>
+        </div>
+      <% end %>
 
-    <div class="col-sm-5 col-xs-6">
-      <div class="cb-item regular light-font <%= randomEntrance %>">
-        <h3><%= @near_current_period_counter %></h3>
-        <hr>
-        <small><%= I18n.t('views.offenders.subtitle.current_period.title') %></small>
-      </div>
-    </div>
+      <%= link_to offenders_path({ q: { measures_end_date_measure_lt: Date.today + 10, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.sanction") } }) do %>
+        <div class="col-sm-5 col-xs-6">
+          <div class="cb-item sanction light-font <%= randomEntrance %>">
+            <h3><%= @sanctions %></h3>
+            <hr>
+            <small><%= I18n.t('views.offenders.subtitle.sanction.title') %></small>
+          </div>
+        </div>
+      <% end %>
 
-    <div class="col-sm-5 col-xs-6">
-      <div class="cb-item sanction light-font <%= randomEntrance %>">
-        <h3><%= @sanctions %></h3>
-        <hr>
-        <small><%= I18n.t('views.offenders.subtitle.sanction.title') %></small>
-      </div>
-    </div>
-
-    <div class="col-sm-5 col-xs-6">
-      <div class="cb-item overdue light-font <%= randomEntrance %>">
-        <h3><%= @measure_overdues %></h3>
-        <hr>
-        <small><%= I18n.t('views.offenders.subtitle.overdue_measure.title') %></small>
-      </div>
-    </div>
+      <%= link_to offenders_path({ q: { measures_end_date_measure_lt: Date.today, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission") } }) do %>
+        <div class="col-sm-5 col-xs-6">
+          <div class="cb-item overdue light-font <%= randomEntrance %>">
+            <h3><%= @measure_overdues %></h3>
+            <hr>
+            <small><%= I18n.t('views.offenders.subtitle.overdue_measure.title') %></small>
+          </div>
+        </div>
+      <% end %>
   </div>
 
   <div class="row">

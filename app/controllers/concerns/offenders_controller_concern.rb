@@ -90,15 +90,15 @@ module Concerns
 
       def grouped_units
         @units = []
-        free_range_unit_label = UnicodeUtils.upcase(I18n.t("enumerize.unit.measure_unit_type.free_range_unit}"))
+        free_range_unit_label = UnicodeUtils.upcase(I18n.t("measure_units_types.free_range_unit"))
         free_range_units = Unit.includes(:measure_types).where("measure_types.name" => "Unidade de semiliberdade").pluck(:name, :id)
         @units << [free_range_unit_label , free_range_units]
 
-        admission_unit_label = UnicodeUtils.upcase(I18n.t("enumerize.unit.measure_unit_type.admission_unit}"))
-        admission_units = Unit.includes(:measure_types).where("measure_types.name" => "Unidade de Internação")
+        admission_unit_label = UnicodeUtils.upcase(I18n.t("measure_units_types.admission_unit"))
+        admission_units = Unit.includes(:measure_types).where("measure_types.name" => "Unidade de Internação").pluck(:name, :id)
         @units << [admission_unit_label , admission_units]
 
-        provisional_admission_unit_label = UnicodeUtils.upcase(I18n.t("enumerize.unit.measure_unit_type.provisional_admission_unit}"))
+        provisional_admission_unit_label = UnicodeUtils.upcase(I18n.t("measure_units_types.provisional_admission_unit"))
         provisional_admission_units = Unit.includes(:measure_types).where("measure_types.name" => "Unidade de Internação Provisória").pluck(:name, :id)
         @units << [provisional_admission_unit_label , provisional_admission_units]
 

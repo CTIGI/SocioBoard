@@ -17,18 +17,6 @@ class PopulateOffendersJob < ApplicationJob
     end
   end
 
-  def set_measure_unit_type(unit_name)
-    if Constants::FREE_RANGE_UNITS.include?(unit_name)
-      Unit.measure_unit_types[:free_range_unit]
-    elsif Constants::ADMISSION_UNITS.include?(unit_name)
-      Unit.measure_unit_types[:admission_unit]
-    elsif Constants::PROVISIONAL_ADMISSION_UNITS.include?(unit_name)
-      Unit.measure_unit_types[:provisional_admission_unit]
-    else
-      nil
-    end
-  end
-
   def perform
     body_units = open("http://www11.stds.ce.gov.br/sgi/rest/crvqavu/#{Constants::CRV::PWD}").read
     result_units = JSON.parse(body_units)
@@ -37,7 +25,6 @@ class PopulateOffendersJob < ApplicationJob
         unit = Unit.where(name: u["unidade"]).first_or_initialize
         unit.capacity          = u["capacidade"]
         unit.occupied          = u["totalOcupado"]
-        unit.measure_unit_type = set_measure_unit_type(u["unidade"])
         unit.save
       end
     end

@@ -1,0 +1,76 @@
+
+<div class="col-md-4 animated <%= animation %>">
+  <div class="tile panel-info-unit">
+    <div class="t-header th-alt bg-white">
+      <div class="th-title title-unit-panel">
+        <%= truncate_words(name) %>
+      </div>
+    </div>
+
+    <div class="t-body">
+      <div class="row">
+        <div class="col-md-3">
+          <ul class="label-list">
+            <li>
+              <div class="label-unit <%= initials_measure_unit_type(unit_type) %>-color" data-toggle="tooltip" data-placement="top" title=""
+                   data-original-title="<%= UnicodeUtils.upcase(unit_type.join(", ")) %>">
+                <%= fa_icon("building") %>
+                <%= initials_measure_unit_type(unit_type) %>
+              </div>
+            </li>
+            <li>
+              <div class="label-unit bg-bluegray" data-toggle="tooltip" data-placement="top" title=""
+                   data-original-title="<%= UnicodeUtils.upcase(t('views.home.age_range')) %>">
+                <%= fa_icon("male") %>
+                <%= range_date %>
+              </div>
+            </li>
+            <li>
+              <div class="label-unit bg-bluegray" data-toggle="tooltip" data-placement="top" title=""
+                   data-original-title="<%= UnicodeUtils.upcase(t('views.dashboards.total_capacity')) %>">
+                <%= fa_icon("users") %>
+                <%= capacity %>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-9">
+          <div class="unit-data">
+            <ul>
+              <li>
+                <%= fa_icon("users") %>
+                <%= t("views.dashboards.occupied").upcase %>:
+                <%= occupied %>
+              </li>
+              <li class="<%= underflow(capacity, occupied)[1] %>">
+                <%= fa_icon("users") %>
+                <%= t("views.dashboards.underflow").upcase %>: <%= underflow(capacity, occupied)[0] %>
+              </li>
+            </ul>
+            <ul>
+              <li class="<%= render_admission_data(offenders_out_of_profile, "danger-item")[1] %>">
+                <%= fa_icon("male") %>
+                <%= UnicodeUtils.upcase(t("views.home.out_of_profile")) %>: <%= render_admission_data(offenders_out_of_profile)[0] %>
+              </li>
+              <li class="<%= render_admission_data(offenders_out_of_measure, "danger-item")[1] %>">
+                <%= fa_icon("male") %>
+                <%= UnicodeUtils.upcase(t("views.home.out_of_measure")) %>:<%= render_admission_data(offenders_out_of_measure)[0] %>
+              </li>
+            </ul>
+            <ul>
+              <li class="<%= render_admission_data(near_admission_date)[1] %>">
+                <%= fa_icon("calendar") %>
+                <%= t("views.home.near_admission_date")%>: <%= render_admission_data(near_admission_date)[0] %>
+              </li>
+              <li class="<%= render_admission_data(near_provisional_admission_date)[1] %>">
+                <%= fa_icon("calendar") %>
+                <%= t("views.home.near_provisional_admission_date")%>: <%= render_admission_data(near_provisional_admission_date)[0] %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -42,7 +42,9 @@ module Concerns
           series << { name: I18n.t("views.dashboards.total_capacity") , data: [] }
 
           result.each do |r|
-            gon.units_capacity_categories << view_context.truncate_words(r["unidade"], extreme_truncate)
+            initials_measure_unit_type = view_context.initials_measure_unit_type Unit.find_by(name: r["unidade"]).measure_types.pluck(:name)
+            initials_measure_unit_type = initials_measure_unit_type.blank? ? "" : "<br/><strong>(#{initials_measure_unit_type})</strong>"
+            gon.units_capacity_categories << view_context.truncate_words(r["unidade"], extreme_truncate) + initials_measure_unit_type
             series[1][:data] << r["capacidade"]
             series[0][:data] << r["totalOcupado"]
             series[0][:percentage_value] << r["totalOcupado"].to_f/r["capacidade"].to_f*100

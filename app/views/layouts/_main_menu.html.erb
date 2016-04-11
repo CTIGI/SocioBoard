@@ -33,15 +33,6 @@
     </li>
 
     <li class="sm-sub">
-      <%= menu_icon("", "cogs", t("main_menu.configurations.configurations")) %>
-      <ul>
-        <li>
-          <%= link_to t("main_menu.configurations.units"), units_path %>
-        </li>
-      </ul>
-    </li>
-
-    <li class="sm-sub">
       <%= menu_icon("", "line-chart", t("main_menu.indicators.indicators")) %>
       <ul>
         <li>
@@ -53,5 +44,13 @@
       </ul>
     </li>
 
+    <li class="sm-sub">
+      <%= menu_icon("", "cogs", t("main_menu.configurations.configurations")) %>
+      <ul>
+        <li>
+          <%= link_to t("main_menu.configurations.units"), units_path %>
+        </li>
+      </ul>
+    </li>
   </ul>
 </aside>

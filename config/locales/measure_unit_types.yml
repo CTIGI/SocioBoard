@@ -1,0 +1,6 @@
+pt-BR:
+  measure_units_types:
+    free_range_unit: "Unidade de semiliberdade"
+    admission_unit: "Unidade de Internação"
+    provisional_admission_unit: "Unidade de Internação Provisória"
+    sanction_unit: "Unidade de Sanção"

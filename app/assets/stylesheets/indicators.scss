@@ -44,3 +44,58 @@
 #units-capacity {
     width: 112%;
 }
+
+.label-list {
+  padding: 10px;
+  li {
+    cursor: help;
+    list-style: none;
+    margin: 10px 0 18px 0;
+    span {
+      font-size: 24px;
+    }
+  }
+}
+
+.label-unit {
+  width: 80px;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.unit-data {
+  background-color: rgba(96, 125, 139, 0.3);
+  padding: 10px;
+  margin: 20px 10px 0 0;
+  height: 155px;
+  border-radius: 5px;
+  font-weight: bold;
+  ul {
+    margin-left: -30px;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
+}
+
+.title-unit-panel {
+  color: gray !important;
+  font-weight: bold;
+}
+
+.USL-color {
+  background-color: #3F51B5;
+}
+
+.UIP-color {
+  background-color: #00BCD4;
+}
+
+.UI-color {
+  background-color: #FF5722;
+}

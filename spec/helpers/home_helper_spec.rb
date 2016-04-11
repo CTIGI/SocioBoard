@@ -1,21 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe HomeHelper, :type => :helper do
-  describe "#random_color" do
-    it "should return a random color" do
-      colors = [ "bg-cyan",
-                 "bg-orange",
-                 "bg-cyan",
-                 "bg-bluegray",
-                 "bg-purple",
-                 "bg-deeppurple",
-                 "bg-deeporange",
-                 "bg-indigo",
-                 "bg-blue" ]
-
-      expect(colors.include?(helper.random_color)).to eq(true)
-    end
-  end
 
   describe "#underflow" do
     it "should return underflow 0 and the markup if positive" do

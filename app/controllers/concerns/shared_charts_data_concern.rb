@@ -60,17 +60,22 @@ module Concerns
       def units_inconsistences_data_chart
         gon.units_inconsistences_title = t("views.indicators.inconsistences_title_chart")
         gon.units_inconsistences_categories = []
-        by_age = { name: t("views.indicators.inconsistences.by_age"), data: [] }
-        by_measure = { name: t("views.indicators.inconsistences.by_measure"), data: [] }
-        by_other_things = { name: t("views.indicators.inconsistences.by_other_things"), data: [] }
+
+        total_out_of_measure         = { name: t("views.analysis.total_on_measure"),     data: [] }
+        total_out_of_age             = { name: t("views.analysis.total_on_age"),         data: [] }
+        total_out_of_age_and_measure = { name: t("views.analysis.total_on_measure_age"), data: [] }
+        conformities                 = { name: t("views.analysis.total_conformities"),   data: [] }
+
         Unit.all.order(:name).each do |u|
           gon.units_inconsistences_categories << view_context.truncate_words( u.name, true)
-          by_age[:data]          << u.offenders_out_of_profile_by_age
-          by_measure[:data]      << u.offenders_out_of_measure
-          by_other_things[:data] << u.inconsistences
+          analysis_data_count = u.analysis_data_count
+          total_out_of_measure[:data]         << analysis_data_count[0]
+          total_out_of_age[:data]             << analysis_data_count[1]
+          total_out_of_age_and_measure[:data] << analysis_data_count[2]
+          conformities[:data]                 << analysis_data_count[3]
         end
 
-        series = [ by_age, by_measure, by_other_things ]
+        series = [ total_out_of_measure, total_out_of_age, total_out_of_age_and_measure, conformities]
         gon.units_inconsistences_series = series
       end
     end

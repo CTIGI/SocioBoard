@@ -49,6 +49,32 @@ class Unit < ApplicationRecord
     return count
   end
 
+  def analysis_data_count
+    ages_range = (12..20)
+    total_conformities       = 0
+    total_out_of_age         = 0
+    total_out_of_measure     = 0
+    total_age_and_measure    = 0
+    ages_range.each do |age|
+      measures = [ { measure: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission"), unit_measure: "Unidade de Internação Provisória" },
+                   { measure: I18n.t("activerecord.attributes.offender.measure_type_list.admission"), unit_measure: "Unidade de Internação"},
+                   { measure: I18n.t("activerecord.attributes.offender.measure_type_list.sanction"), unit_measure: "Unidade de Sanção"} ]
+
+      measures.each do |measure|
+        if age.between?(min_age, max_age) && measure_type_names.include?(measure[:unit_measure])
+          total_conformities += self.count_applied_measure_by_age(age, measure[:measure])
+        elsif self.measure_types.map(&:name).include?(measure[:unit_measure])
+          total_out_of_age += self.count_applied_measure_by_age(age, measure[:measure])
+        elsif age.between?(min_age, max_age)
+          total_out_of_measure += self.count_applied_measure_by_age(age, measure[:measure])
+        else
+          total_age_and_measure += self.count_applied_measure_by_age(age, measure[:measure])
+        end
+      end
+    end
+    [ total_out_of_measure, total_out_of_age, total_age_and_measure, total_conformities ]
+  end
+
   private
 
   def check_ages

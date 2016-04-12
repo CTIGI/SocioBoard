@@ -101,20 +101,30 @@ function unitsInconsistencesChart() {
       }
     },
     series: [{
+      color: '#f44336',
       name: gon.units_inconsistences_series[0].name,
       data: gon.units_inconsistences_series[0].data,
       dataLabels: {
         enabled: true
       }
     }, {
+      color: '#FF5722',
       name: gon.units_inconsistences_series[1].name,
       data: gon.units_inconsistences_series[1].data,
       dataLabels: {
         enabled: true
       }
     }, {
+      color: '#FF9801',
       name: gon.units_inconsistences_series[2].name,
       data: gon.units_inconsistences_series[2].data,
+      dataLabels: {
+        enabled: true
+      }
+    }, {
+      color: '#2196F3',
+      name: gon.units_inconsistences_series[3].name,
+      data: gon.units_inconsistences_series[3].data,
       dataLabels: {
         enabled: true
       }

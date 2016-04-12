@@ -81,6 +81,14 @@ RSpec.describe Unit, :type => :model do
         expect(unit.offenders_out_of_profile_percentage). to eq 50
       end
     end
+
+    describe ".analysis_data_count" do
+      it "should return an array with [ total_out_of_measure, total_out_of_age, total_age_and_measure, total_conformities ]" do
+        unit = create(:unit)
+        unit.measure_types << create(:measure_type)
+        expect(unit.analysis_data_count).to eq([0, 0, 0, 0])
+      end
+    end
   end
 
   context "validations" do

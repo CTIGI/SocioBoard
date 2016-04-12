@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     end
   end
   resources :dashboard
-  resources :analysis, only: [] do
+  resources :analysis, only: [:update] do
     collection do
       get :unconformities, as: :unconformities
+      get :simulator, as: :simulator
+      get :load_simulator_modal, :load_simulator_modal
+      get :update_table
     end
   end
 

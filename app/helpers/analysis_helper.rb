@@ -14,8 +14,11 @@ module AnalysisHelper
     end
   end
 
-  def show_table_unconformities_value(age_value, min_age, max_age, measure_value, unit_id, measure_type, unit_measure)
+  def show_table_unconformities_value(age_value, min_age, max_age, measure_value, unit_id, measure_type, unit_measure, is_simulator)
     td_class = ""
+
+    link = is_simulator ? load_simulator_modal_analysis_index_path(offenders_amount: measure_value, origin_unit: unit_id, age: age_value, measure_type: truncate_words(measure_type), unit_measure: unit_measure) : modal_index_offenders_path(q:
+            { age_eq: age_value, unit_id_eq: unit_id, measures_measure_type_in: measure_type})
 
     unit = Unit.find(unit_id)
     unit_measures = unit.measure_type_names
@@ -32,10 +35,9 @@ module AnalysisHelper
       end
     end
 
-    content_tag(:td, class: td_class) do
+    content_tag(:td, class: td_class, id: "#{unit_id}-#{truncate_words(measure_type)}-#{age_value}") do
       if measure_value > 0
-        link_to "#", class: "index-object link-index-black", data: { link: modal_index_offenders_path(q:
-                { age_eq: age_value, unit_id_eq: unit_id, measures_measure_type_in: measure_type}) } do
+        link_to "#", class: "index-object btn-edit-object link-index-black", data: { link: link } do
           concat(content_tag(:span, measure_value))
         end
       end

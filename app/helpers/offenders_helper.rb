@@ -79,6 +79,10 @@ module OffendersHelper
     word.gsub!("INTERNAÇÃO", "INT.")
     word.gsub!("SEMILIBERDADE", "SEMILIB.")
     word.gsub!("PROVISÓRIA", "PROV.")
+    word.gsub!("Internação Provisória", "IP")
+    word.gsub!("Internação", "I")
+    word.gsub!("Sanção", "S")
+
 
     truncated_word = (extreme == true) ? "" : "DE "
     word.gsub!("DE ", truncated_word)

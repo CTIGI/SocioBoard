@@ -32,14 +32,15 @@ function showIndex() {
   })
 }
 
-function renderFormObject(markup, modalTitle) {
+function renderFormObject(markup, modalTitle, extra_args) {
   var url = $(markup).attr('data-link');
   setModalTitle(modalTitle, '#skinny-modal');
   $.ajax({
     method: 'get',
     url: url,
     data: {
-      parent: $(markup).attr('data-parent')
+      parent: $(markup).attr('data-parent'),
+      extra: extra_args
     },
     success: function(rt) {
       $('#skinny-modal').find('.response-content').html($(rt));

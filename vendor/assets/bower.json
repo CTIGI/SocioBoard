@@ -21,6 +21,8 @@
     "highstock-release": "latest",
     "jQuery.Hotkeys": "latest",
     "eonasdan-bootstrap-datetimepicker": "latest",
-    "hover": "latest"
+    "hover": "latest",
+    "mootools": "latest",
+    "mootools-more": "latest"
   }
 }

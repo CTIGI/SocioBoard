@@ -11,6 +11,7 @@ pt-BR:
     analysis:
       analysis: "Análises"
       unconformities: "Inconformidades"
+      simulator: "Simulador de Inconformidades"
     configurations:
       configurations: "Configurações"
       units: "Unidades"

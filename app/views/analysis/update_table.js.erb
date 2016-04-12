@@ -1,0 +1,8 @@
+$('#<%= @origin_unit.id %>-<%= @measure_type %>-<%= @age %>').replaceWith("<%= escape_javascript(render partial: 'update_row', locals: { unit: @origin_unit, age: @age.to_i, measure_type: @measure_type, unit_measure: @unit_measure, value: @old_value - @to_update } ) %>");
+
+$('#<%= @unit.id %>-<%= @measure_type %>-<%= @age %>').replaceWith("<%= escape_javascript(render partial: 'update_row', locals: { unit: @unit, age: @age.to_i, measure_type: @measure_type, unit_measure: @unit_measure, value: @target_cell_value + @to_update} ) %>");
+
+loadModalForm();
+countOffenders();
+
+$("#simulator-movements").text( $('#simulator-movements').text() + '<%= @append_to_text %>' + '\n' ) 

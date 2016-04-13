@@ -7212,26 +7212,12 @@ strong {
   position: relative;
   padding-top: 30px;
   padding-bottom: 30px;
+  margin-left: 64px;
 }
 @media (min-width: 769px) {
   #content {
     padding-right: 15px;
     padding-left: 15px;
-  }
-}
-@media (min-width: 1280px) {
-  #content {
-    margin-left: 240px;
-  }
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  #content {
-    margin-left: 64px;
-  }
-}
-@media (max-width: 768px) {
-  #content {
-    margin-left: 0;
   }
 }
 .container.c-boxed {
@@ -8482,9 +8468,7 @@ fieldset[disabled] .btn-inverse.active {
   background: #000;
   height: 100%;
 }
-#menu-trigger.toggled i:before {
-  content: '\f2ea';
-}
+
 @media (min-width: 769px) {
   #menu-trigger {
     line-height: 62px;
@@ -8820,10 +8804,6 @@ fieldset[disabled] .btn-inverse.active {
 /* --------------------------------------------------------
     Sidebar for mid size screens
 -----------------------------------------------------------*/
-
-
-
-
 #sidebar.toggled .side-menu > li > a > span {
   position: absolute;
   left: 64px;
@@ -10910,7 +10890,7 @@ a.thumbnail.active {
 }
 @media (min-width: 1280px) {
   #footer {
-    padding-left: 270px;
+    padding-left: 80px;
   }
 }
 @media (min-width: 768px) and (max-width: 1279px) {

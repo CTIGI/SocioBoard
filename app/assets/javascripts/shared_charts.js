@@ -9,8 +9,6 @@ function inconformsData() {
         by_measures_count += parseInt(this.children[0].children[0].textContent, 10)
       });
       $('#total-measure-span').text(by_measures_count);
-      console.log(by_measures_count);
-
       var by_age = $(rt).find('.table-yellow-rowspan')
       var by_age_count = 0
       by_age.map(function() {
@@ -43,6 +41,9 @@ function resizeSlide() {
 
 function unitsCapacityChart() {
   $('#units-capacity').highcharts({
+    chart: {
+      width: $(window).width() - 180
+    },
     title: {
       text: gon.units_capacity_data
     },
@@ -64,8 +65,7 @@ function unitsCapacityChart() {
       dataLabels: {
         enabled: true
       }
-    },
-    {
+    }, {
       type: 'spline',
       color: 'red',
       name: gon.units_capacity_series[0].name,
@@ -93,6 +93,11 @@ function unitsInconsistencesChart() {
     xAxis: {
       categories: gon.units_inconsistences_categories,
       crosshair: true
+    },
+    yAxis: {
+      title: {
+        text: 'Quantidade'
+      }
     },
     plotOptions: {
       column: {

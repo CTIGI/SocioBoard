@@ -99,4 +99,18 @@ RSpec.describe OffendersHelper, :type => :helper do
       expect(helper.value_selected(:q, :test)).to eq(value)
     end
   end
+
+  describe "#links_to_export" do
+    it "should return links to export" do
+      expect(helper.links_to_export).to include("export_pdf")
+      expect(helper.links_to_export).to include(generate_pdf_offenders_path)
+      expect(helper.links_to_export).to include(".pdf")
+      expect(helper.links_to_export).to include(t("views.general.export.to_pdf"))
+
+      expect(helper.links_to_export).to include("export_sheet")
+      expect(helper.links_to_export).to include(generate_sheet_offenders_path)
+      expect(helper.links_to_export).to include(".xlsx")
+      expect(helper.links_to_export).to include(t("views.general.export.to_excel"))
+    end
+  end
 end

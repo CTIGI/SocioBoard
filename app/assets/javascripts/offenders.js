@@ -20,6 +20,16 @@ function setValuesIntoSelect(arrayIds) {
   return settedValues;
 }
 
+function exportFiles() {
+  $('.export-file').click(function (e) {
+    e.preventDefault();
+    var extension = $(this).attr('data-extension');
+    var link      = $(this).attr('data-link');
+    var params    = window.location.href.split("?")[1] === undefined ? "" : "?" + window.location.href.split("?")[1];
+    window.open(link + extension + params);
+  })
+}
+
 function selectSubGroupsElements() {
   $('#q_unit_id_in').on("select2:open", function (e) {
     setTimeout( function () {
@@ -39,6 +49,7 @@ function selectSubGroupsElements() {
 }
 
 OffendersController.prototype.index = function() {
+  exportFiles();
   selectSubGroupsElements();
   setSelectedUnits();
 }

@@ -1,5 +1,39 @@
 module OffendersHelper
 
+  def links_to_export
+    links = ""
+    attrs = { class: "export-file btn btn-success bg-white" }
+
+    links << (
+      content_tag :div do
+        link_to "#", { id: "export_pdf",
+                       data: {
+                         link: generate_pdf_offenders_path, extension: ".pdf",
+                         toggle: "tooltip",
+                         placement: "top",
+                         "original-title" => t("views.general.export.to_pdf")
+                       } }.merge(attrs) do
+          concat(fa_icon("file-pdf-o"))
+        end
+      end
+    )
+
+    links << (
+      content_tag :div do
+        link_to "#", { id: "export_sheet",
+                       data: {
+                         link: generate_sheet_offenders_path, extension: ".xlsx",
+                         toggle: "tooltip",
+                         placement: "top",
+                         "original-title" => t("views.general.export.to_excel")
+                       } }.merge(attrs) do
+          concat(fa_icon("file-excel-o"))
+        end
+      end
+    )
+    raw links
+  end
+
   def is_checked?(form_element, input)
     if params[form_element].present?
       params[form_element][input].present?

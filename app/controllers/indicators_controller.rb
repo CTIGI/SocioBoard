@@ -1,5 +1,8 @@
 class IndicatorsController < ApplicationController
   include Concerns::SharedChartsDataConcern
+  
+  skip_after_action :verify_policy_scoped
+  skip_after_action :verify_authorized
 
   before_action :set_values, only: [ :indicator_01 ]
   before_action :units_capacity_data, only: [ :indicator_01 ]

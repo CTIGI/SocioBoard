@@ -1,0 +1,31 @@
+<span class="content-modal">
+  <div class="modal-body">
+
+  <%= simple_form_for update_table_analysis_index_path do |f| %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :current_value, collection: 1..@current_value, label: t("views.analysis.offenders_amount"),
+                input_html: { class: "" }, include_blank: false %>
+          <%= f.input :origin_unit, as: :hidden, input_html: { value: @origin_unit } %>
+          <%= f.input :age, as: :hidden, input_html: { value: @age } %>
+          <%= f.input :measure_type, as: :hidden, input_html: { value: @measure_type } %>
+          <%= f.input :unit_measure, as: :hidden, input_html: { value: @unit_measure } %>
+          <%= f.input :old_value, as: :hidden, input_html: { value: @current_value } %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.input :unit, collection: @units, label: t("views.analysis.unit"),
+                input_html: { class: "" }, include_blank: false %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+  </div>
+
+  <%= render partial: "shared/modal_footer", locals: { submit_id: "btn-submit-action" } %>
+</span>

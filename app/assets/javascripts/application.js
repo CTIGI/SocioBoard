@@ -25,6 +25,9 @@
 //= require highcharts-release/highcharts-more
 //= require jQuery.Hotkeys/jquery.hotkeys.js
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
+//= require mootools/dist/mootools-core.min
+//= require mootools-more/Source/Drag/Drag
+//= require mootools-more/Source/Drag/Drag.Move
 //= require iCheck/icheck
 //= require functions
 //= require general

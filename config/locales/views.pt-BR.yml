@@ -53,6 +53,8 @@ pt-BR:
       edit_unit: "Editar Unidade"
     analysis:
       unit: "Unidades"
+      move_offenders: "Transferir Socioeducandos"
+      offenders_amount: "Quantidade à transferida"
       unconformities: "Analisar Inconformidades"
       age_group: "Faixa Etária"
       applied_measure: "Medida Aplicada"
@@ -68,6 +70,7 @@ pt-BR:
       total_on_age: "Fora da Faixa etária"
       total_on_measure_age: "Fora da Faixa etária e Medida"
       total_conformities: "Conformidades"
+      simulator_movements: "%{value} Movimentações de saída da unidade %{origin} para %{target}. Idade: %{age}"
       unit_information: "Faixa Etária %{min_age} - %{max_age}\n
                          Ocupação: %{occupation} \n
                          Fora do Perfil: %{offenders_out_of_profile}\n

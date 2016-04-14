@@ -87,7 +87,6 @@ td:first-child, .table > tfoot > tr > td:first-child {
   padding-left: 5px !important;
 }
 
-
 .analysis-table > thead > tr > th,
 .analysis-table > tbody > tr > th,
 .analysis-table > tfoot > tr > th,
@@ -124,5 +123,10 @@ td:first-child, .table > tfoot > tr > td:first-child {
 }
 
 .big-select2 {
-    width: 600px !important;
+  width: 600px !important;
+}
+
+.simulator-movements{
+  width: 100%;
+  height: 200px;
 }

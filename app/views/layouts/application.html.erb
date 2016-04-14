@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head dir="ltr" lang="<%= I18n.locale %>">
- <%= favicon_link_tag "favicon.ico" %>
- <title>.:: <%= t("app.appname") %> ::.</title>
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
- <%= stylesheet_link_tag 'application', media: 'all' %>
- <%= csrf_meta_tags %>
+  <head dir="ltr" lang="<%= I18n.locale %>">
+  <%= favicon_link_tag "favicon.ico" %>
+  <title>.:: <%= t("app.appname") %> ::.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
 </head>
- <body>
-   <%= render partial: "layouts/header" %>
-   <%= render partial: "layouts/main_menu" %>
+  <body class="animated fadeIn">
+    <%= render partial: "layouts/header" %>
+    <%= render partial: "layouts/main_menu" %>
 
-   <section id="content">
-     <div class="container">
-       <%#= render_flash_message %>
-       <%= yield %>
-     </div>
-   </section>
-   <%= render partial: "layouts/javascripts" %>
- </body>
+    <section id="content">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+    <%= render partial: "layouts/javascripts" %>
+  </body>
+
+  <footer id="footer">
+    <div class="text-center">
+      <b><%= t("app.copyright.line_02") %></b>
+    </div>
+    <div class="text-center">
+      <%= t("app.copyright.line_01") %>
+    </div>
+  </footer>
 </html>

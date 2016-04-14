@@ -1,14 +1,7 @@
-<aside id="sidebar">
+<aside id="sidebar" class="toggled">
 
   <!--| MAIN MENU |-->
   <ul class="side-menu">
-
-    <li>
-      <a href="#" id="toggleMenu">
-        <%= fa_icon("bars", class: "icon-head") %>
-      </a>
-    </li>
-
     <%= render partial: "layouts/user_profile" if current_user %>
 
     <li>

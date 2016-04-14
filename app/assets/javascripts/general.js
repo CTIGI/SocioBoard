@@ -91,35 +91,6 @@ var General = {
     })
   },
 
-  toggleMenu: function() {
-    $('#toggleMenu').click(function(e){
-      e.preventDefault();
-      $('#sidebar').toggleClass('toggled');
-      var isToggled = ( $('#sidebar.toggled').length !== 0 ) ? true : false;
-      if ( isToggled === true ) {
-        $('#toggleMenu > i').removeClass('fa-ellipsis-v').addClass('fa-bars');
-        $('#content').css('margin-left', '60px');
-        localStorage.setItem("toggled", "false");
-      } else {
-        $('#toggleMenu > i').removeClass('fa-bars').addClass('fa-ellipsis-v');
-        $('#content').css('margin-left', '240px');
-        localStorage.setItem("toggled", "true");
-      }
-    });
-  },
-
-  loadLastStateMenu: function() {
-    lastMenuState = localStorage.getItem("toggled")
-    if ( lastMenuState === "true" ) {
-      $('#toggleMenu > i').removeClass('fa-bars').addClass('fa-ellipsis-v');
-      $('#content').css('margin-left', '240px');
-    } else {
-      $('#toggleMenu > i').removeClass('fa-ellipsis-v').addClass('fa-bars');
-      $('#sidebar').addClass('toggled');
-      $('#content').css('margin-left', '60px');
-    }
-  },
-
   loadFilenameUploadedFile: function() {
     $(":file").each(function() {
       var placeholder = $(this).attr("data-placeholder")
@@ -172,9 +143,7 @@ var Mask = {
 }
 
 $(document).ready(function() {
-  General.loadLastStateMenu();
   enableSelect2();
   enableiCheck();
-  General.toggleMenu();
   Mask.datePicker();
 });

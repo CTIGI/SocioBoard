@@ -1,6 +1,6 @@
 class IndicatorsController < ApplicationController
   include Concerns::SharedChartsDataConcern
-  
+
   skip_after_action :verify_policy_scoped
   skip_after_action :verify_authorized
 
@@ -11,11 +11,9 @@ class IndicatorsController < ApplicationController
   before_action :params_search, only: [ :units]
 
   def indicator_01
-    authorize :indicator
   end
 
   def units
-    authorize :indicator
     @q = Unit.ransack(params[:q])
     @units_group = @q.result.to_a
   end

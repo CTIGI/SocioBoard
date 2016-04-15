@@ -2,7 +2,7 @@ class OffendersController < ApplicationController
   include Concerns::OffendersControllerConcern
 
   def index
-    @q = Offender.ransack(params[:q])
+    @q = Offender.order(:unit_id, :name).ransack(params[:q])
     @result = @q.result
     @offenders = @result.page(params[:page])
     respond_with(@offenders)
@@ -16,5 +16,4 @@ class OffendersController < ApplicationController
     end
     respond_with(@offenders, layout: false)
   end
-
 end

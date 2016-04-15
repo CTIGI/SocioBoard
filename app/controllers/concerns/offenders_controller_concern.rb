@@ -27,7 +27,7 @@ module Concerns
       private
 
       def result_offenders
-        @q = Offender.ransack(params[:q])
+        @q = Offender.order(:unit_id, :name).ransack(params[:q])
         @offenders = @q.result
       end
 

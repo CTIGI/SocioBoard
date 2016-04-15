@@ -110,7 +110,7 @@ function setWebChart(chartDiv, categories, chartData, title) {
        y: 400,
        layout: 'vertical'
      },
-     colors: ["blue", "red"],
+     colors: ["red", "blue"],
      series: chartData
    });
 

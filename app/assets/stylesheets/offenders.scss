@@ -81,3 +81,16 @@
 .select2-container--default .select2-results__group {
   cursor: pointer !important;
 }
+
+.export-elements {
+  margin-top: -8px;
+  div {
+    margin-bottom: 10px;
+  }
+}
+
+.export-file {
+  i {
+    color: #068E4E !important
+  }
+}

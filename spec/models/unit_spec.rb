@@ -19,6 +19,26 @@ RSpec.describe Unit, :type => :model do
   end
 
   context "Instance Methods" do
+    describe ".offenders_out_of_profile" do
+      it "should count offfenders out of profile" do
+        unit = create(:unit, min_age: 12, max_age: 14, capacity: 2)
+        mt_1 = create(:measure_type, name: "Unidade de Internação")
+
+        unit.measure_types << mt_1
+
+        offender_1 = create(:offender, age: 12, unit: unit)
+        measure = create(:measure, measure_type: "Internação", offender: offender_1 )
+
+        offender_2 = create(:offender, age: 12, unit: unit)
+        measure = create(:measure, measure_type: "SemiLiberdade", offender: offender_2 )
+
+        offender_1 = create(:offender, age: 12, unit: unit)
+        offender_2 = create(:offender, age: 15, unit: unit)
+
+        expect(unit.offenders_out_of_profile). to eq 2
+      end
+    end
+
     describe ".offenders_out_of_measure" do
       it "should count offfenders out of measure" do
         unit = create(:unit, min_age: 12, max_age: 14, capacity: 2)

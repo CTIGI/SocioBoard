@@ -28,6 +28,7 @@
 //= require mootools/dist/mootools-core.min
 //= require mootools-more/Source/Drag/Drag
 //= require mootools-more/Source/Drag/Drag.Move
+//= require jspdf/dist/jspdf.min
 //= require iCheck/icheck
 //= require functions
 //= require general

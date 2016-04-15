@@ -2,7 +2,17 @@ $('#<%= @origin_unit.id %>-<%= @measure_type %>-<%= @age %>').replaceWith("<%= e
 
 $('#<%= @unit.id %>-<%= @measure_type %>-<%= @age %>').replaceWith("<%= escape_javascript(render partial: 'update_row', locals: { unit: @unit, age: @age.to_i, measure_type: @measure_type, unit_measure: @unit_measure, value: @target_cell_value + @to_update} ) %>");
 
+
+var occupation = parseInt($('#unit-occupation-<%= @unit.id %>').html())
+
+$('#unit-occupation-<%= @origin_unit.id %>').html('<%= @origin_occupation %>')
+$('#unit-occupation-<%= @unit.id %>').html('<%= @target_occupation %>')
+
 loadModalForm();
 countOffenders();
+countOutOfProfile('<%= @unit.id %>');
+countOutOfProfile('<%= @origin_unit.id %>');
 
-$("#simulator-movements").text( $('#simulator-movements').text() + '<%= @append_to_text %>' + '\n' ) 
+$("#simulator-movements").text(
+  $('#simulator-movements').text()+ '\n' + '<%= @unit.name %>:\n' + '<%= @text_simulator_in %>' + '\n' +
+  '<%= @origin_unit.name %>:\n' + '<%= @text_simulator_out %>' + '\n' )

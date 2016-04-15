@@ -53,6 +53,7 @@ pt-BR:
       edit_unit: "Editar Unidade"
     analysis:
       unit: "Unidades"
+      target_unit: "Unidade destino"
       move_offenders: "Transferir Socioeducandos"
       offenders_amount: "Quantidade à transferida"
       unconformities: "Analisar Inconformidades"
@@ -66,11 +67,13 @@ pt-BR:
       detention: "Internação"
       inconsistences: "Inconsistencias"
       penalty: "Sanção"
+      export: "Exportar Simulação"
       total_on_measure: "Fora da Medida"
       total_on_age: "Fora da Faixa etária"
       total_on_measure_age: "Fora da Faixa etária e Medida"
       total_conformities: "Conformidades"
-      simulator_movements: "%{value} Movimentações de saída da unidade %{origin} para %{target}. Idade: %{age}"
+      simulator_movements_in: "%{value} movimentações de entrada na unidade, origem: %{origin}, idade: %{age}, medida: %{measure}"
+      simulator_movements_out: "%{value} movimentações de saida da unidade, destino: %{target}, idade: %{age}, medida: %{measure}"
       unit_information: "Faixa Etária %{min_age} - %{max_age}\n
                          Ocupação: %{occupation} \n
                          Fora do Perfil: %{offenders_out_of_profile}\n

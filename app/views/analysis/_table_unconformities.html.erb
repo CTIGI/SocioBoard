@@ -44,6 +44,12 @@
       <thead>
         <tr>
           <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.unit") %></th>
+          <% if @is_simulator %>
+            <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.age_group") %></th>
+            <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.occupation") %></th>
+            <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.out_off_profile_percentage") %></th>
+          <% end %>
+
           <th colspan="9" class="table-strong-green-rowspan"><%= t("views.analysis.provisory") %></th>
           <th colspan="9" class="table-strong-green-rowspan"><%= t("views.analysis.detention") %></th>
           <th colspan="9" class="table-strong-green-rowspan"><%= t("views.analysis.penalty") %></th>
@@ -88,16 +94,33 @@
           <th class="table-light-green-rowspan text-center">19</th>
           <th class="table-light-green-rowspan text-center">20</th>
         </tr>
-
       </thead>
       <tbody>
         <% @units.each do |unit| %>
         <tr id='unit-<%= unit.id %>'>
-          <td>
-            <div class="text-center" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="right" data-content="<%= simple_format(t('views.analysis.unit_information', min_age: unit.min_age, max_age: unit.max_age, occupation: unit.occupied, offenders_out_of_profile: unit.offenders_out_of_profile_by_age, measures: unit.measure_type_names, out_of_profile_percentage: unit.offenders_out_of_profile_percentage))%>" title="<%= unit.name %>" data-original-title="">
+          <span hidden id="unit-capacity-<%= unit.id %>">
+            <%= unit.capacity %>
+          </span>
+          <% if !@is_simulator %>
+            <td>
+              <div class="text-left" data-trigger="hover" data-html="true" data-toggle="popover" data-placement="right" data-content="<%= simple_format(t('views.analysis.unit_information', min_age: unit.min_age, max_age: unit.max_age, occupation: unit.occupied, offenders_out_of_profile: unit.offenders_out_of_profile_by_age, measures: unit.measure_type_names, out_of_profile_percentage: unit.offenders_out_of_profile_percentage))%>" title="<%= unit.name %>" data-original-title="">
+                <%= truncate_words unit.name %>
+              </div>
+            </td>
+          <% else %>
+            <td>
               <%= truncate_words unit.name %>
-            </div>
-          </td>
+            </td>
+            <td>
+              <%= "#{ unit.min_age }-#{ unit.max_age }" %>
+            </td>
+            <td id="unit-occupation-<%= unit.id %>">
+              <%= unit.occupied %>
+            </td>
+            <td id="unit-out-of-profile-<%= unit.id %>">
+              <%= unit.offenders_out_of_profile_percentage %>%
+            </td>
+          <% end %>
 
           <%= show_table_unconformities_value(12, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(12, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória", @is_simulator) %>
           <%= show_table_unconformities_value(13, unit.min_age, unit.max_age, unit.count_applied_measure_by_age(13, "Internação Provisória"), unit.id, "Internação Provisória", "Unidade de Internação Provisória", @is_simulator) %>

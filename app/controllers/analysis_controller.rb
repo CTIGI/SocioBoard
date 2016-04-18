@@ -32,8 +32,12 @@ class AnalysisController < ApplicationController
     @to_update = params["/analysis/update_table"][:current_value].to_i
     @old_value = params["/analysis/update_table"][:old_value].to_i
     @target_cell_value = params[:target_cell_value].to_i
-    @append_to_text = I18n.t("views.analysis.simulator_movements", value: @to_update,
-                            origin: @origin_unit.name, target: @unit.name, age: @age)
+    @origin_occupation = params[:origin_occupation].to_i - @to_update
+    @target_occupation = params[:target_occupation].to_i + @to_update
+    @text_simulator_in = I18n.t("views.analysis.simulator_movements_in", value: @to_update,
+                              origin: @origin_unit.name, age: @age, measure: @measure_type)
+    @text_simulator_out = I18n.t("views.analysis.simulator_movements_out", value: @to_update,
+                                target: @unit.name, age: @age, measure: @measure_type)
   end
 
 end

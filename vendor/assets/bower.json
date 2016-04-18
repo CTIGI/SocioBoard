@@ -23,6 +23,7 @@
     "eonasdan-bootstrap-datetimepicker": "latest",
     "hover": "latest",
     "mootools": "latest",
-    "mootools-more": "latest"
+    "mootools-more": "latest",
+    "jspdf": "latest"
   }
 }

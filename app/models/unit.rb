@@ -21,8 +21,12 @@ class Unit < ApplicationRecord
     offenders.where("age < ? OR age > ?", 12, 20).count
   end
 
+  def offenders_out_of_profile
+    offenders_out_of_profile_by_age + offenders_out_of_measure
+  end
+
   def offenders_out_of_profile_percentage
-    ((offenders_out_of_profile_by_age.to_f/capacity.to_f)*(100)).round(2)
+    ((offenders_out_of_profile.to_f/capacity.to_f)*(100)).round(2)
   end
 
   def count_applied_measure_by_age(age, measure_type)

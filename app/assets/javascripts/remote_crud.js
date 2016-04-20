@@ -34,7 +34,7 @@ function showIndex(modalTitle) {
   })
 }
 
-function renderFormObject(markup, modalTitle, extra_args, method = 'get') {
+function renderFormObject(markup, modalTitle, extra_args, method) {
   var url = $(markup).attr('data-link');
   setModalTitle(modalTitle, '#skinny-modal');
   $.ajax({
@@ -55,7 +55,7 @@ function renderFormObject(markup, modalTitle, extra_args, method = 'get') {
 function addObject(modalTitle) {
   $('.add-object').click(function(e) {
     e.preventDefault();
-    renderFormObject(this,modalTitle, '#skinny-modal');
+    renderFormObject(this,modalTitle, '#skinny-modal', 'get');
   })
 }
 
@@ -67,7 +67,7 @@ function editObject(modalTitle) {
   })
 }
 
-function submitFormAction(reload_page = true) {
+function submitFormAction(reload_page) {
   $('#skinny-modal').on('click', '#btn-submit-action', function(e) {
     e.preventDefault();
     var form = $('#skinny-modal').find('.modal-body > form');

@@ -61,7 +61,7 @@ function exportDivToPDF(){
 function loadModalForm() {
   $('.btn-edit-object').on('click', function(e) {
     e.preventDefault();
-    renderFormObject(this, "Simular Movimentação", this.textContent);
+    renderFormObject(this, "Simular Movimentação", this.textContent, 'get');
   })
 }
 

@@ -12,6 +12,31 @@ AnalysisController.prototype.simulator = function() {
   removeTableRow();
   submitTableUpdate();
   exportDivToPDF();
+  saveSimulation();
+  submitFormAction(false);
+  showIndex("Carregar Simulação");
+  loadSimulation();
+}
+
+function loadSimulation(){
+  $('.load-simulation').on('click', function(e) {
+    $.ajax({
+      url: 'reload_simulation',
+      data: { id: this.id.split('-')[1] } ,
+      success: function(rt) {
+        $('#skinny-modal').modal('hide');
+      }
+    })
+  })
+
+}
+
+function saveSimulation(){
+  $('#save-simulation').on('click', function(e) {
+    e.preventDefault();
+    renderFormObject(this, "Salvar Simulação",
+    { table: $('.analysis-table')[0].innerHTML, div_text: $('#simulator-movements')[0].textContent }, 'post');
+  })
 }
 
 function exportDivToPDF(){
@@ -41,7 +66,7 @@ function loadModalForm() {
 }
 
 function submitTableUpdate() {
-  $('#skinny-modal').on('click', '#btn-submit-action', function(e) {
+  $('#skinny-modal').on('click', '#btn-submit-update-table', function(e) {
     e.preventDefault();
     var form = $('#skinny-modal').find('.modal-body > form');
       $.ajax({

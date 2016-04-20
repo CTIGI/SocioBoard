@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407141043) do
+ActiveRecord::Schema.define(version: 20160418172038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,14 +94,25 @@ ActiveRecord::Schema.define(version: 20160407141043) do
   add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
   add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
+  create_table "simulations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "data"
+    t.text     "div_text"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "simulations", ["user_id"], name: "index_simulations_on_user_id", using: :btree
+
   create_table "units", force: :cascade do |t|
     t.string   "name"
     t.integer  "capacity"
     t.integer  "occupied"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "min_age",    default: 12
-    t.integer  "max_age",    default: 22
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "min_age",    default: 0
+    t.integer  "max_age",    default: 150
   end
 
   create_table "users", force: :cascade do |t|

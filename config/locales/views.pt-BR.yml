@@ -52,6 +52,7 @@ pt-BR:
       list_units: "Unidades"
       edit_unit: "Editar Unidade"
     analysis:
+      load_simulation: "Carregar Simulação"
       unit: "Unidades"
       target_unit: "Unidade destino"
       move_offenders: "Transferir Socioeducandos"
@@ -69,6 +70,7 @@ pt-BR:
       penalty: "Sanção"
       export: "Exportar Simulação"
       total_on_measure: "Fora da Medida"
+      save: "Salvar simulação"
       total_on_age: "Fora da Faixa etária"
       total_on_measure_age: "Fora da Faixa etária e Medida"
       total_conformities: "Conformidades"

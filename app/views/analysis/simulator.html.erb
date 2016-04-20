@@ -4,7 +4,22 @@
   <div class="tile">
     <textarea class="simulator-movements" id="simulator-movements" disabled></textarea>
   </div>
-  
-  <button id="export-simulator-movements" class="btn btn-success pull-right"><%=t("views.analysis.export")%></button>
+
+  <div class="form-group">
+    <button id="load-simulation" class="btn btn-success index-object" data-link="<%= simulations_path %>">
+      <%= fa_icon("refresh") %>
+      <%=t("views.analysis.load_simulation")%>
+    </button>
+
+    <button id="save-simulation" class="btn btn-success" data-link="<%= new_simulation_simulations_path %>">
+      <%= fa_icon("save") %>
+      <%=t("views.analysis.save")%>
+    </button>
+
+    <button id="export-simulator-movements" class="btn btn-success pull-right">
+      <%= fa_icon("file-pdf-o") %>
+      <%=t("views.analysis.export")%>
+    </button>
+  </div>
 
 </div>

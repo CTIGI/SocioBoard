@@ -23,6 +23,10 @@ class AnalysisController < ApplicationController
     respond_with(@units, layout: false)
   end
 
+  def reload_simulation
+    @simulation = Simulation.find(params[:id])
+  end
+
   def update_table
     @origin_unit = Unit.find(params["/analysis/update_table"][:origin_unit])
     @unit = Unit.find(params["/analysis/update_table"][:unit])

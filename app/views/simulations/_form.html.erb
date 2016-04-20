@@ -1,0 +1,14 @@
+<%= simple_form_for @simulation do |f| %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :name %>
+          <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+          <%= f.input :data, as: :hidden %>
+          <%= f.input :div_text, as: :hidden %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

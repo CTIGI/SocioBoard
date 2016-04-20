@@ -13,6 +13,13 @@ Rails.application.routes.draw do
       get :simulator, as: :simulator
       get :load_simulator_modal, :load_simulator_modal
       get :update_table
+      get :reload_simulation
+    end
+  end
+
+  resources :simulations do
+    collection do
+      post :new_simulation
     end
   end
 

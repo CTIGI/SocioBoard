@@ -1,0 +1,25 @@
+<span class="content-modal">
+  <div class="modal-body">
+    <table class="table table-stripped">
+      <thead>
+        <tr>
+          <th><%= t("activerecord.attributes.unit.name") %></th>
+          <th><%= %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @simulations.each do |simulation| %>
+        <tr>
+          <td><%= simulation.name %></td>
+          <td>
+            <button type="button" class="btn btn-success load-simulation" id="load-<%= simulation.id%>">
+              <%= fa_icon("refresh") %>
+              <%= t("link.load") %>
+            </button>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</span>

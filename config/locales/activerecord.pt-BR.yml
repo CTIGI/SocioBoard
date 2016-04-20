@@ -2,7 +2,15 @@ pt-BR:
   activerecord:
     models:
       offender: "Socio-educandos"
+      simulation: "Simulação"
+      unit: "Unidade"
+    functions:
+      simulation:
+        auto_generated_name: "Simulação - %{date}"
     attributes:
+      simulation:
+        name: Nome
+        data: Dados Simulação
       unit:
         name: Nome da Unidade
         min_age: "Idade Mínima"

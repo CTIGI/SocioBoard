@@ -1,0 +1,6 @@
+$('#unconformities-table').html("<%= escape_javascript @simulation.data.html_safe %> ");
+
+$("#simulator-movements").text("<%=escape_javascript @simulation.div_text.to_s %>")
+
+loadModalForm();
+countOffenders();

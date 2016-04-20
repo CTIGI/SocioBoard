@@ -17,9 +17,10 @@ function showDetails() {
   })
 }
 
-function showIndex() {
+function showIndex(modalTitle) {
   $('.index-object').click(function(e) {
     e.preventDefault();
+    setModalTitle(modalTitle, '#skinny-modal');
     var url = $(this).attr('data-link');
     $.ajax({
       method: "get",
@@ -27,16 +28,17 @@ function showIndex() {
       success: function(rt) {
         $('#skinny-modal').find('.response-content').html(rt);
         $('#skinny-modal').modal();
+        loadSimulation();
       }
     })
   })
 }
 
-function renderFormObject(markup, modalTitle, extra_args) {
+function renderFormObject(markup, modalTitle, extra_args, method = 'get') {
   var url = $(markup).attr('data-link');
   setModalTitle(modalTitle, '#skinny-modal');
   $.ajax({
-    method: 'get',
+    method: method,
     url: url,
     data: {
       parent: $(markup).attr('data-parent'),
@@ -65,7 +67,7 @@ function editObject(modalTitle) {
   })
 }
 
-function submitFormAction() {
+function submitFormAction(reload_page = true) {
   $('#skinny-modal').on('click', '#btn-submit-action', function(e) {
     e.preventDefault();
     var form = $('#skinny-modal').find('.modal-body > form');
@@ -78,7 +80,9 @@ function submitFormAction() {
       dataType: 'html',
       success: function(rt) {
         $('#skinny-modal').modal('hide');
-        confirmationSaved();
+        if (reload_page === true) {
+          confirmationSaved();
+        }
       },
       error: function(rt) {
         var form = $(rt.responseText).find('.content-modal')

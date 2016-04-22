@@ -9,12 +9,17 @@
       </thead>
       <tbody>
         <% @simulations.each do |simulation| %>
-        <tr>
+        <tr id="simulation-<%= simulation.id%>">
           <td><%= simulation.name %></td>
           <td>
             <button type="button" class="btn btn-success load-simulation" id="load-<%= simulation.id%>">
               <%= fa_icon("refresh") %>
               <%= t("link.load") %>
+            </button>
+
+            <button type="button" class="btn btn-success remove-simulation" id="remove-<%= simulation.id%>">
+              <%= fa_icon("trash") %>
+              <%= t("link.remove") %>
             </button>
           </td>
         </tr>

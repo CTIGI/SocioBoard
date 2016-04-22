@@ -50,8 +50,8 @@ function exportDivToPDF(){
   $('#export-simulator-movements').click(function () {
       doc.setFontSize(9);
       doc.text($('#simulator-movements').html(), 15, 15, {
-          'width': 170,
-              'elementHandlers': specialElementHandlers
+        'width': 170,
+        'elementHandlers': specialElementHandlers
       });
 
       doc.save('simulacao.pdf');

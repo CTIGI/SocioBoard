@@ -19,7 +19,12 @@ class AnalysisController < ApplicationController
     @age = params[:age].to_i
     @measure_type = params[:measure_type]
     @unit_measure = params[:unit_measure]
-    @current_value = params[:extra].to_i
+
+    if params[:extra]
+      @current_value = params[:extra].to_i
+    else
+      @current_value = params[:offenders_amount].to_i
+    end
     respond_with(@units, layout: false)
   end
 

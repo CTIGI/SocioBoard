@@ -45,9 +45,9 @@
         <tr>
           <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.unit") %></th>
           <% if @is_simulator %>
-            <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.age_group") %></th>
-            <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.occupation") %></th>
-            <th rowspan="3" class="table-strong-green-rowspan"><%= t("views.analysis.out_off_profile_percentage") %></th>
+            <th rowspan="3" class="table-strong-green-rowspan minimum-width-tr"><%= t("views.analysis.age_group") %></th>
+            <th rowspan="3" class="table-strong-green-rowspan minimum-width-tr"><%= t("views.analysis.occupation") %></th>
+            <th rowspan="3" class="table-strong-green-rowspan minimum-width-tr"><%= t("views.analysis.out_off_profile_percentage") %></th>
           <% end %>
 
           <th colspan="9" class="table-strong-green-rowspan"><%= t("views.analysis.provisory") %></th>
@@ -64,35 +64,35 @@
         </tr>
 
         <tr>
-          <th class="table-light-green-rowspan text-center">12</th>
-          <th class="table-light-green-rowspan text-center">13</th>
-          <th class="table-light-green-rowspan text-center">14</th>
-          <th class="table-light-green-rowspan text-center">15</th>
-          <th class="table-light-green-rowspan text-center">16</th>
-          <th class="table-light-green-rowspan text-center">17</th>
-          <th class="table-light-green-rowspan text-center">18</th>
-          <th class="table-light-green-rowspan text-center">19</th>
-          <th class="table-light-green-rowspan text-center">20</th>
+          <th class="table-light-green-rowspan text-center age-th">12</th>
+          <th class="table-light-green-rowspan text-center age-th">13</th>
+          <th class="table-light-green-rowspan text-center age-th">14</th>
+          <th class="table-light-green-rowspan text-center age-th">15</th>
+          <th class="table-light-green-rowspan text-center age-th">16</th>
+          <th class="table-light-green-rowspan text-center age-th">17</th>
+          <th class="table-light-green-rowspan text-center age-th">18</th>
+          <th class="table-light-green-rowspan text-center age-th">19</th>
+          <th class="table-light-green-rowspan text-center age-th">20</th>
 
-          <th class="table-light-green-rowspan text-center">12</th>
-          <th class="table-light-green-rowspan text-center">13</th>
-          <th class="table-light-green-rowspan text-center">14</th>
-          <th class="table-light-green-rowspan text-center">15</th>
-          <th class="table-light-green-rowspan text-center">16</th>
-          <th class="table-light-green-rowspan text-center">17</th>
-          <th class="table-light-green-rowspan text-center">18</th>
-          <th class="table-light-green-rowspan text-center">19</th>
-          <th class="table-light-green-rowspan text-center">20</th>
+          <th class="table-light-green-rowspan text-center age-th">12</th>
+          <th class="table-light-green-rowspan text-center age-th">13</th>
+          <th class="table-light-green-rowspan text-center age-th">14</th>
+          <th class="table-light-green-rowspan text-center age-th">15</th>
+          <th class="table-light-green-rowspan text-center age-th">16</th>
+          <th class="table-light-green-rowspan text-center age-th">17</th>
+          <th class="table-light-green-rowspan text-center age-th">18</th>
+          <th class="table-light-green-rowspan text-center age-th">19</th>
+          <th class="table-light-green-rowspan text-center age-th">20</th>
 
-          <th class="table-light-green-rowspan text-center">12</th>
-          <th class="table-light-green-rowspan text-center">13</th>
-          <th class="table-light-green-rowspan text-center">14</th>
-          <th class="table-light-green-rowspan text-center">15</th>
-          <th class="table-light-green-rowspan text-center">16</th>
-          <th class="table-light-green-rowspan text-center">17</th>
-          <th class="table-light-green-rowspan text-center">18</th>
-          <th class="table-light-green-rowspan text-center">19</th>
-          <th class="table-light-green-rowspan text-center">20</th>
+          <th class="table-light-green-rowspan text-center age-th">12</th>
+          <th class="table-light-green-rowspan text-center age-th">13</th>
+          <th class="table-light-green-rowspan text-center age-th">14</th>
+          <th class="table-light-green-rowspan text-center age-th">15</th>
+          <th class="table-light-green-rowspan text-center age-th">16</th>
+          <th class="table-light-green-rowspan text-center age-th">17</th>
+          <th class="table-light-green-rowspan text-center age-th">18</th>
+          <th class="table-light-green-rowspan text-center age-th">19</th>
+          <th class="table-light-green-rowspan text-center age-th">20</th>
         </tr>
       </thead>
       <tbody>
@@ -111,13 +111,13 @@
             <td>
               <%= truncate_words unit.name %>
             </td>
-            <td>
+            <td class="text-center">
               <%= "#{ unit.min_age }-#{ unit.max_age }" %>
             </td>
-            <td id="unit-occupation-<%= unit.id %>">
+            <td class="text-center" id="unit-occupation-<%= unit.id %>">
               <%= unit.occupied %>
             </td>
-            <td id="unit-out-of-profile-<%= unit.id %>">
+            <td class="text-center" id="unit-out-of-profile-<%= unit.id %>">
               <%= unit.offenders_out_of_profile_percentage %>%
             </td>
           <% end %>

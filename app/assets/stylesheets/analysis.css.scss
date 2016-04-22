@@ -19,6 +19,14 @@
   transform: rotate(180deg);
 }
 
+.minimum-width-tr{
+  width: 1% !important;
+}
+
+.age-th{
+  width: 25px !important;
+}
+
 .table-hover tbody tr:hover td
 {
   outline: none  !important;

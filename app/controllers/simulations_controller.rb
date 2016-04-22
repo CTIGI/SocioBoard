@@ -39,6 +39,12 @@ class SimulationsController < ApplicationController
     respond_with(@simulation, layout: false, status: status)
   end
 
+  def destroy
+    authorize @simulation
+    @simulation.destroy
+    @simulation
+  end
+
   private
   def set_simulation
     @simulation = Simulation.find(params[:id])

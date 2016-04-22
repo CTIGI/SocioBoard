@@ -16,6 +16,23 @@ AnalysisController.prototype.simulator = function() {
   submitFormAction(false);
   showIndex("Carregar Simulação");
   loadSimulation();
+  removeSimulation();
+}
+
+function removeSimulation(){
+
+  $('.remove-simulation').on('click', function(e) {
+    var id = $(this)[0].id.split('-')[1]
+    $.ajax({
+      method: 'delete',
+      dataType : 'html',
+      url: '/simulations/' + this.id.split('-')[1],
+      data: { id: this.id.split('-')[1] } ,
+      success: function(rt) {
+        $("#simulation-" + id).remove()
+      }
+    })
+  })
 }
 
 function loadSimulation(){

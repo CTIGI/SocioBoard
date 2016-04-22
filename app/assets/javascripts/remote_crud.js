@@ -29,6 +29,7 @@ function showIndex(modalTitle) {
         $('#skinny-modal').find('.response-content').html(rt);
         $('#skinny-modal').modal();
         loadSimulation();
+        removeSimulation();
       }
     })
   })

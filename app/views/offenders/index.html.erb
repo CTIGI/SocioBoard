@@ -32,6 +32,13 @@
       <th>
         <%= raw t('activerecord.attributes.offender.measure_dates') %>
       </th>
+
+      <% if evaded_search %>
+        <th>
+          <%= t('activerecord.attributes.offender.evasion_date') %>
+        </th>
+      <% end %>
+
     </tr>
   </thead>
   <tbody>
@@ -70,6 +77,12 @@
           <%= l(measure_data(offender, :start_date_measure).to_date) %><br/>
           <%= l(measure_data(offender, :end_date_measure).to_date) %>
         </td>
+
+        <% if evaded_search %>
+          <td>
+            <%= l(offender.evasion_date) %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

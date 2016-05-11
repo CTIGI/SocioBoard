@@ -28,6 +28,8 @@ pt-BR:
         currrent_period_measure_type: "Período corrente/Medida"
         current_period: "%{period}º Período"
       subtitle:
+          evaded:
+            title: "Evadidos"
           near_due_date:
             title: "Próx. ao venc. de Medida de Internação Provisória"
             text: "Considera-se 'Próximo ao Vencimento de Medida de Internação Provisória' todos que possuem DATA FIM MEDIDA igual ou inferior a %{date}"

@@ -16,6 +16,9 @@ describe Offender, :type => :model do
     it { should respond_to(:origin_county) }
     it { should respond_to(:crimes) }
     it { should respond_to(:crime_id) }
+    it { should respond_to(:evaded) }
+    it { should respond_to(:evasion_date) }
+
   end
 
   context "Associations" do

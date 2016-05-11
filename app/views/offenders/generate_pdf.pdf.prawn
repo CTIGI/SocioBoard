@@ -42,6 +42,10 @@ def table_result_search(pdf)
     t('activerecord.attributes.offender.measure_dates')
   ]
 
+  if evaded_search
+    header << t('activerecord.attributes.offender.evasion_date')
+  end
+
   result = [header]
 
   @offenders.each do |offender|
@@ -57,6 +61,10 @@ def table_result_search(pdf)
       measure_data(offender, :measure_deadline),
       range_dates_measure(measure_data(offender, :start_date_measure), measure_data(offender, :end_date_measure))
     ]
+
+    if evaded_search
+      result.last <<  l(offender.evasion_date)
+    end
   end
 
   pdf.table(result, column_widths: [100, 100, 40, 50], cell_style: cell_style)

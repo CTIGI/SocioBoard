@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   include Concerns::SharedChartsDataConcern
-  
+
   before_action :authenticate_user!
   skip_after_action :verify_policy_scoped
   before_action :set_units, :set_crimes_name, :set_measure_names
@@ -49,7 +49,7 @@ class DashboardController < ApplicationController
 
     units_hash = Hash[@units]
 
-    Offender.joins(:measures).group("measures.measure_type", :unit_id).count.each do |o|
+    Offender.not_evaded.joins(:measures).group("measures.measure_type", :unit_id).count.each do |o|
       measure_by_units[units_hash[o.first.last]] << { o.first.first => o.last }
     end
 
@@ -101,7 +101,7 @@ class DashboardController < ApplicationController
     end
 
     units_hash = Hash[@units]
-    Offender.group(:unit_id).joins(:crimes).group("crimes.name").count.each do |o|
+    Offender.not_evaded.group(:unit_id).joins(:crimes).group("crimes.name").count.each do |o|
       crimes_by_units[units_hash[o.first.first]] << { o.first.last => o.last }
     end
 

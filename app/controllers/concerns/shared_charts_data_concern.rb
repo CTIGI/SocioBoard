@@ -6,7 +6,7 @@ module Concerns
       private
 
       def set_values
-        @total_offenders             = Offender.all.count
+        @total_offenders             = Offender.not_evaded.all.count
         @near_due_date_counter       = Measure.nears_due_date.count
         @near_current_period_counter = Measure.near_current_periods.count
         @measure_overdues            = Measure.overdues.count

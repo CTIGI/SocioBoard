@@ -4,6 +4,8 @@ class Offender < ApplicationRecord
   has_many :measures, dependent: :destroy
   has_and_belongs_to_many :crimes, -> { distinct }
   scope :duplicated, -> { where(duplicated: true) }
+  scope :not_evaded, -> { where(evaded: false) }
+  scope :evaded, -> { where(evaded: true) }
 
   def self.crimes_list
     all_crimes_list = []

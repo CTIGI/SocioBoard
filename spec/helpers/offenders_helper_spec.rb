@@ -2,6 +2,18 @@ require 'rails_helper'
 
 RSpec.describe OffendersHelper, :type => :helper do
 
+  describe "#evaded_search?" do
+    it "should return true if param has filled in" do
+      allow(controller).to receive_messages(:params => { q: { "evaded_eq" => "true" } })
+      expect(helper.evaded_search).to eq(true)
+    end
+
+    it "should return false if param not exist" do
+      allow(controller).to receive_messages(:params => { })
+      expect(helper.evaded_search).to eq(false)
+    end
+  end
+
   describe "#is_checked?" do
     it "should return true if param has filled in" do
       allow(controller).to receive_messages(:params => { units: { free_range_units: "true" } })

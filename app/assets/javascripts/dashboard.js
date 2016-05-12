@@ -4,9 +4,8 @@ DashboardController.prototype.index = function() {
   setCheckBoxes()
   setBarChart($('#crime-by-unit'), gon.crimes_by_unit_categories, gon.crimes_by_units , "Unidades x Tipos de Ato");
   setBarChart($('#measure-by-unit'), gon.measure_by_units_categories, gon.measures_by_units , "Unidades x Medidas");
-  setBarChart($('#unit-by-measure'), gon.units_by_measures_categories, gon.units_by_measures , "Medidas x Unidades");
-  setBarChart($('#unit-by-crimes'), gon.units_by_crimes_categories, gon.units_by_crimes , "Tipos de Ato x Unidades");
   setWebChart($('#units-capacity'), gon.units_capacity_categories, gon.units_capacity_series , "Capacidade das unidades")
+  setLineChart($('#units-daily-occupation'), gon.daily_occupation_categories , gon.daily_occupation_series, 'Ocupação diária por unidade')
 }
 
 var bulbaColors = [
@@ -46,6 +45,7 @@ function setCheckBoxes() {
   $("#units_capacity_checkbox").iCheck('check');
   $("#unitxacts_checkbox").iCheck('check');
   $("#unitxmeasures_checkbox").iCheck('check');
+  $("#units_daily_occupation_checkbox").iCheck('check');
 
   $('#units_capacity_checkbox').on('ifChecked', function(event){
      $('#units-capacity').show();
@@ -69,6 +69,14 @@ function setCheckBoxes() {
 
   $('#unitxmeasures_checkbox').on('ifUnchecked', function(event){
     $('#measure-by-unit').hide();
+  });
+
+  $('#units_daily_occupation_checkbox').on('ifChecked', function(event){
+     $('#units-daily-occupation').show();
+  });
+
+  $('#units_daily_occupation_checkbox').on('ifUnchecked', function(event){
+    $('#units-daily-occupation').hide();
   });
 }
 
@@ -149,4 +157,35 @@ function setBarChart(chartDiv, categories, chartData, title) {
     colors: bulbaColors,
     series: chartData
     });
+}
+
+function setLineChart(chartDiv, categories, series,title){
+  $(chartDiv).highcharts({
+    chart: {
+      zoomType: 'x'
+    },
+    title: {
+      text: title
+    },
+    xAxis: {
+      categories: categories
+    },
+    yAxis: {
+      title: {
+        text: 'Temperature (°C)'
+      },
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: '#808080'
+      }]
+    },
+    legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+    },
+    series: series
+  });
 }

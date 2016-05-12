@@ -3,3 +3,4 @@
 :concurrency: 10
 :queues:
   - default
+  - unit_occupation

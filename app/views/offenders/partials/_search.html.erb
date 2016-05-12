@@ -81,6 +81,11 @@
             <%= f.select(:measures_measure_situation_in, @measure_situations, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
           </div>
         </div>
+
+        <% if evaded_search %>
+          <%= f.hidden_field :evaded_eq, as: :hidden, value: true %>
+        <% end %>
+
       </div>
     </div>
 

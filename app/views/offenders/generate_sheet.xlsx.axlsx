@@ -18,6 +18,10 @@ wb.add_worksheet(name: t("views.reports.offenders_list")) do |sheet|
     t('activerecord.attributes.offender.measure_dates')
   ]
 
+  if evaded_search
+    header << t('activerecord.attributes.offender.evasion_date')
+  end
+
   sheet.add_row [t("views.reports.report_data", data: Time.now.strftime('%d/%m/%Y às %H:%M'))]
   sheet.add_style 'A1', bg_color: 'afafaf', b: true
   sheet.add_border 'A1:A1'
@@ -40,6 +44,7 @@ wb.add_worksheet(name: t("views.reports.offenders_list")) do |sheet|
   ("A".."I").each {|col| sheet.add_border "#{col}#{header_table_pos}:#{col}#{header_table_pos}" }
 
   @offenders.each_with_index do |offender, index|
+    if evaded_search
     sheet.add_row [
       truncate_words(offender.unit.name),
       display_offender_name(offender.name, current_user),
@@ -47,11 +52,27 @@ wb.add_worksheet(name: t("views.reports.offenders_list")) do |sheet|
       show_field(offender.recurrent),
       show_field(offender.origin_county),
       show_field(offender.crimes.pluck(:name).join(", ")),
-      "#{ActionView::Base.full_sanitizer.sanitize(period_label(offender))} - #{UnicodeUtils.upcase(measure_data(offender, :measure_type))} - #{
+      "#{ActionView::Base.full_sanitizer.sanitize(period_label(offender))} - #{UnicodeUtils.upcase(measure_data(offender,   :measure_type))} - #{
       (measure_data(offender, :measure_situation))}",
       measure_data(offender, :measure_deadline),
-      range_dates_measure(measure_data(offender, :start_date_measure), measure_data(offender, :end_date_measure))
-    ]
+      range_dates_measure(measure_data(offender, :start_date_measure), measure_data(offender, :end_date_measure)),
+      l(offender.evasion_date)
+      ]
+    else
+      sheet.add_row [
+        truncate_words(offender.unit.name),
+        display_offender_name(offender.name, current_user),
+        show_field(offender.age),
+        show_field(offender.recurrent),
+        show_field(offender.origin_county),
+        show_field(offender.crimes.pluck(:name).join(", ")),
+        "#{ActionView::Base.full_sanitizer.sanitize(period_label(offender))} - #{UnicodeUtils.upcase(measure_data(offender,   :measure_type))} - #{
+        (measure_data(offender, :measure_situation))}",
+        measure_data(offender, :measure_deadline),
+        range_dates_measure(measure_data(offender, :start_date_measure), measure_data(offender, :end_date_measure))
+        ]
+    end
+
     row_index = header_table_pos + index + 1
     ("A".."I").each {|col| sheet.add_border "#{col}#{row_index}:#{col}#{row_index}" }
   end

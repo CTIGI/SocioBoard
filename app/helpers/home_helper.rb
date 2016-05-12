@@ -5,11 +5,11 @@ module HomeHelper
 
       provisional_admission = I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")
       near_provisional_admission_date = Measure.where("end_date_measure < ? and measure_type = ?", days_forward, provisional_admission)
-                                               .joins(:offender).where("offenders.unit_id = ?", unit.id).count
+                                               .joins(:offender).where("offenders.unit_id = ? AND offenders.evaded = ?", unit.id, false).count
 
       admission = I18n.t("activerecord.attributes.offender.measure_type_list.admission")
       near_admission_date =  Measure.where("end_date_measure < ? and measure_type = ?", days_forward, admission)
-                                               .joins(:offender).where("offenders.unit_id = ?", unit.id).count
+                                               .joins(:offender).where("offenders.unit_id = ?AND offenders.evaded = ?", unit.id, false).count
 
       render partial: "indicators/partials/unit_info", locals: { animation: animation,
                                                        name: unit.name,

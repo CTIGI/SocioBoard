@@ -1,5 +1,14 @@
 module OffendersHelper
 
+  def evaded_search
+    if params[:q]
+      if params[:q].include? "evaded_eq"
+        return true
+      end
+    end
+    return false
+  end
+
   def links_to_export
     links = ""
     attrs = { class: "export-file btn btn-success bg-white" }

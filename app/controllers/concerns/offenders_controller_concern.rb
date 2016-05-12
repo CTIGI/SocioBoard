@@ -1,6 +1,7 @@
 module Concerns
   module OffendersControllerConcern
   extend ActiveSupport::Concern
+  include OffendersHelper
 
     included do
       before_action :authenticate_user!
@@ -27,7 +28,11 @@ module Concerns
       private
 
       def result_offenders
-        @q = Offender.order(:unit_id, :name).ransack(params[:q])
+        if evaded_search
+          @q = Offender.order(:unit_id, :name).ransack(params[:q])
+        else
+          @q = Offender.not_evaded.order(:unit_id, :name).ransack(params[:q])
+        end
         @offenders = @q.result
       end
 
@@ -42,11 +47,12 @@ module Concerns
       end
 
       def set_counters
-        @total                       = [{ I18n.t("views.offenders.filter_panel.total") => Offender.all.count }]
+        @total                       = [{ I18n.t("views.offenders.filter_panel.total") => Offender.not_evaded.all.count }]
         @near_due_date_counter       = Measure.nears_due_date.count
         @near_current_period_counter = Measure.near_current_periods.count
         @measure_overdues            = Measure.overdues.count
         @sanctions                   = Measure.sanctions.count
+        @evaded                      = Offender.evaded.count
         search_terms                 = []
         @counters                    = []
         if params[:q].present?
@@ -59,9 +65,14 @@ module Concerns
             field_name.pop
             field_name = field_name.join("_")
             terms.merge!(search_term)
-            current_value = Offender.ransack(terms).result.count
-            percentage = @counters.blank? ? calculate_percentage(@total[0].values[0], current_value) : calculate_percentage(@counters.last.values[0], current_value)
-            @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") => current_value, percentage: percentage }
+            if evaded_search
+              current_value = Offender.ransack(terms).result.count
+              @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") => current_value }
+            else
+              current_value = Offender.not_evaded.ransack(terms).result.count
+              percentage = @counters.blank? ? calculate_percentage(@total[0].values[0], current_value) : calculate_percentage(@counters.last.values[0], current_value)
+              @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") => current_value, percentage: percentage }
+            end
           end
         end
       end
@@ -90,9 +101,9 @@ module Concerns
 
       def set_dependencies
         grouped_units
-        @ages               = Offender.order(:age).select("distinct(age)")
-        @recurrents         = Offender.order(:recurrent).select("distinct(recurrent)")
-        @origin_counties    = Offender.render_data_list(:origin_county)
+        @ages               = Offender.not_evaded.order(:age).select("distinct(age)")
+        @recurrents         = Offender.not_evaded.order(:recurrent).select("distinct(recurrent)")
+        @origin_counties    = Offender.not_evaded.render_data_list(:origin_county)
         @crimes             = Crime.order(:name).select("distinct(name)")
         @measure_types      = Measure.render_data_list(:measure_type)
         @measure_deadlines  = Measure.render_data_list(:measure_deadline)

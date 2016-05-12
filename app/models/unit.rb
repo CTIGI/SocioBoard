@@ -14,11 +14,11 @@ class Unit < ApplicationRecord
   end
 
   def offenders_out_of_profile_by_age
-    offenders.where("age < ? OR age > ?", min_age, max_age).count
+    offenders.not_evaded.where("age < ? OR age > ?", min_age, max_age).count
   end
 
   def inconsistences
-    offenders.where("age < ? OR age > ?", 12, 20).count
+    offenders.not_evaded.where("age < ? OR age > ?", 12, 20).count
   end
 
   def offenders_out_of_profile
@@ -30,24 +30,24 @@ class Unit < ApplicationRecord
   end
 
   def count_applied_measure_by_age(age, measure_type)
-    offenders.where(age: age).joins(:measures).where("measures.measure_type" => measure_type).count
+    offenders.not_evaded.where(age: age).joins(:measures).where("measures.measure_type" => measure_type).count
   end
 
   def offenders_out_of_measure
     count = 0
     if !measure_type_names.include? 'Unidade de Internação'
-      count += self.offenders.joins(:measures).where('measure_type = ?', 'Internação').count
+      count += self.offenders.not_evaded.joins(:measures).where('measure_type = ?', 'Internação').count
     end
 
     if !measure_type_names.include? 'Unidade de semiliberdade'
-      count += self.offenders.joins(:measures).where('measure_type = ?', 'SemiLiberdade').count
+      count += self.offenders.not_evaded.joins(:measures).where('measure_type = ?', 'SemiLiberdade').count
     end
 
     if !measure_type_names.include? 'Unidade de Internação Provisória'
-      count += self.offenders.joins(:measures).where('measure_type = ?', 'Internação Provisória').count
+      count += self.offenders.not_evaded.joins(:measures).where('measure_type = ?', 'Internação Provisória').count
     end
     if !measure_type_names.include? 'Unidade de Sanção'
-      count += self.offenders.joins(:measures).where('measure_type = ?', 'Sanção').count
+      count += self.offenders.not_evaded.joins(:measures).where('measure_type = ?', 'Sanção').count
     end
 
     return count

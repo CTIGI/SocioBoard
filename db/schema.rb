@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418172038) do
+ActiveRecord::Schema.define(version: 20160511134333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,9 @@ ActiveRecord::Schema.define(version: 20160418172038) do
     t.integer  "offender_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["crime_id"], name: "index_crimes_offenders_on_crime_id", using: :btree
+    t.index ["offender_id"], name: "index_crimes_offenders_on_offender_id", using: :btree
   end
-
-  add_index "crimes_offenders", ["crime_id"], name: "index_crimes_offenders_on_crime_id", using: :btree
-  add_index "crimes_offenders", ["offender_id"], name: "index_crimes_offenders_on_offender_id", using: :btree
 
   create_table "measure_types", force: :cascade do |t|
     t.string   "name"
@@ -41,10 +40,9 @@ ActiveRecord::Schema.define(version: 20160418172038) do
   create_table "measure_types_units", force: :cascade do |t|
     t.integer "measure_type_id"
     t.integer "unit_id"
+    t.index ["measure_type_id"], name: "index_measure_types_units_on_measure_type_id", using: :btree
+    t.index ["unit_id"], name: "index_measure_types_units_on_unit_id", using: :btree
   end
-
-  add_index "measure_types_units", ["measure_type_id"], name: "index_measure_types_units_on_measure_type_id", using: :btree
-  add_index "measure_types_units", ["unit_id"], name: "index_measure_types_units_on_unit_id", using: :btree
 
   create_table "measures", force: :cascade do |t|
     t.date     "start_date_measure"
@@ -59,9 +57,8 @@ ActiveRecord::Schema.define(version: 20160418172038) do
     t.integer  "measure_id"
     t.integer  "current_period"
     t.date     "current_period_date"
+    t.index ["offender_id"], name: "index_measures_on_offender_id", using: :btree
   end
-
-  add_index "measures", ["offender_id"], name: "index_measures_on_offender_id", using: :btree
 
   create_table "offenders", force: :cascade do |t|
     t.string   "id_citizen"
@@ -75,9 +72,10 @@ ActiveRecord::Schema.define(version: 20160418172038) do
     t.integer  "crime_id"
     t.boolean  "duplicated",    default: false
     t.integer  "unit_id"
+    t.boolean  "evaded",        default: false
+    t.date     "evasion_date"
+    t.index ["unit_id"], name: "index_offenders_on_unit_id", using: :btree
   end
-
-  add_index "offenders", ["unit_id"], name: "index_offenders_on_unit_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -89,10 +87,9 @@ ActiveRecord::Schema.define(version: 20160418172038) do
   create_table "roles_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
+    t.index ["role_id"], name: "index_roles_users_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_roles_users_on_user_id", using: :btree
   end
-
-  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
-  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
   create_table "simulations", force: :cascade do |t|
     t.string   "name"
@@ -101,9 +98,8 @@ ActiveRecord::Schema.define(version: 20160418172038) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_simulations_on_user_id", using: :btree
   end
-
-  add_index "simulations", ["user_id"], name: "index_simulations_on_user_id", using: :btree
 
   create_table "units", force: :cascade do |t|
     t.string   "name"
@@ -121,9 +117,8 @@ ActiveRecord::Schema.define(version: 20160418172038) do
     t.string   "ctigi_auth_access_token"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "measures", "offenders"
 end

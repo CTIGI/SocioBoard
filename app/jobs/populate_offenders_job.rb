@@ -29,7 +29,24 @@ class PopulateOffendersJob < ApplicationJob
       end
     end
 
-    body = open("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}").read
+    ids = []
+
+    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}", false)
+    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crve/#{Constants::CRV::PWD}", true)
+
+    ids.flatten!
+
+    system_ids = Offender.all.map{ |o| o.id_citizen.to_i }
+    ids_to_delete = system_ids - ids | ids - system_ids
+    ids_to_delete.each do |id_citizen_to_delete|
+      Offender.where(id_citizen: id_citizen_to_delete).first.try(:destroy)
+    end
+  end
+
+  private
+
+  def save_offenders(url, evaded)
+    body = open(url).read
     result = JSON.parse(body)
     unless result.blank?
       ids = []
@@ -43,6 +60,12 @@ class PopulateOffendersJob < ApplicationJob
         offender.recurrent     = r["reincidente"].blank? ? I18n.t("app.no_record") : r["reincidente"]
         offender.origin_county = r["comarcaOrigem"].blank? ? I18n.t("app.no_record") : r["comarcaOrigem"]
         offender.crime_id      = r["idApreensao"]
+
+        if evaded
+          offender.evaded       = true
+          offender.evasion_date = r["dataEvasao"]
+        end
+
         offender.crimes = []
         r["infracoes"].each do |crime|
           crime = Crime.where(name: crime).first_or_create
@@ -50,6 +73,7 @@ class PopulateOffendersJob < ApplicationJob
         end
         offender.duplicated    = ids.include? r["idCidadao"]
         ids << r["idCidadao"]
+
         offender.save
 
         offender.measures.destroy_all
@@ -70,11 +94,9 @@ class PopulateOffendersJob < ApplicationJob
           measure.save
         end unless r["medidas"].blank?
       end
-      system_ids = Offender.all.map{ |o| o.id_citizen.to_i }
-      ids_to_delete = system_ids - ids | ids - system_ids
-      ids_to_delete.each do |id_citizen_to_delete|
-        Offender.where(id_citizen: id_citizen_to_delete).first.destroy
-      end
+
+      return ids
     end
   end
+
 end

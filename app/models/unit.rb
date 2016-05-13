@@ -1,5 +1,6 @@
 class Unit < ApplicationRecord
   has_many :offenders
+  has_many :unit_occupations
   has_and_belongs_to_many :measure_types
 
   validates :min_age, presence: true, numericality: { greater_than_or_equal_to: 12,

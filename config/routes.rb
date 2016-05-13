@@ -1,4 +1,7 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+
   resources :offenders do
     collection do
       get :modal_index
@@ -38,6 +41,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "destroy", :to => "users/sessions#destroy", :as => :destroy_user_session
+  end
+
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   root "home#index"

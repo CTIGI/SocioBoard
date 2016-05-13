@@ -15,6 +15,7 @@ RSpec.describe Unit, :type => :model do
 
   context "Associations" do
     it { should have_many(:offenders) }
+    it { should have_many(:unit_occupations) }
     it { should have_and_belong_to_many :measure_types }
   end
 

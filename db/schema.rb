@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511134333) do
+ActiveRecord::Schema.define(version: 20160512145519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(version: 20160511134333) do
     t.index ["user_id"], name: "index_simulations_on_user_id", using: :btree
   end
 
+  create_table "unit_occupations", force: :cascade do |t|
+    t.integer  "unit_id"
+    t.date     "day"
+    t.integer  "occupation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_unit_occupations_on_unit_id", using: :btree
+  end
+
   create_table "units", force: :cascade do |t|
     t.string   "name"
     t.integer  "capacity"
@@ -121,4 +130,5 @@ ActiveRecord::Schema.define(version: 20160511134333) do
   end
 
   add_foreign_key "measures", "offenders"
+  add_foreign_key "unit_occupations", "units"
 end

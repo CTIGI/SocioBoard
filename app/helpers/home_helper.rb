@@ -11,7 +11,8 @@ module HomeHelper
       near_admission_date =  Measure.where("end_date_measure < ? and measure_type = ?", days_forward, admission)
                                                .joins(:offender).where("offenders.unit_id = ?AND offenders.evaded = ?", unit.id, false).count
 
-      render partial: "indicators/partials/unit_info", locals: { animation: animation,
+      render partial: "indicators/partials/unit_info", locals: { id: unit.id,
+                                                       animation: animation,
                                                        name: unit.name,
                                                        unit_type: unit.measure_types.pluck(:name),
                                                        range_date: "#{unit.min_age} - #{unit.max_age}",

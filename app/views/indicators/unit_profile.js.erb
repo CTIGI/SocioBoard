@@ -1,0 +1,10 @@
+$('#unit-profile').html("<%= escape_javascript(render partial: 'indicators/partials/unit_profile', locals: { unit: @unit } ) %>");
+
+var series_crimes = JSON.parse("[" + "<%= escape_javascript raw @crimes_chart.to_json %>" + "]");
+var categories_occupation = JSON.parse("[" + "<%= escape_javascript raw @categories.to_json %>" + "]");
+var series_occupation = JSON.parse("[" + "<%= escape_javascript raw @series_occupation.to_json %>" + "]");
+
+setPieChart($('#crimes-chart'), series_crimes[0], "<%= I18n.t('views.indicators.infraction_acts')%>", 500, 300)
+setSplineChart($('#occupation-day'), "<%= I18n.t('views.indicators.occupation_capacity')%>", categories_occupation[0], series_occupation[0][0])
+
+$('[data-toggle="popover"]').popover();

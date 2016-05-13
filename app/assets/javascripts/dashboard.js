@@ -42,10 +42,10 @@ var bulbaColors = [
   ]
 
 function setCheckBoxes() {
-  $("#units_capacity_checkbox").iCheck('check');
-  $("#unitxacts_checkbox").iCheck('check');
-  $("#unitxmeasures_checkbox").iCheck('check');
-  $("#units_daily_occupation_checkbox").iCheck('check');
+  $('#units-capacity').hide();
+  $('#crime-by-unit').hide();
+  $('#measure-by-unit').hide();
+  $('#units-daily-occupation').hide();
 
   $('#units_capacity_checkbox').on('ifChecked', function(event){
      $('#units-capacity').show();
@@ -77,6 +77,67 @@ function setCheckBoxes() {
 
   $('#units_daily_occupation_checkbox').on('ifUnchecked', function(event){
     $('#units-daily-occupation').hide();
+  });
+}
+
+function setSplineChart(splineChart, title, categories, series) {
+  splineChart.highcharts({
+    chart: {
+      type: 'areaspline',
+      zoomType: 'x',
+      width: 1100
+    },
+    title: {
+      text: title
+    },
+    xAxis: {
+      categories: categories,
+    },
+    yAxis: {
+      title: {
+        text: ''
+      }
+    },
+    tooltip: {
+      shared: true,
+    },
+    credits: {
+      enabled: false
+    },
+    series: series
+  });
+}
+
+function setPieChart(pieDiv, dataSeries, title, width, height) {
+  pieDiv.highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie',
+      width: width,
+      height: height
+    },
+    title: {
+      text: title
+    },
+    tooltip: {
+      pointFormat: '{series.name}: {point.y} <br /><b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+      }
+    },
+    series: [{
+      name: "Total",
+      colorByPoint: true,
+      data: dataSeries
+    }]
   });
 }
 
@@ -162,7 +223,8 @@ function setBarChart(chartDiv, categories, chartData, title) {
 function setLineChart(chartDiv, categories, series,title){
   $(chartDiv).highcharts({
     chart: {
-      zoomType: 'x'
+      zoomType: 'x',
+      width: 1200
     },
     title: {
       text: title
@@ -172,7 +234,7 @@ function setLineChart(chartDiv, categories, series,title){
     },
     yAxis: {
       title: {
-        text: 'Temperature (°C)'
+        text: ''
       },
       plotLines: [{
         value: 0,

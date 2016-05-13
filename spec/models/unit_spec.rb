@@ -20,6 +20,92 @@ RSpec.describe Unit, :type => :model do
   end
 
   context "Instance Methods" do
+    describe ".biggest_occupation" do
+      let(:unit) { create(:unit) }
+
+      it "Return biggest occupation of the unit" do
+        uc = create(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 99)
+        uc = create(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 100)
+
+        expect(unit.biggest_occupation).to eq 100
+      end
+    end
+
+    describe ".lowest_occupation" do
+      let(:unit) { create(:unit) }
+
+      it "Return biggest occupation of the unit" do
+        uc = create(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 99)
+        uc = create(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 100)
+
+        expect(unit.lowest_occupation).to eq 99
+      end
+    end
+
+    describe ".occupation_variation" do
+      let(:unit) { build(:unit) }
+
+      it "Should return variation from 30 days ago" do
+        uc = build(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 99)
+        unit.unit_occupations << uc
+
+        expect(unit).to receive_message_chain(:offenders, :not_evaded, :count).and_return(100)
+        expect(unit).to receive_message_chain(:unit_occupations, :where, :first).and_return(uc)
+
+        expect(unit.occupation_variation(Date.today - 30)).to eq 1
+      end
+
+      it "Should return variation if there is no record 30 days ago" do
+        expect(unit).to receive_message_chain(:offenders, :not_evaded, :count).and_return(100)
+
+        expect(unit.occupation_variation(Date.today - 30)).to eq 100
+      end
+    end
+
+    describe ".occupation_variation_percentage" do
+      let(:unit) { create(:unit) }
+
+      it "Should return variation from 30 days ago" do
+        uc = create(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 2)
+        unit.offenders << create(:offender)
+        unit.unit_occupations << uc
+
+        expect(unit.occupation_variation_percentage(Date.today - 30)).to eq -100.0
+      end
+
+      it "Should return variation if there is no record 30 days ago" do
+        expect(unit.occupation_variation_percentage(Date.today - 30)).to eq 0
+      end
+    end
+
+    describe ".occupation_increased?" do
+      let(:unit) { build(:unit) }
+
+      it "should return true if occupation has increased in the last 30 days" do
+        uc = build(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 99)
+        unit.unit_occupations << uc
+
+        expect(unit).to receive_message_chain(:offenders, :not_evaded, :count).and_return(100)
+        expect(unit).to receive_message_chain(:unit_occupations, :where, :first).and_return(uc)
+
+        expect(unit.occupation_increased?(Date.today - 30)).to eq true
+      end
+
+      it "should return false if occupation has decreased in the last 30 days" do
+        uc = build(:unit_occupation, unit: unit, day: Date.today - 30, occupation: 99)
+        unit.unit_occupations << uc
+
+        expect(unit).to receive_message_chain(:offenders, :not_evaded, :count).and_return(90)
+        expect(unit).to receive_message_chain(:unit_occupations, :where, :first).and_return(uc)
+
+        expect(unit.occupation_increased?(Date.today - 30)).to eq false
+      end
+
+      it "should return true if have no occupation in the last 30 days" do
+        expect(unit.occupation_increased?(Date.today - 30)).to eq true
+      end
+    end
+
     describe ".offenders_out_of_profile" do
       it "should count offfenders out of profile" do
         unit = create(:unit, min_age: 12, max_age: 14, capacity: 2)

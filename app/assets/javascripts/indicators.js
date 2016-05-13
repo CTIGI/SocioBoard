@@ -8,6 +8,8 @@ IndicatorsController.prototype.indicator_01 = function() {
 }
 
 IndicatorsController.prototype.units = function() {
+  $('#unit-profile').hide()
+
   $('.tile').each(function(i, e){
     setTimeout( function() { $(e).show() }, 100 * i)
   });
@@ -17,4 +19,22 @@ IndicatorsController.prototype.units = function() {
       $('form').submit();
     })
   });
+
+  loadUnitProfile();
 };
+
+function loadUnitProfile() {
+  $('.load-unit-profile').click(function(e) {
+    e.preventDefault();
+    var url = $(this).attr('data-link');
+
+    $.ajax({
+      method: "get",
+      url: url,
+      success: function(rt) {
+        $('#units-indicator').hide()
+        $('#unit-profile').show()
+      }
+    })
+  });
+}

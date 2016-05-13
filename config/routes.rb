@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     collection do
       get :indicator_01, as: :indicator_01
       get :units, as: :units
+      get :unit_profile
     end
   end
 

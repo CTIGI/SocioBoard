@@ -10,6 +10,45 @@ class Unit < ApplicationRecord
 
   validate  :check_ages
 
+  def occupation_increased?(date)
+    old_occupation = unit_occupations.where(day: date).first
+    if old_occupation
+      if offenders.not_evaded.count > old_occupation.occupation
+        return true
+      end
+    else
+      return true
+    end
+
+    return false
+  end
+
+  def occupation_variation(date)
+    old_occupation = unit_occupations.where(day: date).first
+    if old_occupation
+      return offenders.not_evaded.count - old_occupation.occupation
+    else
+      return offenders.not_evaded.count
+    end
+  end
+
+  def occupation_variation_percentage(date)
+    total_offenders = offenders.not_evaded.count
+    if total_offenders > 0
+      (occupation_variation(date).to_f/total_offenders.to_f)*100
+    else
+      0
+    end
+  end
+
+  def biggest_occupation
+    unit_occupations.maximum("occupation")
+  end
+
+  def lowest_occupation
+    unit_occupations.minimum("occupation")
+  end
+
   def measure_type_names
     measure_types.map(&:name).join(",")
   end

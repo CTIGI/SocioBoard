@@ -1,9 +1,14 @@
-<%= render partial: "indicators/partials/search" %>
+<div id="units-indicator">
+  <%= render partial: "indicators/partials/search" %>
 
-<% @units_group.in_groups_of(3) do |units| %>
-  <div class="row">
-    <%= render_center_data(units[0], "slideInLeft") %>
-    <%= render_center_data(units[1], "slideInUp") %>
-    <%= render_center_data(units[2], "slideInRight") %>
-  </div>
-<% end %>
+  <% @units_group.in_groups_of(3) do |units| %>
+    <div class="row">
+      <%= render_center_data(units[0], "slideInLeft") %>
+      <%= render_center_data(units[1], "slideInUp") %>
+      <%= render_center_data(units[2], "slideInRight") %>
+    </div>
+  <% end %>
+</div>
+
+<div id="unit-profile">
+</div>

@@ -1,0 +1,222 @@
+<div class="container overflow-visible">
+  <div class="tile">
+    <div class="t-header th-alt bg-teal">
+      <div class="th-title">
+        <span class="tile-text"><%= t("views.indicators.unit")%></span>
+      </div>
+    </div>
+    <div class="t-body tb-padding">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item bad light-font" data-toggle="popover" data-trigger="hover" data-placement="right" title=""
+                      data-original-title="<%= t('views.offenders.subtitle.near_due_date.title') %>">
+                   <h3><%= unit.offenders.nears_due_date.count %></h3>
+                   <small><%=  t('views.indicators.near_due_date_aprev') %></small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item regular light-font" data-toggle="popover" data-trigger="hover" data-placement="right"
+                    title="" data-original-title="<%= t('views.offenders.subtitle.current_period.title') %>">
+                   <h3><%= unit.offenders.near_current_periods.count %></h3>
+                   <small><%=  t("views.indicators.current_period_aprev") %></small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item sanction light-font" data-toggle="popover" data-trigger="hover" data-placement="right"
+                   title="" data-original-title="<%= t('views.offenders.subtitle.sanction.title') %>">
+                   <h3><%= unit.offenders.overdues.count %></h3>
+                   <small><%=  t("views.indicators.sanction_aprev") %></small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item overdue light-font" data-toggle="popover" data-trigger="hover" data-placement="right"
+                     title="" data-original-title="<%= t('views.offenders.subtitle.overdue_measure.title') %>">
+                   <h3><%= unit.offenders.sanctions.count %></h3>
+                   <small><%=  t("views.indicators.overdue_measure_aprev") %></small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item inconsistences-bg light-font" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-original-title="<%= t('views.indicators.inconsistentes') %>">
+                   <h3><%= unit.inconsistences %></h3>
+                   <small><%= t("views.indicators.inconsistentes") %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-12 ">
+                <div class="cb-item bg-red light-font" data-toggle="popover" data-trigger="hover" data-placement="right"
+                     title="" data-original-title="<%= t('views.analysis.total_on_measure') %>">
+                   <h3><%= unit.offenders_out_of_measure %></h3>
+                   <small><%=  t("views.analysis.total_on_measure") %></small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item bg-deeporange light-font" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-original-title="<%= t('views.analysis.total_on_age') %>">
+                   <h3><%= unit.offenders_out_of_profile_by_age %></h3>
+                   <small><%= t("views.indicators.out_age_aprev") %></small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item bg-orange light-font" data-toggle="popover" data-trigger="hover" data-placement="right"
+                     title="" data-original-title="<%= t('views.analysis.total_on_measure_age') %>">
+                   <h3><%= unit.offenders_out_of_profile %></h3>
+                   <small><%= t("views.indicators.out_age_measure_aprev") %></small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cb-item bg-blue light-font" data-toggle="popover" data-trigger="hover" data-placement="right"
+                     title="" data-original-title="<%= t('views.analysis.total_conformities') %>">
+                   <h3><%= @conformities %></h3>
+                   <small><%= t("views.analysis.total_conformities") %></small>
+                </div>
+              </div>
+            </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="cb-item evaded light-font" data-toggle="popover" data-trigger="hover" data-placement="right"
+                       title="" data-original-title="<%= t('views.indicators.evaded') %>">
+                     <h3><%= unit.offenders.evaded.count %></h3>
+                     <small><%= t("views.indicators.evaded") %></small>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-md-6 text-center">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <span class="real-time-occupation">
+                  <%= t("views.indicators.real_time_occupation") %>
+                <span>
+              </div>
+
+              <div class="row unit-row-padding">
+                <div class="col-md-6">
+                  <span class="currently-occupation">
+                    <%= t("views.indicators.currently") %>
+                  <span>
+
+                  <br />
+
+                  <span class="currently-occupation-value text-center">
+                    <%= unit.offenders.not_evaded.count %>
+                  <span>
+
+                  <% if unit.occupation_increased?(@variation_date) %>
+                    <span class="arrow-up">
+                      <%= fa_icon('arrow-up') %>
+                    <span>
+                  <% else %>
+                    <span class="arrow-down">
+                      <%= fa_icon('arrow-down') %>
+                    <span>
+                  <% end %>
+                </div>
+
+                <div class="col-md-6 ">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <span class="variation">
+                        <%= t("views.indicators.variation") %>
+                      <span>
+                      <span class="variation-value">
+                        <%= unit.occupation_variation(@variation_date) %>
+                      <span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <span class="variation-percentage">
+                        <%= t("views.indicators.variation_percentage") %>
+                      <span>
+
+                      <span class="variation-percentage-value">
+                        <%= unit.occupation_variation_percentage(@variation_date).to_i %>%
+                      <span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row unit-row-padding">
+                <div class="col-md-6">
+                  <span class="biggest-occupation">
+                    <%= t("views.indicators.biggest_occupation") %>
+                  <span>
+                  <br />
+
+                  <span class="biggest-occupation-value">
+                    <%= unit.biggest_occupation %>
+                  <span>
+
+                </div>
+
+                <div class="col-md-6">
+                  <span class="lowest-occupation">
+                    <%= t("views.indicators.lowest_occupation") %>
+                  <span>
+                  <br />
+
+                  <span class="lowest-occupation-value">
+                     <%= unit.lowest_occupation %>
+                  <span>
+                </div>
+              </div>
+
+            </div>
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <div id="crimes-chart">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div id="occupation-day">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row unit-row-padding">
+          <hr>
+          <%= link_to "", class: "btn bg-gray btn-icon btn-back load-units" do %>
+            <%= fa_icon("arrow-left") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

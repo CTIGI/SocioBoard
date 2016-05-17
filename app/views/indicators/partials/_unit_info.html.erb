@@ -3,7 +3,9 @@
   <div class="tile panel-info-unit">
     <div class="t-header th-alt bg-white">
       <div class="th-title title-unit-panel">
-        <%= truncate_words(name) %>
+        <%= link_to "#", class: "load-unit-profile", data: { link: unit_profile_indicators_path(id: id) } do  %>
+          <%= truncate_words(name) %>
+        <% end %>
       </div>
     </div>
 

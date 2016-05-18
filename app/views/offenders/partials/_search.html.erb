@@ -85,7 +85,7 @@
         <div class="col-md-1">
           <div class="form-group">
             <%= f.label :has_photo_true, t('activerecord.attributes.offender.has_photo') %>
-            <%= f.check_box :has_photo_true, { class: "form-control i-checks" } %>
+            <%= f.select :has_photo_eq, @yes_or_no, { include_blank: true }, { class: "select2 form-control" } %>
           </div>
         </div>
 
@@ -93,7 +93,7 @@
           <div class="form-group">
             <%= f.label :has_biometry_true, t('activerecord.attributes.offender.has_biometry') %>
             <br />
-            <%= f.check_box :has_biometry_true, { class: "form-control i-checks" } %>
+            <%= f.select :has_biometry_eq, @yes_or_no, { include_blank: true },{ class: "select2 form-control" } %>
           </div>
         </div>
 

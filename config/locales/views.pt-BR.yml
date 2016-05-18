@@ -18,6 +18,9 @@ pt-BR:
     users:
       list_users: "Usuários"
     offenders:
+      boolean:
+        "true": "Sim"
+        "false": "Não"
       confidential: "Sigiloso"
       free_range_units: "Unidades de Semiliberdade"
       admission_units: "Unidades de Internação"

@@ -18,7 +18,8 @@ describe Offender, :type => :model do
     it { should respond_to(:crime_id) }
     it { should respond_to(:evaded) }
     it { should respond_to(:evasion_date) }
-
+    it { should respond_to(:has_photo) }
+    it { should respond_to(:has_biometry) }
   end
 
   context "Associations" do

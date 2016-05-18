@@ -55,7 +55,11 @@ module Concerns
         @evaded                      = Offender.evaded.count
         search_terms                 = []
         @counters                    = []
+
         if params[:q].present?
+          params[:q][:has_biometry_true] = nil if params[:q][:has_biometry_true] == "0"
+          params[:q][:has_photo_true] = nil if params[:q][:has_photo_true] == "0"
+
           params[:q].each do |key, value|
             search_terms << ({ key => value }) unless ( value.class == Array ? value.reject(&:blank?).blank? : value.blank? )
           end

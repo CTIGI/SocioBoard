@@ -75,10 +75,25 @@
             <%= f.search_field :measures_end_date_measure_lteq, class: "form-control date-time-picker", value: date_input(f.object.measures_end_date_measure_lteq) %>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="form-group">
             <%= f.label :measures_measure_situation_in, t('activerecord.attributes.offender.measures_measure_situation') %>
             <%= f.select(:measures_measure_situation_in, @measure_situations, { include_blank: false }, { class: "select2 form-control", multiple: "multiple" }) %>
+          </div>
+        </div>
+
+        <div class="col-md-1">
+          <div class="form-group">
+            <%= f.label :has_photo_true, t('activerecord.attributes.offender.has_photo') %>
+            <%= f.check_box :has_photo_true, { class: "form-control i-checks" } %>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :has_biometry_true, t('activerecord.attributes.offender.has_biometry') %>
+            <br />
+            <%= f.check_box :has_biometry_true, { class: "form-control i-checks" } %>
           </div>
         </div>
 

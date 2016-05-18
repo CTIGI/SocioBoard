@@ -60,6 +60,8 @@ class PopulateOffendersJob < ApplicationJob
         offender.recurrent     = r["reincidente"].blank? ? I18n.t("app.no_record") : r["reincidente"]
         offender.origin_county = r["comarcaOrigem"].blank? ? I18n.t("app.no_record") : r["comarcaOrigem"]
         offender.crime_id      = r["idApreensao"]
+        offender.has_photo     = r["foto"]
+        offender.has_biometry  = r["biometria"]
 
         if evaded
           offender.evaded       = true
@@ -78,25 +80,30 @@ class PopulateOffendersJob < ApplicationJob
 
         offender.measures.destroy_all
         r["medidas"].each do |m|
-          measure = Measure.where(measure_id: m["idMedida"]).first_or_initialize
-          measure.start_date_measure = m["dataInicioMedida"]
-          measure.end_date_measure    = m["dataFimPrevMedida"]
-          measure.measure_type        = m["tipoMedida"]
-          measure.measure_deadline    = m["prazoMedida"]
-          measure.measure_situation   = m["situacaoMedida"]
-          measure.ammount_end_days    = m["qtdDiasTerminoMedida"]
-          measure.offender_id         = offender.id
-          current_period              = set_current_period_date(set_total_periods(measure.measure_type, measure.end_date_measure), measure.start_date_measure)
-          unless current_period.blank?
-            measure.current_period      = current_period[0]
-            measure.current_period_date = current_period[1]
-          end
-          measure.save
+          save_measure(m, offender)
         end unless r["medidas"].blank?
       end
 
       return ids
     end
+  end
+
+  def save_measure(m, offender)
+    measure = Measure.where(measure_id: m["idMedida"]).first_or_initialize
+    measure.start_date_measure  = m["dataInicioMedida"]
+    measure.end_date_measure    = m["dataFimPrevMedida"]
+    measure.measure_type        = m["tipoMedida"]
+    measure.measure_deadline    = m["prazoMedida"]
+    measure.measure_situation   = m["situacaoMedida"]
+    measure.ammount_end_days    = m["qtdDiasTerminoMedida"]
+    measure.offender_id         = offender.id
+    current_period              = set_current_period_date(set_total_periods(measure.measure_type, measure.end_date_measure), measure.start_date_measure)
+
+    unless current_period.blank?
+      measure.current_period      = current_period[0]
+      measure.current_period_date = current_period[1]
+    end
+    measure.save
   end
 
 end

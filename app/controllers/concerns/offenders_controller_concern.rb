@@ -57,9 +57,6 @@ module Concerns
         @counters                    = []
 
         if params[:q].present?
-          params[:q][:has_biometry_true] = nil if params[:q][:has_biometry_true] == "0"
-          params[:q][:has_photo_true] = nil if params[:q][:has_photo_true] == "0"
-
           params[:q].each do |key, value|
             search_terms << ({ key => value }) unless ( value.class == Array ? value.reject(&:blank?).blank? : value.blank? )
           end
@@ -112,6 +109,7 @@ module Concerns
         @measure_types      = Measure.render_data_list(:measure_type)
         @measure_deadlines  = Measure.render_data_list(:measure_deadline)
         @measure_situations = Measure.render_data_list(:measure_situation)
+        @yes_or_no          = [[I18n.t("views.offenders.boolean.true"), true], [I18n.t("views.offenders.boolean.false"), false]]
       end
     end
   end

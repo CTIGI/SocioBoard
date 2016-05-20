@@ -10,9 +10,22 @@ class DashboardController < ApplicationController
     measure_by_unit_chart
     set_units_capacity_charts
     set_daily_occupation_chart
+    daily_occupation
   end
 
   private
+
+  def daily_occupation
+
+    data = []
+
+    UnitOccupation.all.ordered_by_date.group(:day).sum(:occupation).each do |uc|
+      data << uc[1]
+    end
+
+    series = [{ name: I18n.t("activerecord.models.offender"), data: data }]
+    gon.all_units_daily_occupation_series = series
+  end
 
   def set_daily_occupation_chart
     categories = []

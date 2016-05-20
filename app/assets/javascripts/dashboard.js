@@ -6,6 +6,9 @@ DashboardController.prototype.index = function() {
   setBarChart($('#measure-by-unit'), gon.measure_by_units_categories, gon.measures_by_units , "Unidades x Medidas");
   setWebChart($('#units-capacity'), gon.units_capacity_categories, gon.units_capacity_series , "Capacidade das unidades")
   setLineChart($('#units-daily-occupation'), gon.daily_occupation_categories , gon.daily_occupation_series, 'Ocupação diária por unidade')
+
+  setLineChart($('#daily-occupation'), gon.daily_occupation_categories , gon.all_units_daily_occupation_series, 'Ocupação diária todas as unidades')
+
 }
 
 var bulbaColors = [
@@ -46,6 +49,7 @@ function setCheckBoxes() {
   $('#crime-by-unit').hide();
   $('#measure-by-unit').hide();
   $('#units-daily-occupation').hide();
+  $('#daily-occupation').hide();
 
   $('#units_capacity_checkbox').on('ifChecked', function(event){
      $('#units-capacity').show();
@@ -77,6 +81,14 @@ function setCheckBoxes() {
 
   $('#units_daily_occupation_checkbox').on('ifUnchecked', function(event){
     $('#units-daily-occupation').hide();
+  });
+
+  $('#daily_occupation_checkbox').on('ifChecked', function(event){
+     $('#daily-occupation').show();
+  });
+
+  $('#daily_occupation_checkbox').on('ifUnchecked', function(event){
+    $('#daily-occupation').hide();
   });
 }
 
@@ -220,7 +232,7 @@ function setBarChart(chartDiv, categories, chartData, title) {
     });
 }
 
-function setLineChart(chartDiv, categories, series,title){
+function setLineChart(chartDiv, categories, series, title){
   $(chartDiv).highcharts({
     chart: {
       zoomType: 'x',

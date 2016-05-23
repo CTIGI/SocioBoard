@@ -31,8 +31,8 @@ class PopulateOffendersJob < ApplicationJob
 
     ids = []
 
-    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}", false)
     ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crve/#{Constants::CRV::PWD}", true)
+    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}", false)
 
     ids.flatten!
 
@@ -63,9 +63,12 @@ class PopulateOffendersJob < ApplicationJob
         offender.has_photo     = r["foto"]
         offender.has_biometry  = r["biometria"]
 
-        if evaded
+        if evaded && r["dataEvasao"]
           offender.evaded       = true
           offender.evasion_date = r["dataEvasao"]
+        else
+          offender.evaded       = false
+          offender.evasion_date = nil
         end
 
         offender.crimes = []

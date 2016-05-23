@@ -10,7 +10,7 @@
       <div class="container-fluid">
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group">
               <input id="units_capacity_checkbox" class="i-checks" type="checkbox">
               <span class="checkbox-span">
@@ -18,7 +18,8 @@
               </span>
             </div>
           </div>
-          <div class="col-md-6">
+
+          <div class="col-md-4">
             <div class="form-group">
               <input id="units_daily_occupation_checkbox" class="i-checks" type="checkbox">
               <span class="checkbox-span">
@@ -26,10 +27,19 @@
               </span>
             </div>
           </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <input id="daily_occupation_checkbox" class="i-checks" type="checkbox">
+              <span class="checkbox-span">
+                <%=t("views.dashboards.daily_occupation")%>
+              </span>
+            </div>
+          </div>
         </div>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group">
               <input id="unitxacts_checkbox" class="i-checks" type="checkbox">
               <span class="checkbox-span">
@@ -38,7 +48,7 @@
             </div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group">
               <input id="unitxmeasures_checkbox" class="i-checks" type="checkbox">
               <span class="checkbox-span">
@@ -66,6 +76,15 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div id="units-daily-occupation">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div id="daily-occupation">
       </div>
     </div>
   </div>

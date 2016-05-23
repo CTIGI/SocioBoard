@@ -46,6 +46,7 @@ pt-BR:
             title: "Próx. ao venc. da medida de sanção"
             text: "Considera-se 'Próx. ao venc. da medida de sanção' todos que possuem DATA FIM MEDIDA igual ou inferior a %{date}"
     dashboards:
+      daily_occupation: "Ocupação diária"
       units_daily_occupation: "Ocupação diária por unidade"
       units_capacity: "Capacidade das unidades"
       unitxacts: "Unidades x Tipos de Ato"

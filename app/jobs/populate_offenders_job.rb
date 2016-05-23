@@ -31,8 +31,8 @@ class PopulateOffendersJob < ApplicationJob
 
     ids = []
 
-    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}", false)
     ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crve/#{Constants::CRV::PWD}", true)
+    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}", false)
 
     ids.flatten!
 

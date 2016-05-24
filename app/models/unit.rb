@@ -3,12 +3,18 @@ class Unit < ApplicationRecord
   has_many :unit_occupations
   has_and_belongs_to_many :measure_types
 
+  geocoded_by :full_address
+
   validates :min_age, presence: true, numericality: { greater_than_or_equal_to: 12,
                                                       less_than_or_equal_to: 22 }
   validates :max_age, presence: true, numericality: { greater_than_or_equal_to: 12,
                                                       less_than_or_equal_to: 22 }
 
   validate  :check_ages
+
+  def full_address
+    "#{ street }, #{ county }"
+  end
 
   def occupation_increased?(date)
     old_occupation = unit_occupations.where(day: date).first

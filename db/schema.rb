@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518125858) do
+ActiveRecord::Schema.define(version: 20160523191154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,15 +67,23 @@ ActiveRecord::Schema.define(version: 20160518125858) do
     t.integer  "age"
     t.string   "recurrent"
     t.string   "origin_county"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "crime_id"
-    t.boolean  "duplicated",    default: false
+    t.boolean  "duplicated",               default: false
     t.integer  "unit_id"
-    t.boolean  "evaded",        default: false
+    t.boolean  "evaded",                   default: false
     t.date     "evasion_date"
     t.boolean  "has_photo"
     t.boolean  "has_biometry"
+    t.string   "street"
+    t.string   "district"
+    t.string   "address_county"
+    t.string   "secondary_street"
+    t.string   "secondary_district"
+    t.string   "secondary_address_county"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["unit_id"], name: "index_offenders_on_unit_id", using: :btree
   end
 
@@ -120,6 +128,11 @@ ActiveRecord::Schema.define(version: 20160518125858) do
     t.datetime "updated_at",               null: false
     t.integer  "min_age",    default: 0
     t.integer  "max_age",    default: 150
+    t.string   "street"
+    t.string   "district"
+    t.string   "county"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", force: :cascade do |t|

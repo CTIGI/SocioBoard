@@ -11,6 +11,11 @@ RSpec.describe Unit, :type => :model do
     it { should respond_to(:capacity) }
     it { should respond_to(:min_age) }
     it { should respond_to(:max_age) }
+    it { should respond_to(:street) }
+    it { should respond_to(:district) }
+    it { should respond_to(:latitude) }
+    it { should respond_to(:longitude) }
+
   end
 
   context "Associations" do
@@ -20,6 +25,13 @@ RSpec.describe Unit, :type => :model do
   end
 
   context "Instance Methods" do
+    describe ".full_address" do
+      it "should return the unit full address" do
+        unit = build(:unit, street: "Street", county: "County")
+        expect(unit.full_address).to eq "Street, County"
+      end
+    end
+
     describe ".biggest_occupation" do
       let(:unit) { create(:unit) }
 

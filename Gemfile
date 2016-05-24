@@ -34,6 +34,7 @@ gem 'axlsx_rails'
 gem 'axlsx_styler'
 gem 'sidetiq'
 gem 'sinatra', git: "git@github.com:sinatra/sinatra.git", branch: 'master', :require => nil
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'

@@ -20,6 +20,14 @@ describe Offender, :type => :model do
     it { should respond_to(:evasion_date) }
     it { should respond_to(:has_photo) }
     it { should respond_to(:has_biometry) }
+    it { should respond_to(:street) }
+    it { should respond_to(:district) }
+    it { should respond_to(:address_county) }
+    it { should respond_to(:secondary_street) }
+    it { should respond_to(:secondary_district) }
+    it { should respond_to(:secondary_address_county) }
+    it { should respond_to(:latitude) }
+    it { should respond_to(:longitude) }
   end
 
   context "Associations" do

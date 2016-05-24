@@ -4,7 +4,7 @@ class UnitOccupationWorker
 
   sidekiq_options queue: :unit_occupation
 
-  recurrence { daily }
+  recurrence { hourly }
 
   def perform()
     Unit.all.each do |unit|

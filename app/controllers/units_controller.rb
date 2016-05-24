@@ -20,6 +20,7 @@ class UnitsController < ApplicationController
   def update
     authorize @unit
     status = @unit.update(unit_params) ? 200 : 403
+    @unit.geocode
     respond_with(@unit, layout: false, status: status)
   end
 
@@ -36,6 +37,9 @@ class UnitsController < ApplicationController
     params.require(:unit).permit(
       :min_age,
       :max_age,
+      :street,
+      :county,
+      :district,
       measure_type_ids: []
     )
   end

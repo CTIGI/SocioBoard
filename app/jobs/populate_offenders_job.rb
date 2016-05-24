@@ -62,6 +62,15 @@ class PopulateOffendersJob < ApplicationJob
         offender.crime_id      = r["idApreensao"]
         offender.has_photo     = r["foto"]
         offender.has_biometry  = r["biometria"]
+        
+        if !evaded
+          offender.street                    = r["endereco"]
+          offender.district                  = r["bairro"]
+          offender.address_county            = r["municipio"]
+          offender.secondary_street          = r["enderecoSec"]
+          offender.secondary_district        = r["bairroSec"]
+          offender.secondary_address_county  = r["municipioSec"]
+        end
 
         if evaded && r["dataEvasao"]
           offender.evaded       = true

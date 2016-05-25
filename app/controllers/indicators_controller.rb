@@ -46,9 +46,11 @@ class IndicatorsController < ApplicationController
 
     @series_occupation << [{ name: @unit.name, data: data }, { name: I18n.t("activerecord.attributes.unit.capacity"), data: capacity_data } ]
 
-    @variation_date = Date.today - 30
+    @variation_date = Date.today - 1
 
     @conformities = @unit.offenders.not_evaded.count - @unit.offenders_out_of_profile
+
+    @ocupation_tooltip = @unit.occupation_increased?(@variation_date) ? I18n.t("views.indicators.incresed_occupation") : I18n.t("views.indicators.decreased_occupation")
   end
 
   private

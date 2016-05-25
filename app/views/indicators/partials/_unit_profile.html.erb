@@ -122,20 +122,25 @@
                   <span>
 
                   <br />
+                  <div class="" data-toggle="popover"
+                  data-trigger="hover" data-placement="top" title="" data-original-title="<%= @ocupation_tooltip %>">
 
                   <span class="currently-occupation-value text-center">
                     <%= unit.offenders.not_evaded.count %>
                   <span>
 
                   <% if unit.occupation_increased?(@variation_date) %>
+
                     <span class="arrow-up">
                       <%= fa_icon('arrow-up') %>
                     <span>
+
                   <% else %>
                     <span class="arrow-down">
                       <%= fa_icon('arrow-down') %>
                     <span>
                   <% end %>
+                  </div>
                 </div>
 
                 <div class="col-md-6 ">

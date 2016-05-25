@@ -89,6 +89,8 @@ pt-BR:
                          Proporcão Fora do Perfil/Ocupação: %{out_of_profile_percentage}%\n
                          Tipos de medidas: %{measures}"
     indicators:
+      incresed_occupation: "Aumento da ocupação em relação ao dia anterior"
+      decreased_occupation: "Redução da ocupação em relação ao dia anterior"
       evaded: "Evadidos"
       out_age_aprev: "F. Faixa Etária"
       out_age_measure_aprev: "F. Etária e Medida"

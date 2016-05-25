@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head dir="ltr" lang="<%= I18n.locale %>">
+    <%= favicon_link_tag "favicon.ico" %>
+    <title>.:: <%= t("app.appname") %> ::.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <section id="content">
+      <div class="container">
+        <%= render_flash_message %>
+        <%= yield %>
+      </div>
+    </section>
+    <%= render partial: "layouts/javascripts" %>
+  </body>
+</html>

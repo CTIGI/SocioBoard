@@ -28,6 +28,12 @@
 //= require mootools/dist/mootools-core.min
 //= require mootools-more/Source/Drag/Drag
 //= require mootools-more/Source/Drag/Drag.Move
+//= require underscore/underscore
+//= require gmaps/google
+//= require geoxml3/kmz/geoxml3
+//= require geoxml3/kmz/geoxml3_gxParse_kmz
+//= require js-rich-marker/src/richmarker-compiled
+//= require markerclustererplus/dist/markerclusterer.min
 //= require jspdf/dist/jspdf.min
 //= require iCheck/icheck
 //= require functions

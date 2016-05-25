@@ -24,6 +24,11 @@
     "hover": "latest",
     "mootools": "latest",
     "mootools-more": "latest",
-    "jspdf": "latest"
+    "jspdf": "latest",
+    "gmaps": "git://github.com/hpneo/gmaps",
+    "geoxml3": "git://github.com/geocodezip/geoxml3",
+    "markerclustererplus": "latest",
+    "js-rich-marker": "git://github.com/googlemaps/js-rich-marker#gh-pages",
+    "underscore": "latest"
   }
 }

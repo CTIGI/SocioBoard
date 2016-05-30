@@ -15,7 +15,6 @@ RSpec.describe Unit, :type => :model do
     it { should respond_to(:district) }
     it { should respond_to(:latitude) }
     it { should respond_to(:longitude) }
-
   end
 
   context "Associations" do

@@ -1,0 +1,81 @@
+<span class="content-modal">
+  <div class="modal-body">
+    <table class="table table-stripped">
+      <thead>
+        <tr>
+          <th colspan="4" class="text-center"><%= unit.name %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <b><%= t("activerecord.attributes.unit.min_age") %>:</b>
+          </td>
+          <td>
+            <%= unit.min_age %>
+          </td>
+
+          <td>
+            <b><%= t("activerecord.attributes.unit.max_age") %>:</b>
+          </td>
+          <td>
+            <%= unit.max_age %>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <b><%= t("activerecord.attributes.unit.measure_types") %>:</b>
+          </td>
+          <td colspan='3' >
+            <%= unit.measure_types_names %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b><%= t("activerecord.attributes.unit.capacity") %>:</b>
+          </td>
+          <td>
+            <%= unit.capacity %>
+          </td>
+
+          <td>
+            <b><%= t("views.maps.unit_occupation") %>:</b>
+          </td>
+          <td>
+            <%= unit.offenders.not_evaded.count %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b><%= t("views.maps.total_on_age") %>:</b>
+          </td>
+          <td>
+            <%= unit.offenders_out_of_profile_by_age %>
+          </td>
+
+          <td>
+            <b><%= t("views.maps.total_on_measure") %>:</b>
+          </td>
+          <td>
+            <%= unit.offenders_out_of_measure %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b><%= t("views.maps.evaded") %>:</b>
+          </td>
+          <td>
+            <%= unit.offenders.evaded.count %>
+          </td>
+
+          <td>
+            <b><%= t("views.maps.inconsistences") %>:</b>
+          </td>
+          <td>
+            <%= unit.inconsistences %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</span>

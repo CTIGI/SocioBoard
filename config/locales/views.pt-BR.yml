@@ -1,5 +1,12 @@
 pt-BR:
   views:
+    maps:
+      unit_occupation: "Ocupação"
+      total_on_measure: "Fora da Medida"
+      total_on_age: "Fora da Faixa etária"
+      total_on_measure_age: "Fora da Faixa etária e Medida"
+      inconsistences: "Inconsistencias"
+      evaded: "Evadidos"
     reports:
       report_data: "Pesquisa realizada em %{data}"
       offenders_list: "Listagem de Socioeducandos"

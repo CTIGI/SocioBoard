@@ -16,6 +16,10 @@ class Unit < ApplicationRecord
     "#{ street }, #{ county }"
   end
 
+  def measure_types_names
+    measure_types.map(&:name).join(", ")
+  end
+
   def occupation_increased?(date)
     old_occupation = unit_occupations.where(day: date).first
     if old_occupation

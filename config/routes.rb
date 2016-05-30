@@ -35,6 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :maps, only: [:index] do
+  end
+
   resources :roles
   resources :users, only: [:index, :edit, :update, :show]
   resources :units, only: [:index, :edit, :update, :show]

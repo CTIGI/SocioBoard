@@ -1,24 +1,35 @@
-var config = {
-  map: {
-    center: new google.maps.LatLng(gon.center_lat, gon.center_lng)
-  },
+var RichMarkerBuilder,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
-  marker: {
-    gridSize: 160,
-    minimumClusterSize: 5,
-    ignoreHidden: true,
-    averageCenter: true,
-    styles: [{
-      url: gon.m3,
-      height: 65,
-      width: 65,
-      anchor: [0],
-      textColor: '#fff',
-      textSize: 14
-    }]
+RichMarkerBuilder = (function(superClass) {
+  extend(RichMarkerBuilder, superClass);
+
+  function RichMarkerBuilder() {
+    return RichMarkerBuilder.__super__.constructor.apply(this, arguments);
   }
 
-}
+  RichMarkerBuilder.prototype.create_marker = function() {
+    var options;
+    options = _.extend(this.marker_options(), this.rich_marker_options());
+    this.serviceObject = new RichMarker(options);
+    this.serviceObject.setShadow("")
+    return this.serviceObject
+  };
+
+  RichMarkerBuilder.prototype.rich_marker_options = function() {
+    var marker;
+    marker = document.createElement("div");
+    marker.setAttribute('class', 'pin');
+    marker.innerHTML = this.args.custom_marker;
+    return {
+      content: marker
+    };
+  };
+
+  return RichMarkerBuilder;
+
+})(Gmaps.Google.Builders.Marker);
 
 var offenderMap = {
   loading: function () {
@@ -48,11 +59,27 @@ var offenderMap = {
   },
 
   initVariables: function() {
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      var markers = handler.addMarkers(gon.hash_json);
+    var handler;
+
+    handler = Gmaps.build('Google', {
+      builders: {
+        Marker: RichMarkerBuilder
+      },
+      markers: {
+        clusterer: {
+          gridSize: 20,
+          minimumClusterSize: 10
+        }
+      }
+
+    });
+
+    handler.buildMap({ provider: {disableDefaultUI: true}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(gon.hash_json)
+      markers2 = handler.addMarkers(gon.district_json)
+
       handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
+      handler.getMap().setZoom(new google.maps.LatLng(gon.center_lat, gon.center_lng))
 
       var kmls = handler.addKml(
         { url: "/kmls/bairros_fortaleza.kml" }

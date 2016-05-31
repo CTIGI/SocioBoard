@@ -2,6 +2,7 @@ class Offender < ApplicationRecord
   paginates_per 10
   belongs_to :unit
   has_many :measures, dependent: :destroy
+  belongs_to :district
   has_and_belongs_to_many :crimes, -> { distinct }
   scope :duplicated, -> { where(duplicated: true) }
   scope :not_evaded, -> { where(evaded: false) }
@@ -11,7 +12,6 @@ class Offender < ApplicationRecord
   scope :near_current_periods, -> { joins(:measures).where("measures.current_period_date <= ?", Date.today + 30) }
   scope :overdues,             -> { joins(:measures).where("measures.end_date_measure < ? AND measures.measure_type = ?", Date.today,  I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")) }
   scope :sanctions,            -> { joins(:measures).where("measures.end_date_measure <= ? AND  measures.measure_type = ?", Date.today + 10, I18n.t("activerecord.attributes.offender.measure_type_list.sanction")) }
-
 
   def self.crimes_list
     all_crimes_list = []

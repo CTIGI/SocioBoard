@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523191154) do
+ActiveRecord::Schema.define(version: 20160530170147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20160523191154) do
     t.datetime "updated_at",  null: false
     t.index ["crime_id"], name: "index_crimes_offenders_on_crime_id", using: :btree
     t.index ["offender_id"], name: "index_crimes_offenders_on_offender_id", using: :btree
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "measure_types", force: :cascade do |t|
@@ -77,13 +85,13 @@ ActiveRecord::Schema.define(version: 20160523191154) do
     t.boolean  "has_photo"
     t.boolean  "has_biometry"
     t.string   "street"
-    t.string   "district"
     t.string   "address_county"
     t.string   "secondary_street"
     t.string   "secondary_district"
     t.string   "secondary_address_county"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "district_id"
     t.index ["unit_id"], name: "index_offenders_on_unit_id", using: :btree
   end
 

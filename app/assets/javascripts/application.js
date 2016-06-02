@@ -2,9 +2,9 @@
 //= require jquery_ujs
 //= require_self
 //= require paloma
+//= require gmaps/google
 //= require i18n
 //= require i18n/translations
-//= require_tree .
 //= require bootstrap/dist/js/bootstrap.min
 //= require flot/jquery.flot
 //= require flot/jquery.flot.resize
@@ -29,7 +29,6 @@
 //= require mootools-more/Source/Drag/Drag
 //= require mootools-more/Source/Drag/Drag.Move
 //= require underscore/underscore
-//= require gmaps/google
 //= require geoxml3/kmz/geoxml3
 //= require geoxml3/kmz/geoxml3_gxParse_kmz
 //= require js-rich-marker/src/richmarker-compiled
@@ -39,3 +38,4 @@
 //= require functions
 //= require general
 //= require remote_crud
+//= require_tree .

@@ -1,0 +1,51 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <%= t('activerecord.attributes.offender.unit') %>
+      </th>
+      <th>
+        <%= t('activerecord.attributes.offender.name') %>
+      </th>
+      <th>
+        <%= t('activerecord.attributes.offender.age') %>
+      </th>
+      <th>
+        <%= t('activerecord.attributes.offender.origin_county') %>
+      </th>
+      <th>
+        <%= t('activerecord.attributes.offender.article') %>
+      </th>
+      <th>
+        <%= t('views.offenders.filter_panel.currrent_period_measure_type') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% offenders.each do |offender| %>
+      <tr class="<%= colorize_table_row(offender) %>">
+        <td>
+          <%= truncate_words(offender.unit.name) %>
+        </td>
+        <td>
+          <%= display_offender_name(offender.name, current_user) %>
+        </td>
+        <td>
+          <%= show_field(offender.age) %>
+        </td>
+        <td>
+          <%= show_field(offender.origin_county) %>
+        </td>
+        <td>
+          <%= show_field(offender.crimes.pluck(:name).join(", ")) %>
+        </td>
+        <td>
+          <%= period_label(offender) %>
+          <b><%= UnicodeUtils.upcase(measure_data(offender, :measure_type)) %></b>
+          <br/>
+          (<%= measure_data(offender, :measure_situation) %>)
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

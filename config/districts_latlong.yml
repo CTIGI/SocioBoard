@@ -1,0 +1,348 @@
+- name: "AEROLANDIA"
+  lat: -3.77532
+  long: -38.51345
+- name: "AEROPORTO"
+  lat: -3.77523
+  long: -38.53128
+- name: "ALAGADICO NOVO"
+  lat: -3.80875
+  long: -38.47171
+- name: "ALDEOTA"
+  lat: -3.73701
+  long: -38.50313
+- name: "ALTO DA BALANCA"
+  lat: -3.76512
+  long: -38.51222
+- name: "ALVARO WEYNE"
+  lat: -3.71582
+  long: -38.56621
+- name: "AMADEU FURTADO"
+  lat: -3.74398
+  long: -38.55816
+- name: "ANCURI"
+  lat: -3.85578
+  long: -38.50109
+- name: "ANTONIO BEZERRA"
+  lat: -3.74251
+  long: -38.5926
+- name: "AUTRAN NUNES"
+  lat: -3.75271
+  long: -38.59605
+- name: "BARRA DO CEARA"
+  lat: -3.70172
+  long: -38.57953
+- name: "BARROSO"
+  lat: -3.81819
+  long: -38.51394
+- name: "BELA VISTA"
+  lat: -3.75213
+  long: -38.56047
+- name: "BENFICA"
+  lat: -3.74175
+  long: -38.53824
+- name: "BOM FUTURO"
+  lat: -3.75760
+  long: -38.54632
+- name: "BOM JARDIM"
+  lat:  -3.79326
+  long: -38.60024
+- name: "BONSUCESSO"
+  lat:  -3.77963
+  long: -38.58684
+- name: "CAIS DO PORTO"
+  lat: -3.71236
+  long: -38.46939
+- name: "CAJAZEIRAS"
+  lat: -3.80033
+  long: -38.50961
+- name: "CAMBEBA"
+  lat: -3.80531
+  long: -38.48437
+- name: "CANIDEZINHO"
+  lat:  -3.81086
+  long: -38.60139
+- name: "CARLITO PAMPLONA"
+  lat: -3.71634
+  long: -38.55489
+- name: "CASTELAO"
+  lat: -3.79784
+  long: -38.52332
+- name: "CENTRO"
+  lat: -3.72650
+  long: -38.52548
+- name: "CIDADE 2000"
+  lat: -3.75071
+  long: -38.47178
+- name: "CIDADE DOS FUNCIONARIOS"
+  lat:  -3.79392
+  long: -38.49849
+- name: "COAÇU"
+  lat:  -3.84572
+  long: -38.47474
+- name: "COCO"
+  lat:  -3.74814
+  long: -38.48054
+- name: "CONJUNTO CEARA I"
+  lat: -3.76399
+  long: -38.60609
+- name: "CONJUNTO CEARA II"
+  lat:  -3.77148
+  long: -38.61068
+- name: "CONJUNTO ESPERANCA"
+  lat: -3.81411
+  long: -38.58978
+- name: "COUTO FERNANDES"
+  lat: -3.75978
+  long: -38.55972
+- name: "CRISTO REDENTOR"
+  lat: -3.70705
+  long: -38.56338
+- name: "CURIO"
+  lat: -3.82237
+  long: -38.47719
+- name: "DAMAS"
+  lat: -3.75105
+  long: -38.54823
+- name: "DEMOCRITO ROCHA"
+  lat: -3.76192
+  long: -38.56536
+- name: "DENDE"
+  lat:  -3.79647
+  long: -38.55659
+- name: "DIAS MACEDO"
+  lat: -3.78772
+  long: -38.52375
+- name: "DIONISIO TORRES"
+  lat: -3.74805
+  long: -38.50215
+- name: "DOM LUSTOSA"
+  lat: -3.75349
+  long: -38.58815
+- name: "DUNAS"
+  lat: -3.75701
+  long: -38.46021
+- name: "EDSON QUEIROZ"
+  lat:  -3.78017
+  long: -38.45848
+- name: "FARIAS BRITO"
+  lat: -3.73303
+  long: -38.54190
+- name: "FATIMA"
+  lat: -3.75022
+  long: -38.52819
+- name: "FLORESTA"
+  lat: -3.72172
+  long: -38.57591
+- name: "GENIBAU"
+  lat: -3.75734
+  long: -38.60150
+- name: "GRANJA LISBOA"
+  lat: -3.78800
+  long: -38.61727
+- name: "GRANJA PORTUGAL"
+  lat: -3.77994
+  long: -38.60064
+- name: "GUAJERU"
+  lat: -3.83077
+  long: -38.47783
+- name: "GUARARAPES"
+  lat: -3.76364
+  long: -38.4878
+- name: "HENRIQUE JORGE"
+  lat: -3.76264
+  long: -38.58522
+- name: "ITAOCA"
+  lat: -3.77169
+  long: -38.55592
+- name: "ITAPERI"
+  lat: -3.78998
+  long: -38.54874
+- name: "JACARECANGA"
+  lat: -3.71820
+  long: -38.54451
+- name: "JANGURUSSU"
+  lat: -3.83712
+  long: -38.51277
+- name: "JARDIM AMERICA"
+  lat: -3.75124
+  long: -38.54143
+- name: "JARDIM CEARENSE"
+  lat: -3.80058
+  long: -38.56595
+- name: "JARDIM DAS OLIVEIRAS"
+  lat: -3.78102
+  long: -38.50276
+- name: "JARDIM GUANABARA"
+  lat:  -3.72332
+  long: -38.59022
+- name: JARDIM IRACEMA
+  lat:  -3.72094
+  long: -38.58341
+- name: "JOAO XXIII"
+  lat:  -3.76935
+  long: -38.58688
+- name: "JOAQUIM TAVORA"
+  lat: -3.74571
+  long: -38.51616
+- name: "JOQUEI CLUBE"
+  lat: -3.76632
+  long: -38.57358
+- name: "JOSE BONIFACIO"
+  lat: -3.74043
+  long: -38.52891
+- name: "LAGOA REDONDA"
+  lat: -3.82448
+  long: -38.45693
+- name: LUCIANO CAVALCANTE
+  lat: -3.77673
+  long: -38.48897
+- name: "MARAPONGA"
+  lat: -3.79318
+  long: -38.56868
+- name: "MATA GALINHA"
+  lat: -3.80346
+  long: -38.51808
+- name: "MEIRELES"
+  lat: -3.72761
+  long: -38.49989
+- name: "MESSEJANA"
+  lat: -3.82629
+  long: -38.49352
+- name: "MONDUBIM I"
+  lat: -3.82407
+  long: -38.56761
+- name: "MONDUBIM II"
+  lat: -3.82162
+  long: -38.58248
+- name: "MONTE CASTELO"
+  lat:  -3.72384,
+  long: -38.55191
+- name: "MONTESE"
+  lat: -3.76479
+  long: -38.54991
+- name: "MOURA BRASIL"
+  lat: -3.71892
+  long: -38.53327
+- name: "MUCURIPE"
+  lat: -3.72537
+  long: -38.48451
+- name: "PADRE ANDRADE"
+  lat: -3.73532
+  long: -38.58013
+- name: "PALMEIRAS"
+  lat: -3.85169
+  long: -38.52339
+- name: "PAN AMERICANO"
+  lat: -3.75628
+  long: -38.56479
+- name: "PAPICU"
+  lat: -3.73875,
+  long: -38.47106
+- name: "PARANGABA"
+  lat: -3.77688
+  long: -38.56523
+- name: PARQUE ARAXA
+  lat: -3.73555
+  long: -38.54679
+- name: "PARQUE DOIS IRMAOS"
+  lat: -3.80901
+  long: -38.54951
+- name: "PARQUE IRACEMA"
+  lat: -3.80575
+  long: -38.49646
+- name: "PARQUE MANIBURA"
+  lat: -3.79127
+  long: -38.48623
+- name: "PARQUE PRES. VARGAS"
+  lat:  -3.82560
+  long: -38.59926
+- name: "PARQUE SANTA ROSA"
+  lat: -3.82035
+  long: -38.59393
+- name: "PARQUE SAO JOSE"
+  lat: -3.79731
+  long: -38.58878
+- name: "PARQUELANDIA"
+  lat: -3.73767
+  long: -38.55888
+- name: "PARREAO"
+  lat: -3.75837
+  long: -38.53691
+- name: "PASSARE"
+  lat: -3.81410
+  long: -38.53007
+- name: "PAUPINA"
+  lat: -3.85627
+  long: -38.48690
+- name: "PEDRAS"
+  lat: -3.87413
+  long: -38.51048
+- name: "PICI"
+  lat: -3.74711
+  long: -38.57447
+- name: "PIRAMBU"
+  lat: -3.70986
+  long: -38.55282
+- name: "PRAIA DE IRACEMA"
+  lat: -3.72175
+  long: -38.51569
+- name: "PRAIA DO FUTURO I"
+  lat:  -3.73871
+  long: -38.45524
+- name: "PRAIA DO FUTURO II"
+  lat:  -3.75607
+  long: -38.44623
+- name: "PREFEITO JOSE WALTER"
+  lat: -3.83812
+  long: -38.54988
+- name: "PRESIDENTE KENNEDY"
+  lat: -3.73058
+  long: -38.56919
+- name: "QUINTINO CUNHA"
+  lat: -3.72970
+  long: -38.59874
+- name: RODOLFO TEOFILO
+  lat: -3.74423
+  long: -38.55067
+- name: "SABIAGUABA"
+  lat: -3.79904,
+  long: -38.42962
+- name: "SALINAS"
+  lat: -3.76320
+  long: -38.49948
+- name: "SAO GERARDO"
+  lat: -3.73006
+  long: -38.55773
+- name: "SAO JOAO DO TAUAPE"
+  lat: -3.75646
+  long: -38.50543
+- name: "SAPIRANGA/COITE"
+  lat: -3.79541
+  long: -38.46602
+- name: "Serrinha"
+  lat: -3.78274
+  long: -38.54639
+- name: "SIQUEIRA"
+  lat: -3.80479
+  long: -38.61838
+- name: "VARJOTA"
+  lat: -3.73257
+  long: -38.48608
+- name: "VICENTE PIZON"
+  lat: -3.72751
+  long: -38.46922
+- name: "VILA ELLERY"
+  lat: -3.72332
+  long: -38.56314
+- name: "MANOEL SATIRO"
+  lat: -3.80222
+  long: -38.58159
+- name: "VILA PERY"
+  lat:  -3.78722
+  long: -38.58007
+- name: "VILA UNIAO"
+  lat: -3.76813
+  long: -38.53523
+- name: "VILA VELHA"
+  lat: -3.71486
+  long: -38.60086

@@ -33,6 +33,7 @@ describe Offender, :type => :model do
   context "Associations" do
     it { should have_many(:measures) }
     it { should belong_to(:unit) }
+    it { should belong_to(:district) }
   end
 
   context "scopes" do

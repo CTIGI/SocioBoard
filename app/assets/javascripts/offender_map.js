@@ -1,3 +1,4 @@
+
 var RichMarkerBuilder,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
@@ -31,6 +32,9 @@ RichMarkerBuilder = (function(superClass) {
 
 })(Gmaps.Google.Builders.Marker);
 
+var customMarkers = []
+var customMarkers2 = []
+
 var offenderMap = {
   loading: function () {
     $('.loading-map-data').css({
@@ -46,6 +50,8 @@ var offenderMap = {
 
   adjustElementsView: function() {
     $('#header, #sidebar').remove();
+    $('.map-search').height($(window).height());
+
     $('#content').attr("style", "");
     $('#content').css({
       marginLeft: "-50px",
@@ -55,6 +61,55 @@ var offenderMap = {
     $('body').css({
       padding: "0",
       margin: "-30px 0 0 0"
+    })
+  },
+
+  openMenuSearch: function () {
+    $('.form-components').height($(window).height() - 140)
+    $('.open-search').on('click', function (e) {
+      e.preventDefault()
+      $('.map-search').show('slide', { direction: 'left' }, 'fast');
+    })
+  },
+
+  closeSearch: function () {
+    $('.close-search').click(function () {
+      $('.map-search').hide('slide', { direction: 'left' }, 'fast');
+    })
+  },
+
+  clearSearch: function() {
+    $('.form-control.select2').select2('val', null);
+
+    $('#clear-search').click(function (e) {
+      e.preventDefault();
+      $('.form-control.select2').each(function ()  {
+
+        $(this).val('').change();
+      });
+    })
+  },
+
+  searchMap: function(handler) {
+    $('#search-on-map').click(function (e) {
+      e.preventDefault();
+      handler.removeMarkers(customMarkers2)
+
+      $.ajax({
+        method: "get",
+        url: $('form').closest().attr("href"),
+        data: $('form').serialize(),
+        dataType: "json",
+        beforeSend: function () {
+          $('.loading-map-data').show();
+        },
+        complete: function () {
+          $('.loading-map-data').hide();
+        },
+        success: function (data) {
+          customMarkers2 = handler.addMarkers(data)
+        }
+      })
     })
   },
 
@@ -71,19 +126,13 @@ var offenderMap = {
           minimumClusterSize: 10
         }
       }
-
     });
 
     handler.buildMap({ provider: {disableDefaultUI: false}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers(gon.hash_json)
-      markers2 = handler.addMarkers(gon.district_json)
+      customMarkers = handler.addMarkers(gon.hash_json)
+      customMarkers2 = handler.addMarkers(gon.district_json)
 
-      handler.bounds.extendWith(markers);
-      handler.getMap().setZoom(new google.maps.LatLng(gon.center_lat, gon.center_lng))
-
-      var kmls = handler.addKml(
-        { url: "/kmls/bairros_fortaleza.kml" }
-      );
+      handler.getMap().setZoom(12)
     });
 
     var geoXml = new geoXML3.parser({
@@ -91,14 +140,23 @@ var offenderMap = {
       polygonOptions: { clickable: false }
     });
     geoXml.parse('/kmls/bairros_fortaleza.kml')
+
+    return handler
   }
 }
 
 function initMap() {
   $(document).ready(function() {
-    offenderMap.initVariables();
+    var handler = offenderMap.initVariables();
 
     offenderMap.adjustElementsView();
     offenderMap.setMapSize();
+    offenderMap.loading();
+    offenderMap.openMenuSearch();
+    offenderMap.closeSearch();
+    offenderMap.clearSearch();
+    offenderMap.searchMap(handler, customMarkers, customMarkers2);
+
+    enableSelect2();
   });
 }

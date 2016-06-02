@@ -39,3 +39,65 @@
   top: 3px;
   color: white;
 }
+
+.map-search {
+  width: 320px;
+  height: 400px;
+  background-color: white;
+  position: absolute;
+  left: 70px;
+  top: 30px;
+  z-index:999;
+  display: none;
+  -webkit-box-shadow: 24px 0px 28px -12px rgba(179,179,179,1);
+  -moz-box-shadow: 24px 0px 28px -12px rgba(179,179,179,1);
+  box-shadow: 24px 0px 28px -12px rgb(146, 146, 146);
+}
+
+.loading-map-data {
+  display: none;
+  i {
+    font-size: 20px;
+  }
+  .loading-map-content {
+    padding-top: 10px;
+  }
+  span {
+    padding-top: 20px;
+  }
+  position: absolute;
+  top: 190px;
+  z-index: 999;
+  left: 160px;
+  width: 140px;
+  height: 60px;
+  background-color: white;
+  color: #009688;
+  border-radius: 10px;
+  border: 1px solid #009688;
+  box-shadow: 0px 7px 16px 0px rgba(138,138,138,1);
+}
+
+.interactive-header {
+  background-color: #009688;
+  span {
+    color: white;
+  }
+}
+
+.close-info, .close-search {
+  cursor: pointer;
+  font-size: 22px;
+  padding-top: 10px;
+}
+
+.open-search {
+  position: absolute;
+  top: 110px;
+  z-index: 999;
+  left: 55px;
+}
+
+.form-components {
+  overflow-x: auto;
+}

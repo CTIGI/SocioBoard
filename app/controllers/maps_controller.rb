@@ -18,15 +18,19 @@ class MapsController < ApplicationController
     end
 
     gon.district_json = Gmaps4rails.build_markers(District.all) do |d, marker|
-      marker.json({:id => d.name,
+      if d.offenders.count > 0
+        marker.json({:id => d.name,
                     custom_marker: "<div class='marker-info'>
                                       <img src=#{ActionController::Base.helpers.asset_path('offenders_icon.png')}>
                                       <span>#{d.offenders.count}</span>
-                                    </div>"})
-      marker.lat d.latitude
-      marker.lng d.longitude
-      marker.infowindow render_to_string(:partial => "/offenders/infowindow", :locals => { offenders: d.offenders})
+                                      </div>"})
+        marker.lat d.latitude
+        marker.lng d.longitude
+        marker.infowindow render_to_string(:partial => "/offenders/infowindow", :locals => { offenders: d.offenders})
+      end
     end
+
+    gon.district_json = gon.district_json.reject { |c| c.empty? }
   end
 
   private

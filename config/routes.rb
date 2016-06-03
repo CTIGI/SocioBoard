@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       get :generate_sheet
     end
   end
+
   resources :dashboard
+  
   resources :analysis, only: [:update] do
     collection do
       get :unconformities, as: :unconformities

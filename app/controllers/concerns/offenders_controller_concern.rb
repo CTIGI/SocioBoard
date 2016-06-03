@@ -4,13 +4,6 @@ module Concerns
   include OffendersHelper
 
     included do
-      before_action :authenticate_user!
-      skip_after_action :verify_policy_scoped
-      skip_after_action :verify_authorized
-      before_action :set_dependencies, only: [:index]
-      before_action :set_counters, only: [:index, :generate_pdf, :generate_sheet]
-      before_action :format_data_search_for_pdf, only: [:generate_pdf]
-
       def modal_index
         result_offenders
         respond_with(@offenders, layout: false)

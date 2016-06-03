@@ -74,7 +74,7 @@ var offenderMap = {
 
     });
 
-    handler.buildMap({ provider: {disableDefaultUI: true}, internal: {id: 'map'}}, function(){
+    handler.buildMap({ provider: {disableDefaultUI: false}, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers(gon.hash_json)
       markers2 = handler.addMarkers(gon.district_json)
 

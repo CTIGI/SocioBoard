@@ -19,8 +19,12 @@ class UnitsController < ApplicationController
 
   def update
     authorize @unit
-    status = @unit.update(unit_params) ? 200 : 403
-    @unit.geocode
+    if @unit.street == params[:unit][:street]
+      status = @unit.update(unit_params) ? 200 : 403
+    else
+      status = @unit.update(unit_params) ? 200 : 403
+      @unit.geocode
+    end
     respond_with(@unit, layout: false, status: status)
   end
 
@@ -40,6 +44,8 @@ class UnitsController < ApplicationController
       :street,
       :county,
       :district,
+      :latitude,
+      :longitude,
       measure_type_ids: []
     )
   end

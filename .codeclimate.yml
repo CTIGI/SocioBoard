@@ -1,5 +1,10 @@
 ---
 engines:
+  rubocop:
+    enabled: true
+    checks:
+      Rubocop/Syntax:
+        enabled: false
   duplication:
     enabled: true
     config:

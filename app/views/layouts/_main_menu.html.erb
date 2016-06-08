@@ -28,6 +28,11 @@
       </ul>
     </li>
 
+
+    <li>
+      <%= menu_icon(maps_path, "map", t("main_menu.map.maps")) %>
+    </li>
+
     <li class="sm-sub">
       <%= menu_icon("", "line-chart", t("main_menu.indicators.indicators")) %>
       <ul>
@@ -47,10 +52,6 @@
           <%= link_to t("main_menu.configurations.units"), units_path %>
         </li>
       </ul>
-    </li>
-
-    <li>
-      <%= menu_icon(maps_path, "map", t("main_menu.map.maps")) %>
     </li>
   </ul>
 </aside>

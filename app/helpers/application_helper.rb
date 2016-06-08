@@ -8,12 +8,14 @@ module ApplicationHelper
     )
 
     actions << (
-      link_to index_path, class: "btn bg-gray btn-icon btn-back", data: { toggle: "tooltip", placement: "top", "original-title": t("app.back") } do
+      link_to index_path, class: "btn btn-danger btn-icon", data: { toggle: "tooltip", placement: "top", "original-title": t("app.back") } do
         fa_icon("mail-reply")
       end
     )
 
-    raw actions
+    content_tag(:div, class: "modal-footer") do
+      raw actions
+    end
   end
 
   def menu_icon(path, icon, menu_name)

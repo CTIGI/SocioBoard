@@ -3,7 +3,7 @@ class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @units = policy_scope(Unit).page(params[:page])
+    @units = policy_scope(Unit.order(:id)).page(params[:page])
     respond_with(@units)
   end
 
@@ -14,18 +14,18 @@ class UnitsController < ApplicationController
 
   def edit
     authorize @unit
-    respond_with(@unit, layout: false)
+    respond_with(@unit)
   end
 
   def update
     authorize @unit
     if @unit.street == params[:unit][:street]
-      status = @unit.update(unit_params) ? 200 : 403
+      @unit.update(unit_params)
     else
-      status = @unit.update(unit_params) ? 200 : 403
+      @unit.update(unit_params)
       @unit.geocode
     end
-    respond_with(@unit, layout: false, status: status)
+    respond_with(@unit, location: -> { units_path })
   end
 
   private
@@ -44,6 +44,8 @@ class UnitsController < ApplicationController
       :street,
       :county,
       :district,
+      :photo,
+      :photo_cache,
       :latitude,
       :longitude,
       measure_type_ids: []

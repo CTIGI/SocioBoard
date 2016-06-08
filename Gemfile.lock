@@ -112,6 +112,11 @@ GEM
     capybara-webkit (1.8.0)
       capybara (>= 2.3.0, < 2.7.0)
       json
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     celluloid (0.17.3)
       celluloid-essentials
       celluloid-extras
@@ -426,6 +431,7 @@ DEPENDENCIES
   bower-rails
   capybara
   capybara-webkit
+  carrierwave
   database_cleaner
   devise!
   email_spec
@@ -457,7 +463,7 @@ DEPENDENCIES
   puma
   pundit
   quiet_assets
-  rails (>= 5.0.0.beta4, < 5.1)
+  rails (>= 5.0.0.RC1, < 5.1)
   rails-erd
   ransack!
   redis (~> 3.0)
@@ -483,5 +489,8 @@ DEPENDENCIES
   webmock
   whenever
 
+RUBY VERSION
+   ruby 2.2.3p173
+
 BUNDLED WITH
-   1.11.2
+   1.12.5

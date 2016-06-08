@@ -11,6 +11,7 @@ require 'mina/whenever'
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/database.yml',
                     'config/secrets.yml',
+                    'public/uploads',
                     'log',
                     'config/application.yml',
                     'tmp'
@@ -47,6 +48,9 @@ task setup: :environment do
 
   queue! %[touch "#{deploy_to}/shared/config/database.yml"]
   queue  %[echo "-----> Be sure to edit "shared/config/database.yml"."]
+
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/public/uploads"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/uploads"]
 
   queue! %[touch "#{deploy_to}/shared/config/application.yml"]
   queue  %[echo "-----> Be sure to edit "shared/config/application.yml"."]

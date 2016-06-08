@@ -1,15 +1,13 @@
 var UnitsController = Paloma.controller('Units');
 
 UnitsController.prototype.index = function() {
-  editObject(I18n.t("views.units.edit_unit"));
-  submitFormAction(true);
-  showDetails();
+
 };
 
 UnitsController.prototype.edit = function() {
-
+  General.submit();
 };
 
 UnitsController.prototype.update = function() {
-
+  General.submit();
 };

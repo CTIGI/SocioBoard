@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.2.3"
 
-gem 'rails', '>= 5.0.0.beta4', '< 5.1'
+gem 'rails', '>= 5.0.0.RC1', '< 5.1'
 gem 'puma'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -36,6 +36,7 @@ gem 'sidetiq'
 gem 'sinatra', git: "git@github.com:sinatra/sinatra.git", branch: 'master', :require => nil
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'pry-byebug'

@@ -7,6 +7,8 @@
         </tr>
       </thead>
       <tbody>
+        <%= image_tag(unit.photo_url, size: "450x200") if unit.photo? %>
+
         <tr>
           <td>
             <b><%= t("activerecord.attributes.unit.min_age") %>:</b>

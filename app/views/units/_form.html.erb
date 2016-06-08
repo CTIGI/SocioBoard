@@ -1,63 +1,70 @@
-<span class="content-modal">
-  <div class="modal-body">
-    <%=simple_form_for(@unit, wrapper: "form") do |f| %>
-      <%= f.error_notification %>
-      <div class="container-fluid">
-        <div class="form-wizard-basic fw-container">
-          <div class="tab-content">
-            <div class="tab-pane fade active in" id="step-1">
-              <div class="row-fluid">
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.input :name, disabled: true %>
-                  </div>
-                </div>
+<%= simple_form_for(@unit, wrapper: "form") do |f| %>
+  <%= f.error_notification %>
+  <div class="container-fluid">
+    <div class="form-wizard-basic fw-container">
+      <div class="tab-content">
+        <div class="tab-pane fade active in" id="step-1">
+          <div class="row-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.input :name, disabled: true %>
+              </div>
+            </div>
 
-                <div class="row">
-                  <div class="col-md-6">
-                    <%= f.input :min_age, collection: 12..22 %>
-                  </div>
-                  <div class="col-md-6">
-                    <%= f.input :max_age, collection: 12..22 %>
-                  </div>
-                </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :min_age, collection: 12..22 %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :max_age, collection: 12..22 %>
+              </div>
+            </div>
 
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.association :measure_types, input_html: { class: "select2 big-select2" }%>
-                  </div>
-                </div>
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.association :measure_types, input_html: { class: "select2 big-select2" }%>
+              </div>
+            </div>
 
-                <div class="row">
-                  <div class="col-md-4">
-                    <%= f.input :street %>
-                  </div>
+            <div class="row">
+              <div class="col-md-4">
+                <%= f.input :street %>
+              </div>
 
-                  <div class="col-md-4">
-                    <%= f.input :district %>
-                  </div>
+              <div class="col-md-4">
+                <%= f.input :district %>
+              </div>
 
-                  <div class="col-md-4">
-                    <%= f.input :county %>
-                  </div>
-                </div>
+              <div class="col-md-4">
+                <%= f.input :county %>
+              </div>
+            </div>
 
-                <div class="row">
-                  <div class="col-md-6">
-                    <%= f.input :latitude %>
-                  </div>
-                  <div class="col-md-6">
-                    <%= f.input :longitude %>
-                  </div>
-                </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :latitude %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :longitude %>
+              </div>
+            </div>
 
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.file_field :photo %>
+                <%= f.hidden_field :photo_cache %>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
-
-  <%= render partial: "shared/modal_footer", locals: { submit_id: "btn-submit-action" } %>
-</span>
+  <div class="row form-actions">
+    <hr>
+    <div class="col-md-12">
+      <%= footer_actions(units_path) %>
+    </div>
+  </div>
+<% end %>
+</div>

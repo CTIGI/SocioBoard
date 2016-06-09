@@ -6,20 +6,10 @@ class MapsController < ApplicationController
 
   def index
     map_configs
-
-    gon.hash_json = Gmaps4rails.build_markers(Unit.all) do |unit, marker|
-      marker.lat unit.latitude
-      marker.lng unit.longitude
-      marker.json({:id => unit.id,
-                    custom_marker: "<div class='marker-info'>
-                                      <img src=#{ActionController::Base.helpers.asset_path("institution-map.png")}>
-                                    </div>"})
-
-      marker.infowindow render_to_string(:partial => "/units/infowindow", :locals => { unit: unit})
-    end
+    set_unit_markers
 
     @q = Offender.ransack()
-
+    gon.heatmap_json = []
     gon.district_json = Gmaps4rails.build_markers(District.all) do |d, marker|
       offenders = d.offenders.ransack(params[:q]).result
       if offenders.count > 0
@@ -32,6 +22,10 @@ class MapsController < ApplicationController
         marker.lng d.longitude
 
         marker.infowindow render_to_string(:partial => "/offenders/infowindow", :locals => { offenders: offenders })
+
+        offenders.count.times do
+          gon.heatmap_json << { lat: d.latitude, lng: d.longitude }
+        end
       end
     end
 
@@ -39,12 +33,25 @@ class MapsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: gon.district_json}
+      format.json { render json: { districts: gon.district_json, heatmap: gon.heatmap_json} }
     end
 
   end
 
   private
+
+  def set_unit_markers
+    gon.hash_json = Gmaps4rails.build_markers(Unit.all) do |unit, marker|
+      marker.lat unit.latitude
+      marker.lng unit.longitude
+      marker.json({:id => unit.id,
+                    custom_marker: "<div class='marker-info'>
+                                      <img src=#{ActionController::Base.helpers.asset_path("institution-map.png")}>
+                                    </div>"})
+
+      marker.infowindow render_to_string(:partial => "/units/infowindow", :locals => { unit: unit})
+    end
+  end
 
   def map_offender_search
   end

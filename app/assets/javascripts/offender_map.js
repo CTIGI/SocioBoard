@@ -32,8 +32,9 @@ RichMarkerBuilder = (function(superClass) {
 
 })(Gmaps.Google.Builders.Marker);
 
-var customMarkers = []
-var customMarkers2 = []
+var customMarkers = [];
+var customMarkers2 = [];
+var heatMapData = new Array;
 
 var offenderMap = {
   loading: function () {
@@ -94,6 +95,7 @@ var offenderMap = {
     $('#search-on-map').click(function (e) {
       e.preventDefault();
       handler.removeMarkers(customMarkers2)
+      offenderMap.disableHeatMap();
 
       $.ajax({
         method: "get",
@@ -107,10 +109,33 @@ var offenderMap = {
           $('.loading-map-data').hide();
         },
         success: function (data) {
-          customMarkers2 = handler.addMarkers(data)
+          customMarkers2 = handler.addMarkers(data['districts'])
+          offenderMap.addHeatMap(data['heatmap'], handler.map.serviceObject);
         }
       })
     })
+  },
+
+  addHeatMap: function (data, map) {
+    heatMapData = new Array;
+    $.each(data, function(index, d) {
+      heatMapData.push( new google.maps.LatLng(d.lat, d.lng) );
+    });
+
+    heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatMapData,
+      map: map
+    });
+
+    heatmap.set('radius', heatmap.get('radius') ? null : 40);
+  },
+
+  disableHeatMap: function () {
+    heatmap.setMap(null);
+  },
+
+  enableHeatMap: function () {
+    heatmap.setMap(map);
   },
 
   initVariables: function() {
@@ -139,7 +164,10 @@ var offenderMap = {
       map: handler.map.serviceObject,
       polygonOptions: { clickable: false }
     });
+
     geoXml.parse('/kmls/bairros_fortaleza.kml')
+
+    offenderMap.addHeatMap(gon.heatmap_json, handler.map.serviceObject);
 
     return handler
   }

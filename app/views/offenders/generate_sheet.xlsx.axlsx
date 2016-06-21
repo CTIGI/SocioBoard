@@ -44,7 +44,7 @@ wb.add_worksheet(name: t("views.reports.offenders_list")) do |sheet|
   ("A".."I").each {|col| sheet.add_border "#{col}#{header_table_pos}:#{col}#{header_table_pos}" }
 
   @offenders.each_with_index do |offender, index|
-    if evaded_search
+    if evaded_search && offender.evasion_date
     sheet.add_row [
       truncate_words(offender.unit.name),
       display_offender_name(offender.name, current_user),

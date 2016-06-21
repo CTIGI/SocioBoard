@@ -7,10 +7,10 @@ module Concerns
 
       def set_values
         @total_offenders             = Offender.not_evaded.all.count
-        @near_due_date_counter       = Measure.nears_due_date.count
-        @near_current_period_counter = Measure.near_current_periods.count
-        @measure_overdues            = Measure.overdues.count
-        @sanctions                   = Measure.sanctions.count
+        @near_due_date_counter       = Offender.nears_due_date.count
+        @near_current_period_counter = Offender.near_current_periods.count
+        @measure_overdues            = Offender.overdues.count
+        @sanctions                   = Offender.sanctions.count
       end
 
       def units_inconsistences

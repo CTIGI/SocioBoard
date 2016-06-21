@@ -8,10 +8,10 @@ class Offender < ApplicationRecord
   scope :not_evaded, -> { where(evaded: false) }
   scope :evaded, -> { where(evaded: true) }
 
-  scope :nears_due_date,       -> { joins(:measures).where("measures.end_date_measure > ? AND measures.end_date_measure < ? AND measures.measure_type = ?", Date.today, Date.today + 10, I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")) }
-  scope :near_current_periods, -> { joins(:measures).where("measures.current_period_date <= ?", Date.today + 30) }
-  scope :overdues,             -> { joins(:measures).where("measures.end_date_measure < ? AND measures.measure_type = ?", Date.today,  I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission")) }
-  scope :sanctions,            -> { joins(:measures).where("measures.end_date_measure <= ? AND  measures.measure_type = ?", Date.today + 10, I18n.t("activerecord.attributes.offender.measure_type_list.sanction")) }
+  scope :nears_due_date,       -> { joins(:measures).where("measures.end_date_measure > ? AND measures.end_date_measure < ? AND measures.measure_type = ? AND measures.measure_situation != ?", Date.today, Date.today + 10, I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission"), I18n.t('activerecord.attributes.measures.measures_situations.finished')) }
+  scope :near_current_periods, -> { joins(:measures).where("measures.current_period_date <= ? AND measures.measure_situation != ?", Date.today + 30, I18n.t('activerecord.attributes.measures.measures_situations.finished')) }
+  scope :overdues,             -> { joins(:measures).where("measures.end_date_measure < ? AND measures.measure_type = ? AND measures.measure_situation != ?", Date.today,  I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission"), I18n.t('activerecord.attributes.measures.measures_situations.finished')) }
+  scope :sanctions,            -> { joins(:measures).where("measures.end_date_measure <= ? AND  measures.measure_type = ? AND measures.measure_situation != ?", Date.today + 10, I18n.t("activerecord.attributes.offender.measure_type_list.sanction"), I18n.t('activerecord.attributes.measures.measures_situations.finished')) }
 
   def self.crimes_list
     all_crimes_list = []

@@ -112,6 +112,6 @@ class DashboardController < ApplicationController
   end
 
   def set_measure_names
-    @measures_names = Measure.uniq.pluck(:measure_type)
+    @measures_names = Measure.distinct.pluck(:measure_type)
   end
 end

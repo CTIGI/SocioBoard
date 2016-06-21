@@ -41,10 +41,10 @@ module Concerns
 
       def set_counters
         @total                       = [{ I18n.t("views.offenders.filter_panel.total") => Offender.not_evaded.all.count }]
-        @near_due_date_counter       = Measure.nears_due_date.count
-        @near_current_period_counter = Measure.near_current_periods.count
-        @measure_overdues            = Measure.overdues.count
-        @sanctions                   = Measure.sanctions.count
+        @near_due_date_counter       = Offender.nears_due_date.count
+        @near_current_period_counter = Offender.near_current_periods.count
+        @measure_overdues            = Offender.overdues.count
+        @sanctions                   = Offender.sanctions.count
         @evaded                      = Offender.evaded.count
         search_terms                 = []
         @counters                    = []
@@ -59,9 +59,12 @@ module Concerns
             field_name.pop
             field_name = field_name.join("_")
             terms.merge!(search_term)
+
             if evaded_search
-              current_value = Offender.ransack(terms).result.count
-              @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") => current_value }
+              if terms != {"evaded_eq"=>["true", "false"]}
+                current_value = Offender.ransack(terms).result.count
+                @counters << { I18n.t("activerecord.attributes.offender.#{field_name}") => current_value }
+              end
             else
               current_value = Offender.not_evaded.ransack(terms).result.count
               percentage = @counters.blank? ? calculate_percentage(@total[0].values[0], current_value) : calculate_percentage(@counters.last.values[0], current_value)

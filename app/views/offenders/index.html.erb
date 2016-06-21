@@ -80,7 +80,7 @@
 
         <% if evaded_search %>
           <td>
-            <%= l(offender.evasion_date) %>
+            <%= l(offender.evasion_date) if offender.evasion_date %>
           </td>
         <% end %>
       </tr>

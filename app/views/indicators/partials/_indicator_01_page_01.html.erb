@@ -13,7 +13,7 @@
         </div>
       <% end %>
 
-      <%= link_to offenders_path({q:{ measures_end_date_measure_lt: Date.today + 10, measures_end_date_measure_gt: Date.today, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission") }}) do %>
+      <%= link_to offenders_path({q:{ measures_end_date_measure_lt: Date.today + 10, evaded_eq: [true, false], measures_end_date_measure_gt: Date.today, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission") }}) do %>
         <div class="col-sm-5 col-xs-6">
           <div class="cb-item bad light-font <%= randomEntrance %>">
             <h3><%= @near_due_date_counter %></h3>
@@ -23,7 +23,7 @@
         </div>
       <% end %>
 
-      <%= link_to offenders_path({ q: { measures_current_period_date_lteq: Date.today + 30.days} }) do %>
+      <%= link_to offenders_path({ q: { measures_current_period_date_lteq: Date.today + 30.days, evaded_eq: [true, false]} }) do %>
         <div class="col-sm-5 col-xs-6">
           <div class="cb-item regular light-font <%= randomEntrance %>">
             <h3><%= @near_current_period_counter %></h3>
@@ -33,7 +33,7 @@
         </div>
       <% end %>
 
-      <%= link_to offenders_path({ q: { measures_end_date_measure_lt: Date.today + 10, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.sanction") } }) do %>
+      <%= link_to offenders_path({ q: { measures_end_date_measure_lt: Date.today + 10, evaded_eq: [true, false], measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.sanction") } }) do %>
         <div class="col-sm-5 col-xs-6">
           <div class="cb-item sanction light-font <%= randomEntrance %>">
             <h3><%= @sanctions %></h3>
@@ -43,7 +43,7 @@
         </div>
       <% end %>
 
-      <%= link_to offenders_path({ q: { measures_end_date_measure_lt: Date.today, measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission") } }) do %>
+      <%= link_to offenders_path({ q: {measures_measure_situation_not_eq: t('activerecord.attributes.measures.measures_situations.finished'), measures_end_date_measure_lt: Date.today, evaded_eq: [true, false], measures_measure_type_eq: I18n.t("activerecord.attributes.offender.measure_type_list.provisional_admission") } }) do %>
         <div class="col-sm-5 col-xs-6">
           <div class="cb-item overdue light-font <%= randomEntrance %>">
             <h3><%= @measure_overdues %></h3>

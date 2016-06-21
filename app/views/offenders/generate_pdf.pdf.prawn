@@ -63,7 +63,7 @@ def table_result_search(pdf)
     ]
 
     if evaded_search
-      result.last <<  l(offender.evasion_date)
+      result.last <<  l(offender.evasion_date) if offender.evasion_date
     end
   end
 

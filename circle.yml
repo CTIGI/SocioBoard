@@ -8,3 +8,8 @@ test:
     - bundle exec rake bower:install
   override:
     - bundle exec rspec spec/
+deployment:
+  staging:
+    branch: master
+    commands:
+      - mina staging deploy

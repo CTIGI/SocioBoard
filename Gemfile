@@ -40,6 +40,7 @@ gem 'carrierwave'
 gem 'mina_slack', git: "git@github.com:mbajur/mina_slack.git", branch: 'master'
 
 group :development, :test do
+  gem 'pivotal-tracker'
   gem 'pry-byebug'
   gem 'faker'
   gem 'rspec-rails'

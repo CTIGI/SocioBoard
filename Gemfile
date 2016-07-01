@@ -38,6 +38,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
 gem 'mina_slack', git: "git@github.com:mbajur/mina_slack.git", branch: 'master'
+gem 'pivotal-tracker'
 
 group :development, :test do
   gem 'pry-byebug'

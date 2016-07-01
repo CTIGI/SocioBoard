@@ -7,3 +7,5 @@ set :user, "deploy"
 set :rails_env, "production"
 set :term_mode,     nil
 set :rvm_path, "/usr/local/rvm/bin/rvm"
+set :application, "Socioboard-Produção"
+set :domain, "sb.vicegov.ce.gov.br"

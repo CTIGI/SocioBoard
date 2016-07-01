@@ -33,10 +33,11 @@ gem 'prawn-table'
 gem 'axlsx_rails'
 gem 'axlsx_styler'
 gem 'sidetiq'
-gem 'sinatra', git: "git@github.com:sinatra/sinatra.git", branch: 'master', :require => nil
+gem 'sinatra', git: "https://github.com/sinatra/sinatra.git", branch: 'master', :require => nil
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
+gem 'mina_slack', git: "git@github.com:mbajur/mina_slack.git", branch: 'master'
 
 group :development, :test do
   gem 'pry-byebug'

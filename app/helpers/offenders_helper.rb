@@ -60,15 +60,19 @@ module OffendersHelper
   end
 
   def colorize_table_row(offender)
-    if near_due_date?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
-      "near_due_date"
-    elsif near_current_period?(measure_data(offender, :current_period_date))
-      "near_current_period"
-    elsif overdue_measure?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
-      "overdue_measure"
-    elsif sanction?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
-      "sanction"
-    else
+    begin
+      if near_due_date?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
+        "near_due_date"
+      elsif near_current_period?(measure_data(offender, :current_period_date))
+        "near_current_period"
+      elsif overdue_measure?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
+        "overdue_measure"
+      elsif sanction?(measure_data(offender, :measure_type), measure_data(offender, :end_date_measure))
+        "sanction"
+      else
+        ""
+      end
+    rescue
       ""
     end
   end

@@ -201,7 +201,7 @@ GEM
     hitimes (1.2.3)
     htmlentities (4.3.4)
     i18n (0.7.0)
-    i18n-js (3.0.0.rc12)
+    i18n-js (3.0.0.rc13)
       i18n (~> 0.6, >= 0.6.6)
     ice_cube (0.13.3)
     jasmine-core (2.4.1)
@@ -467,7 +467,7 @@ DEPENDENCIES
   geocoder
   gmaps4rails
   gon
-  i18n-js (>= 3.0.0.rc12)
+  i18n-js (>= 3.0.0.rc13)
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails

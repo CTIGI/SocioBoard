@@ -29,6 +29,7 @@
     "markerclustererplus": "latest",
     "js-rich-marker": "git://github.com/googlemaps/js-rich-marker#gh-pages",
     "underscore": "latest",
-    "jQuery-File-Upload": "latest"
+    "jQuery-File-Upload": "latest",
+    "jquery-migrate": "latest"
   }
 }

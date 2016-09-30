@@ -65,6 +65,7 @@ group :test do
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers'
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do

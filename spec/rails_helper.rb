@@ -4,8 +4,12 @@ require "rspec/rails"
 require "capybara/rails"
 require "pundit/rspec"
 require "capybara/poltergeist"
+require "codeclimate-test-reporter"
+require 'simplecov'
 require "capybara/rspec"
 require "vcr"
+
+CodeClimate::TestReporter.start
 
 ActiveRecord::Migration.maintain_test_schema!
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -21,6 +25,12 @@ if ENV["REAL_REQUESTS"]
   VCR.turn_off!(ignore_cassettes: true)
   WebMock.allow_net_connect!
 end
+
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  SimpleCov.coverage_dir(dir)
+end
+
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

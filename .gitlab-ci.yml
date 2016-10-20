@@ -1,0 +1,21 @@
+image: "dev.gitlab.org:5005/gitlab/gitlab-build-images:ruby-2.3-git-2.7-phantomjs-2.1"
+services:
+  - postgres:latest
+variables:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: 'JuvOffendersDashboard_test'
+before_script:
+  - apt-get update -qq && apt-get install -y -qq postgresql-client libpq-dev nodejs qt5-default libqt5webkit5-dev qtdeclarative5-dev qt5-qmake
+  - ruby -v
+  - which ruby
+  - gem install bundler --no-ri --no-rdoc
+  - cp config/database.yml.example config/database.yml
+  - cp config/application.yml.example config/application.yml
+  - bundle config git.allow_insecure true
+  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+  - bundle exec rake db:migrate RAILS_ENV=test
+rspec:
+  script:
+    - CODECLIMATE_REPO_TOKEN=04fe217a7c757b6786a8ff3719edf8de1d28253a50679544fff17ee4f975a1dc bundle exec rspec
+

@@ -37,7 +37,7 @@ gem 'sinatra', git: "https://github.com/sinatra/sinatra.git", branch: 'master', 
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
-gem 'mina_slack', git: "git@github.com:mbajur/mina_slack.git", branch: 'master'
+gem 'mina_slack', git: "https://github.com/mbajur/mina_slack.git", branch: 'master'
 gem 'pivotal-tracker'
 
 group :development, :test do

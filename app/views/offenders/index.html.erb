@@ -51,7 +51,8 @@
           <%= display_offender_name(offender.name, current_user) %>
         </td>
         <td>
-          <%= show_field(offender.age) %>
+          <%= show_field(t('views.offenders.age', age: offender.age)) %><br>
+          <%= l(offender.birth_date) if offender.birth_date %>
         </td>
         <td>
           <%= show_field(offender.recurrent) %>

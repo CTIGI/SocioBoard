@@ -42,6 +42,7 @@ pt-BR:
       free_range_units: "Unidades de Semiliberdade"
       admission_units: "Unidades de Internação"
       provisional_admission: "Unidade de Internação Provisória"
+      age: "%{age} anos"
       filter_panel:
         total: "Total Socioed."
         duplicated: "Dados Repetidos"

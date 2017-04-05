@@ -1,0 +1,19 @@
+{
+  "name": "sb",
+  "version": "1.0.0",
+  "description": "This app uses Rails 5.0.0.beta3 and Ruby 2.2.3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/ctigi/JuvOffendersDashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/ctigi/JuvOffendersDashboard/issues"
+  },
+  "homepage": "https://gitlab.com/ctigi/JuvOffendersDashboard#README"
+}

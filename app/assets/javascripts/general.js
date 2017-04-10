@@ -146,4 +146,5 @@ $(document).ready(function() {
   enableSelect2();
   enableiCheck();
   Mask.datePicker();
+  Paloma.start();
 });

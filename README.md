@@ -1,6 +1,29 @@
 # JuvOffendersDashboard
+# Licença
+Esse aplicativo está licensiado com GNU General Public License v3.0
 
-This app uses Rails 5.0.0.beta3 and Ruby 2.2.3
+O aplicativo SocioBoard foi desenvolvido pelo Gabinete da Vice-Governadora do Estado do Ceará.
+
+## Gestão Superior
+
+* Vice-Governadora - Maria Izolda Cela de Arruda Coelho
+* Secretário Chefe - Fernando Antônio Costa de Oliveira
+
+## Pessoas que parciparam no projeto
+
+* Gestor de TI - Catulo Hansen
+* Analista Desenvolvedor - Leoncio Caminha
+* Analista Desenvolvedor - Schwarzenegger Alves
+* Analista de Negócio - Hirley Esmeraldo
+* Analista Desenvolvedor - Henrique Almeida
+* Analista de Negócio -Israel Freitas
+* Desenvolvedor - Wesley Ribeiro
+* Analista de Infraestrutura - Samuel Lucas
+* Analista de Infraestrutura  - Isaque Freitas
+
+# App
+
+This app uses Rails 5.0.0.RC1 and Ruby 2.3.1
 
 ## Installing
 Before installing, dont forget to install postgres

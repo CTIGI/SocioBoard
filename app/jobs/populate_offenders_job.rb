@@ -18,7 +18,7 @@ class PopulateOffendersJob < ApplicationJob
   end
 
   def perform
-    body_units = open("http://www11.stds.ce.gov.br/sgi/rest/crvqavu/#{Constants::CRV::PWD}").read
+    body_units = open("").read
     result_units = JSON.parse(body_units)
     unless result_units.blank?
       result_units.each do |u|
@@ -31,8 +31,8 @@ class PopulateOffendersJob < ApplicationJob
 
     ids = []
 
-    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crve/#{Constants::CRV::PWD}", true)
-    ids << save_offenders("http://www11.stds.ce.gov.br/sgi/rest/crv/#{Constants::CRV::PWD}", false)
+    ids << save_offenders("", true)
+    ids << save_offenders("", false)
 
     ids.flatten!
 

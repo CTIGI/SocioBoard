@@ -9,22 +9,9 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  layout :layout_by_resource
-
-  protected
-
-  def layout_by_resource
-    if current_user.blank?
-      "unlloged"
-    else
-      "application"
-    end
-  end
-
   private
 
   def permission_denied
     head 403
   end
-
 end

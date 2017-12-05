@@ -9,6 +9,6 @@
 
   <ul>
     <li><a data-toggle="fullscreen" href=""><%= t("app.fullscreen_mode")%></a></li>
-    <li><%= link_to t("app.sign_out"), destroy_user_session_path%></li>
+    <li><%= link_to t("app.sign_out"), destroy_user_session_path, method: :delete %></li>
   </ul>
 </li>

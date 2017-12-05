@@ -50,6 +50,12 @@ pt-BR:
     sessions:
       signed_in: "Login efetuado com sucesso!"
       signed_out: "Saiu com sucesso."
+      email: "Email"
+      password: "Senha"
+      new_password: "Nova Senha"
+      password_confirmation: "Confirmar Senha"
+      remember_me: "Continuar conectado?"
+      forgot_password: "Esqueceu a senha?"
     unlocks:
       send_instructions: "Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos."

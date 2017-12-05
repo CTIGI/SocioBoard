@@ -4,12 +4,9 @@ require "rspec/rails"
 require "capybara/rails"
 require "pundit/rspec"
 require "capybara/poltergeist"
-require "codeclimate-test-reporter"
 require 'simplecov'
 require "capybara/rspec"
 require "vcr"
-
-CodeClimate::TestReporter.start
 
 ActiveRecord::Migration.maintain_test_schema!
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -63,7 +60,7 @@ RSpec.configure do |config|
   config.order = "random"
   config.infer_spec_type_from_file_location!
   config.include Capybara::DSL, :type => :feature
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.include ApplicationHelper
   config.include SpecHelpers::ControllerHelpers
   config.include SpecHelpers::Authentication

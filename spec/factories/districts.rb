@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :district do
     name "MyString"
     latitude 1.5

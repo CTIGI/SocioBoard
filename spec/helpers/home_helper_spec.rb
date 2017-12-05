@@ -5,14 +5,14 @@ RSpec.describe HomeHelper, :type => :helper do
   describe "#underflow" do
     it "should return underflow 0 and the markup if positive" do
       occupied = rand(100)
-      unit  = FactoryGirl.build(:unit, capacity: occupied*2, occupied: occupied)
+      unit  = FactoryBot.build(:unit, capacity: occupied*2, occupied: occupied)
       expect(helper.underflow(unit.capacity, unit.occupied)).to eq([0, ""])
     end
 
     it "should return underflow with value and the markup if negative" do
       occupied   = rand(51..100)
       capacity   = rand(50)
-      unit       = FactoryGirl.build(:unit, capacity: capacity, occupied: occupied)
+      unit       = FactoryBot.build(:unit, capacity: capacity, occupied: occupied)
       total      = (capacity - occupied).abs
       percentage = ((total.abs * 100)/capacity).round(2)
       expect(helper.underflow(unit.capacity, unit.occupied)).to eq(["#{total.abs} (#{percentage}%)", "danger-item"])

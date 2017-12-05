@@ -2,6 +2,7 @@ require 'sidekiq/web'
 require 'sidetiq/web'
 
 Rails.application.routes.draw do
+  devise_for :users
 
   resources :offenders do
     collection do
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :dashboard
-  
+
   resources :analysis, only: [:update] do
     collection do
       get :unconformities, as: :unconformities
@@ -41,14 +42,8 @@ Rails.application.routes.draw do
   end
 
   resources :roles
-  resources :users, only: [:index, :edit, :update, :show]
+  resources :users
   resources :units, only: [:index, :edit, :update, :show]
-
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", sessions: 'users/sessions' }
-
-  devise_scope :user do
-    get "destroy", :to => "users/sessions#destroy", :as => :destroy_user_session
-  end
 
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'

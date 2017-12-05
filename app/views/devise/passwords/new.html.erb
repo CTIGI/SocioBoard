@@ -1,0 +1,60 @@
+<%= image_tag "white-clock-icon.png", id: "clock-icon", class: "", style: "display: none;" %>
+
+<div class="login-general">
+  <div class="login-form animated fadeInLeft">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-block" id="l-login">
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <i class="ugly-green-icon login-icon zmdi zmdi-pin-account"></i>
+            <% flash.each do |key, value| %>
+              <div class="alert alert-<%= key %>" role="alert">
+                <%= value %>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.input :email, autofocus: true, label: false, input_html: { placeholder: t("devise.sessions.email"), class: "form-control" } %>
+            </div>
+
+            <%= f.submit t("devise.sessions.forgot_password"), class: "btn btn-block bg-ugly-green btn-float m-t-25" %>
+
+            <%= link_to "Login", root_path, class: "login-navigation" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row logos">
+      <div class="col-md-3">
+        <%= image_tag "gov_ce_logo.png" %>
+        <div class="text-center logo-text">
+          <b><%= raw(t("views.sessions.new.inst_01"))%></b>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= image_tag "gov_ce_logo.png" %>
+        <div class="text-center logo-text">
+          <b><%= raw(t("views.sessions.new.inst_02")) %></b>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= image_tag "logo-mpce.png" %>
+        <div class="text-center logo-text">
+          <b><%= raw(t("views.sessions.new.inst_03")) %></b>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= image_tag "logo-defensoriace.png" %>
+        <div class="text-center logo-text">
+          <b><%= raw(t("views.sessions.new.inst_04")) %></b>
+        </div>
+      </div>
+    </div>
+
+    <div class="logo-cp">
+      <%= image_tag "logo-cp.png", class: "img-responsive" %>
+    </div>
+  </div>
+  <%= image_tag "logo_tempo.png", class: "justice-image animated fadeInRight" %>
+</div>

@@ -18,7 +18,7 @@ class PopulateOffendersJob < ApplicationJob
   end
 
   def perform
-    body_units = open("").read
+    body_units = open(Figaro.env.units_url + Figaro.env.crv_password).read
     result_units = JSON.parse(body_units)
     unless result_units.blank?
       result_units.each do |u|
@@ -31,8 +31,8 @@ class PopulateOffendersJob < ApplicationJob
 
     ids = []
 
-    ids << save_offenders("", true)
-    ids << save_offenders("", false)
+    ids << save_offenders(Figaro.env.crve_url + Figaro.env.crv_password, true)
+    ids << save_offenders(Figaro.env.crv_url + Figaro.env.crv_password, false)
 
     ids.flatten!
 

@@ -10,7 +10,6 @@ module JuvOffendersDashboard
     config.time_zone = "America/Fortaleza"
     config.i18n.default_locale = :"pt-BR"
     config.i18n.available_locales = %w(pt-BR en)
-    config.active_record.raise_in_transactional_callbacks = true
     config.middleware.use I18n::JS::Middleware
     config.active_job.queue_adapter = :sidekiq
   end

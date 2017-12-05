@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MeasureType, :type => :model do
   it "should have a factory" do
-    expect(FactoryGirl.build(:measure_type)).to be_valid
+    expect(FactoryBot.build(:measure_type)).to be_valid
   end
 
   context "Should Respond" do

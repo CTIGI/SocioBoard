@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :crime do
     name { Faker::Name.name }
     offender_id 1

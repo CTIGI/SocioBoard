@@ -19,7 +19,7 @@
 //= require fullcalendar/dist/fullcalendar.min
 //= require select2/dist/js/select2.full.min
 //= require select2/dist/js/i18n/pt-BR
-//= require sweetalert/dist/sweetalert.min
+//= require sweetalert2/dist/sweetalert2
 //= require jquery.maskedinput/dist/jquery.maskedinput.min
 //= require jquery-maskmoney/dist/jquery.maskMoney.min
 //= require jquery-animateNumber/jquery.animateNumber.min

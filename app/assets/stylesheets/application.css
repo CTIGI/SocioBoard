@@ -19,7 +19,7 @@
  *= require iCheck/skins/square/_all
  *= require app
  *= require select2/dist/css/select2.min
- *= require sweetalert/dist/sweetalert
+ *= require sweetalert2/dist/sweetalert2
  *= require eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min
  *= require overrides
  *= require hover/css/hover-min

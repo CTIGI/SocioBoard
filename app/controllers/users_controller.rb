@@ -7,6 +7,19 @@ class UsersController < ApplicationController
     respond_with(@users)
   end
 
+  def new
+    @user = User.new
+    authorize @user
+    respond_with(@user)
+  end
+
+  def create
+    @user = User.new(user_params)
+    authorize @user
+    @user.save
+    respond_with(@user)
+  end
+
   def show
     authorize @user
     respond_with(@user)
@@ -31,6 +44,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
+      :password,
+      :email,
       role_ids: []
     )
   end

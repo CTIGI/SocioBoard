@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head dir="ltr" lang="<%= I18n.locale %>">
+    <title> <%= t("app.appname") %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag 'login' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="login-content-socioboard animated">
+    <div class="container">
+      <div class="row vertical-offset-100">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="image-logo">
+              <%= image_tag("socioboard.png") %>
+            </div>
+            <div class="panel-body">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= javascript_include_tag 'application' %>
+  </body>
+</html>

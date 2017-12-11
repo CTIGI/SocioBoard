@@ -1,6 +1,6 @@
 module Constants
   module CRV
-    PWD   = ''
+    PWD   = Figaro.env.crv_password
   end
 
   FREE_RANGE_UNITS = [

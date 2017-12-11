@@ -6,8 +6,9 @@ pt-BR:
       create: "Cadastrar"
       list: "Listar"
     user_management:
-      user_management: Controle de usuário
+      user_management: Controle de Usuário
       list: Gerir Usuários
+      create: "Cadastrar"
     analysis:
       analysis: "Análises"
       unconformities: "Inconformidades"

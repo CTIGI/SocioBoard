@@ -1,5 +1,5 @@
 {
-  "name": "dsl-generated dependencies",
+  "name": "dsl-generated-dependencies",
   "dependencies": {
     "animate.css": "latest",
     "fullcalendar": "latest",
@@ -13,7 +13,7 @@
     "moment": "latest",
     "iCheck": "latest",
     "select2": "git://github.com/select2/select2",
-    "sweetalert": "latest",
+    "sweetalert2": "latest",
     "jquery.maskedinput": "latest",
     "jquery-maskmoney": "latest",
     "jquery-animateNumber": "latest",

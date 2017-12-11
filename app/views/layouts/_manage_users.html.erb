@@ -7,8 +7,15 @@
       <li>
         <%= link_to "#{t("main_menu.role_management.role_management")}  (#{t("main_menu.role_management.create")})", new_role_path %>
       </li>
-      <li><%= link_to "#{t("main_menu.role_management.role_management")}  (#{t("main_menu.role_management.list")})", roles_path %></li>
-      <li><%= link_to t("main_menu.user_management.list"), users_path %></li>
+      <li>
+        <%= link_to "#{t("main_menu.role_management.role_management")}  (#{t("main_menu.role_management.list")})", roles_path %>
+      </li>
+      <li>
+        <%= link_to "#{t("main_menu.user_management.user_management")}  (#{t("main_menu.user_management.create")})", new_user_path %>
+      </li>
+      <li>
+        <%= link_to t("main_menu.user_management.list"), users_path %>
+      </li>
     </ul>
   </li>
 <% end %>

@@ -1,0 +1,61 @@
+<div class="l-login">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="login-block" id="l-login">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <i class="bg-dark-blue login-icon zmdi zmdi-pin-account"></i>
+          <% flash.each do |key, value| %>
+          <% unless key === "timedout" %>
+          <div class="alert alert-<%= key %>" role="alert">
+            <%= value %>
+          </div>
+          <% end %>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.input :email, label: false, input_html: { placeholder: t("devise.sessions.email"), class: "form-control" } %>
+          </div>
+
+          <div class="form-group">
+            <%= f.input :password, label: false, input_html: { placeholder: t("devise.sessions.password"), autocomplete: "off", class: "form-control" } %>
+          </div>
+
+          <div class="p-relative ">
+            <div class="checkbox cr-alt">
+              <label class="c-gray">
+                <%= f.check_box :remember_me %>
+                <i class="input-helper"></i>
+                <%=t "devise.sessions.remember_me" %>
+              </label>
+            </div>
+          </div>
+
+          <br />
+          <%= f.submit t("app.sign_in"), class: "btn btn-block btn-primary bg-teal btn-lg btn-float m-t-23" %>
+
+          <!-- <a class="login-navigation" data-block="#l-forget-password"><%=t 'devise.sessions.forgot_password' %></a> -->
+
+          <% end %>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="login-block" id="l-forget-password" style="display: none;">
+          <%= simple_form_for(resource, as: resource_name, url: user_password_path, html: { method: :post }) do |f| %>
+
+          <i class="bg-orange login-icon zmdi zmdi-lock"></i>
+
+          <small class="m-b-15 d-block"><%=t 'devise.passwords.send_paranoid_instructions' %></small>
+
+          <div class="form-group">
+            <%= f.input :email, label: false, input_html: { placeholder: t("devise.sessions.email"), class: "form-control" } %>
+          </div>
+
+          <%= f.submit t("devise.reset_password"), class: "btn btn-block btn-warning" %>
+
+          <a class="login-navigation" data-block="#l-login">Login</a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
+

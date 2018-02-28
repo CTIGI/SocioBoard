@@ -19,6 +19,8 @@ capybara-*.html
 .byebug_history
 .DS_Store
 **.orig
+.ruby-gemset
+.ruby-version
 
 config/initializers/secret_token.rb
 

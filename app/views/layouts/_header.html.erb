@@ -8,7 +8,7 @@
     <%= render partial: "layouts/manage_users" if current_user.admin? %>
 
     <li class="pull-right" data-trigger="hover" data-toggle="popover" data-placement="left"
-    data-content="<%=  l(Measure.first.updated_at, :format => :short) %>"
+    data-content="<%=  l(Measure.first.try(:updated_at), :format => :short) if Measure.first %>"
     data-original-title="<%=  t('views.general.last_updated') %>">
       <a href="" data-toggle="dropdown">
         <%= fa_icon("clock-o", class: "icon-head") %>

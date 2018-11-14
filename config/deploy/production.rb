@@ -1,4 +1,4 @@
-set :port, 9898
+set :port, 9897
 set :deploy_to, "/var/www/html/juv_offenders_dashboard"
 set :repository, "git@github.com:CTIGI/SocioBoard.git"
 set :branch, "master"
@@ -7,4 +7,4 @@ set :rails_env, "production"
 set :term_mode,     nil
 set :rvm_use_path, "/usr/local/rvm/bin/rvm"
 set :application, "Socioboard-Homologação"
-set :domain, "http://sb.vicegov.ce.gov.br/"
+set :domain, "10.10.0.106"

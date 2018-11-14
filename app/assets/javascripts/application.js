@@ -7,7 +7,7 @@
 //= require gmaps/google
 //= require i18n
 //= require i18n/translations
-//= require bootstrap/dist/js/bootstrap.min
+//= require bootstrap/dist/js/bootstrap.bundle.min
 //= require flot/jquery.flot
 //= require flot/jquery.flot.resize
 //= require flot-orderBars/js/jquery.flot.orderBars
